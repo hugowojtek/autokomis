@@ -2,40 +2,41 @@ package pl.sda.model;
 
 import javax.persistence.Column;
 import javax.persistence.Entity;
+import java.io.Serializable;
 
 @Entity
-class Cars extends BaseModel{
+class Cars extends BaseModel implements Serializable {
     @Column
-    private String year_production;
+    private String yearProduction;
     @Column
     private String manufacturer;
     @Column
     private String model;
     @Column
-    private String nr_oc;
+    private String nrOc;
     @Column
-    private String nr_car_reg;
+    private String nrCarReg;
     @Column
-    private String fuel_type;
+    private String fuelType;
     @Column
     private String milage;
     @Column
-    private Long engine_volume;
+    private Long engineVolume;
     @Column
-    private Long engine_power;
+    private Long enginePower;
     @Column
-    private String gear_box;
+    private String gearBox;
     @Column
     private String description;
     @Column
-    private Long test_drives;
+    private Long testDrives;
 
-    public String getYear_production() {
-        return year_production;
+    public String getYearProduction() {
+        return yearProduction;
     }
 
-    public void setYear_production(String year_production) {
-        this.year_production = year_production;
+    public void setYearProduction(String yearProduction) {
+        this.yearProduction = yearProduction;
     }
 
     public String getManufacturer() {
@@ -54,28 +55,28 @@ class Cars extends BaseModel{
         this.model = model;
     }
 
-    public String getNr_oc() {
-        return nr_oc;
+    public String getNrOc() {
+        return nrOc;
     }
 
-    public void setNr_oc(String nr_oc) {
-        this.nr_oc = nr_oc;
+    public void setNrOc(String nrOc) {
+        this.nrOc = nrOc;
     }
 
-    public String getNr_car_reg() {
-        return nr_car_reg;
+    public String getNrCarReg() {
+        return nrCarReg;
     }
 
-    public void setNr_car_reg(String nr_car_reg) {
-        this.nr_car_reg = nr_car_reg;
+    public void setNrCarReg(String nrCarReg) {
+        this.nrCarReg = nrCarReg;
     }
 
-    public String getFuel_type() {
-        return fuel_type;
+    public String getFuelType() {
+        return fuelType;
     }
 
-    public void setFuel_type(String fuel_type) {
-        this.fuel_type = fuel_type;
+    public void setFuelType(String fuelType) {
+        this.fuelType = fuelType;
     }
 
     public String getMilage() {
@@ -86,28 +87,28 @@ class Cars extends BaseModel{
         this.milage = milage;
     }
 
-    public Long getEngine_volume() {
-        return engine_volume;
+    public Long getEngineVolume() {
+        return engineVolume;
     }
 
-    public void setEngine_volume(Long engine_volume) {
-        this.engine_volume = engine_volume;
+    public void setEngineVolume(Long engineVolume) {
+        this.engineVolume = engineVolume;
     }
 
-    public Long getEngine_power() {
-        return engine_power;
+    public Long getEnginePower() {
+        return enginePower;
     }
 
-    public void setEngine_power(Long engine_power) {
-        this.engine_power = engine_power;
+    public void setEnginePower(Long enginePower) {
+        this.enginePower = enginePower;
     }
 
-    public String getGear_box() {
-        return gear_box;
+    public String getGearBox() {
+        return gearBox;
     }
 
-    public void setGear_box(String gear_box) {
-        this.gear_box = gear_box;
+    public void setGearBox(String gearBox) {
+        this.gearBox = gearBox;
     }
 
     public String getDescription() {
@@ -118,11 +119,11 @@ class Cars extends BaseModel{
         this.description = description;
     }
 
-    public Long getTest_drives() {
-        return test_drives;
+    public Long getTestDrives() {
+        return testDrives;
     }
 
-    public void setTest_drives(Long test_drives) {
-        this.test_drives = test_drives;
+    public void setTestDrives(Long testDrives) {
+        this.testDrives = testDrives;
     }
 }
