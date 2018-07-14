@@ -1,4 +1,4 @@
-package pl.sda.service;
+package pl.sda;
 
 import org.springframework.boot.autoconfigure.EnableAutoConfiguration;
 import org.springframework.context.annotation.Configuration;

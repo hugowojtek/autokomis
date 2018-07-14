@@ -8,7 +8,7 @@ import javax.persistence.*;
 @Entity
 public class Cutomer extends BaseModel{
 
-    @OneToMany
+    @ManyToOne
     @JoinColumn(name = "nr_chasis")
     private Cars cars;
 
