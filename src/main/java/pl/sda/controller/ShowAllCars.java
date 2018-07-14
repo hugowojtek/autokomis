@@ -4,26 +4,27 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestMethod;
 import pl.sda.Repository.CarsRepository;
 import pl.sda.model.Cars;
 
 import java.util.List;
 
 @Controller
-@RequestMapping("/vehicles")
+@RequestMapping("/cars")
 public class ShowAllCars {
 
-    @Autowired
+
     private final CarsRepository carsRepository;
 
     public ShowAllCars(CarsRepository carsRepository) {
         this.carsRepository = carsRepository;
     }
 
-
+    @RequestMapping(method =  RequestMethod.GET)
     public String getCars(Model model){
-        List<Cars>cars = (List<Cars>)carsRepository.findAll();
+        List<Cars> cars = (List<Cars>)carsRepository.findAll();
         model.addAttribute("cars1",cars);
-        return "allCars";
+        return "allcars";
     }
 }

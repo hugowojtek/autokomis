@@ -17,13 +17,13 @@ public class Cars extends BaseModel implements Serializable {
     @Column
     private String nrCarReg;
     @Column
-    private String fuelType;
+    private String fuel;
     @Column
     private String milage;
     @Column
-    private Long engineVolume;
+    private Integer engineVolume;
     @Column
-    private Long enginePower;
+    private Integer enginePower;
     @Column
     private String gearBox;
     @Column
@@ -71,12 +71,12 @@ public class Cars extends BaseModel implements Serializable {
         this.nrCarReg = nrCarReg;
     }
 
-    public String getFuelType() {
-        return fuelType;
+    public String getFuel() {
+        return fuel;
     }
 
-    public void setFuelType(String fuelType) {
-        this.fuelType = fuelType;
+    public void setFuel(String fuel) {
+        this.fuel = fuel;
     }
 
     public String getMilage() {
@@ -87,19 +87,19 @@ public class Cars extends BaseModel implements Serializable {
         this.milage = milage;
     }
 
-    public Long getEngineVolume() {
+    public Integer getEngineVolume() {
         return engineVolume;
     }
 
-    public void setEngineVolume(Long engineVolume) {
+    public void setEngineVolume(Integer engineVolume) {
         this.engineVolume = engineVolume;
     }
 
-    public Long getEnginePower() {
+    public Integer getEnginePower() {
         return enginePower;
     }
 
-    public void setEnginePower(Long enginePower) {
+    public void setEnginePower(Integer enginePower) {
         this.enginePower = enginePower;
     }
 
