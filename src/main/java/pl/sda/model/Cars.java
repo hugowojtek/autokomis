@@ -5,7 +5,7 @@ import javax.persistence.Entity;
 import java.io.Serializable;
 
 @Entity
-class Cars extends BaseModel implements Serializable {
+public class Cars extends BaseModel implements Serializable {
     @Column
     private String yearProduction;
     @Column
