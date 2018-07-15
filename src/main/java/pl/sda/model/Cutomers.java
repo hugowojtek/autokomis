@@ -7,7 +7,7 @@ import java.io.Serializable;
 
 
 @Entity
-public class Cutomer extends BaseModel implements Serializable{
+public class Cutomers extends BaseModel implements Serializable{
 
     @ManyToOne
     @JoinColumn(name = "id_cars")
