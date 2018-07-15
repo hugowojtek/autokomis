@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html xmlns:th="https://www.thymeleaf.org" lang="en">
+<head>
+    <meta charset="UTF-8"/>
+    <title><h4>kup samochod</h4></title>
+</head>
+<body>
+<h2>dodaj samochod</h2>
+<form th:action="@{/cars}" th:object="${addedCar}" method="post">
+    <table>
+        <tr>
+            <td>marka</td>
+            <td><input type="text" th:field="*{carManufacturer}"/></td>
+        </tr>
+        <tr>
+            <td>model</td>
+            <td><input type="text" th:field="*{carModel}"/></td>
+        </tr>
+        <tr>
+            <td>rok</td>
+            <td><input type="text" th:field="*{carYearProduction}"/></td>
+        </tr>
+        <tr>
+            <td>Price</td>
+            <td><input type="text" th:field="*{buyingContractsPrice}"/></td>
+
+        </tr>
+        <tr>
+            <td colspan="2"> <input type="submit" value="kup_samochod"/> </td>
+        </tr>
+    </table>
+
+
+</form>
+</body>
+</html>
