@@ -51,7 +51,7 @@ public class ShowAllCars {
 
     @PostMapping
     //zapisze do bazy i idzie na nowa strone
-    public String saveVehicle(@ModelAttribute("addedVehicle") DtoBuyCar dtoBuyCar){
+    public String saveVehicle(@ModelAttribute("addedCar") DtoBuyCar dtoBuyCar){
 
         Cars car = new Cars();
         BuyingContracts buyingContracts = new BuyingContracts();
@@ -59,6 +59,7 @@ public class ShowAllCars {
         car.setYearProduction(dtoBuyCar.getCarYearProduction());
         car.setManufacturer(dtoBuyCar.getCarManufacturer());
         car.setModel(dtoBuyCar.getCarModel());
+        car.setDescription(dtoBuyCar.getCarDescription());
 
         buyingContracts.setPrice(dtoBuyCar.getBuyingContractsPrice());
         buyingContracts.setDate(new Date());
