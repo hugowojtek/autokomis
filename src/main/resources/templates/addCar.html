@@ -2,10 +2,10 @@
 <html xmlns:th="https://www.thymeleaf.org" lang="en">
 <head>
     <meta charset="UTF-8"/>
-    <title><h1>kup samochod</h1></title>
+    <title>Dodaj_samochod</title>
 </head>
 <body>
-<h2>dodaj samochod</h2>
+<h1>dodaj_samochod</h1>
 <form th:action="@{/cars}" th:object="${addedCar}" method="post">
     <table>
         <tr>
@@ -38,6 +38,10 @@
         </tr>
         <tr>
             <td colspan="2"> <input type="submit" value="kup_samochod"/> </td>
+
+        </tr>
+        <tr>
+            <td><a th:href="@{/cars}">dostepne_samochody</a></td>
         </tr>
     </table>
 

@@ -1,10 +1,11 @@
 <!DOCTYPE html>
-<html lang="en" xmlns:th="http://www.w3.org/1999/xhtml">
+<html xmlns:th="https://www.thymeleaf.org" lang="en">
 <head>
     <meta charset="UTF-8"/>
-    <tittle><h1>Dostepne samochody</h1></tittle>
+    <tittle>Dostepne_samochody</tittle>
 </head>
 <body>
+<h1>dostepne_samochody</h1>
 <table>
     <tr>
 
@@ -29,7 +30,11 @@
 
     </tr>
 </table>
+<tr>
     <td><a th:href="@{/cars/soldcars}">sprzedane_samochody</a></td>
+</tr>
+<tr>
     <td><a th:href="@{/cars/new}">dodaj_samochod</a></td>
+</tr>
 </body>
 </html>
