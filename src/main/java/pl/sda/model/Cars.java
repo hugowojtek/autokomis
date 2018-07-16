@@ -30,6 +30,8 @@ public class Cars extends BaseModel implements Serializable {
     private String description;
     @Column
     private Long testDrives;
+    @Column
+    private Long price;
 
     public String getYearProduction() {
         return yearProduction;
