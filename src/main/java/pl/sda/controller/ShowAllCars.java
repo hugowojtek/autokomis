@@ -7,6 +7,7 @@ import pl.sda.Repository.BuyingContractsRepository;
 import pl.sda.Repository.CarsRepository;
 import pl.sda.Repository.SellingContractsRepository;
 import pl.sda.model.*;
+import pl.sda.service.CarsService;
 
 import java.util.ArrayList;
 import java.util.Date;
@@ -16,12 +17,13 @@ import java.util.List;
 @RequestMapping("/cars")
 public class ShowAllCars {
 
-
+    private CarsService carsService;
     private final CarsRepository carsRepository;
     private final BuyingContractsRepository buyingContractsRepository;
     private final SellingContractsRepository sellingContractsRepository;
 
-    public ShowAllCars(CarsRepository carsRepository, BuyingContractsRepository buyingContractsRepository, SellingContractsRepository sellingContractsRepository) {
+    public ShowAllCars(CarsService carsService, CarsRepository carsRepository, BuyingContractsRepository buyingContractsRepository, SellingContractsRepository sellingContractsRepository) {
+        this.carsService = carsService;
         this.carsRepository = carsRepository;
         this.buyingContractsRepository = buyingContractsRepository;
         this.sellingContractsRepository = sellingContractsRepository;
@@ -30,29 +32,13 @@ public class ShowAllCars {
     @RequestMapping(method = RequestMethod.GET)
     public String getCars(Model model) {
 
-        List<Cars> cars = (List<Cars>) carsRepository.findAll();
-        List<BuyingContracts> buyingContracts = (List<BuyingContracts>) buyingContractsRepository
-                .findAll();
-        List<DtoShowCar> list = new ArrayList<>();
-        for (Cars c:cars){
-            DtoShowCar dtoShowCar = new DtoShowCar();
-            dtoShowCar.setId(c.getId());
-            dtoShowCar.setCarManufacturer(c.getManufacturer());
-            dtoShowCar.setCarModel(c.getModel());
-            dtoShowCar.setCarYearProduction(c.getYearProduction());
-            dtoShowCar.setCarMilage(c.getMilage());
 
-            for(BuyingContracts bc:buyingContracts){
+        List<DtoShowCar> list = carsService.showCars();
+        List<DtoShowCar> list2 = carsService.showAvailableCars();
 
-                if (c.getId().equals(bc.getCars().getId())){
-                    dtoShowCar.setBuyingContractsPrice(bc.getPrice());
-                }
-            }
-            list.add(dtoShowCar);
-        }
-
-        model.addAttribute("cars1", list);
+        model.addAttribute("cars1", list2);
         return "allCars";
+
     }
 
     @RequestMapping("/{carId}/desc")
@@ -74,7 +60,7 @@ public class ShowAllCars {
 
     @PostMapping
     //zapisze do bazy i idzie na nowa strone
-    public String saveVehicle(@ModelAttribute("addedCar") DtoBuyCar dtoBuyCar){
+    public String saveVehicle(@ModelAttribute("addedCar") DtoBuyCar dtoBuyCar) {
 
         Cars car = new Cars();
         BuyingContracts buyingContracts = new BuyingContracts();
@@ -101,8 +87,8 @@ public class ShowAllCars {
         List<BuyingContracts> list = (List<BuyingContracts>) buyingContractsRepository.findAll();
 
         SellingContracts sellingContracts = new SellingContracts();
-        for (BuyingContracts bc:list){
-            if (id.equals(bc.getCars().getId())){
+        for (BuyingContracts bc : list) {
+            if (id.equals(bc.getCars().getId())) {
                 sellingContracts.setPrice(bc.getPrice());
             }
         }
