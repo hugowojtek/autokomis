@@ -54,14 +54,30 @@ public class CarsService {
     public List<DtoShowCar> showAvailableCars(){
         List<DtoShowCar> list = showCars();
         List<SellingContracts> sellingContracts = (List<SellingContracts>) sellingContractsRepository.findAll();
+
         for (SellingContracts sc:sellingContracts){
             for (DtoShowCar dtoShowCar:list){
-                if (sc.getCars().getId().equals(dtoShowCar.getId())){
+                    if ((sc.getCars().getId().equals(dtoShowCar.getId()))){
                     list.remove(dtoShowCar);
                     break;
                 }
             }
         }
         return list;
+    }
+
+    public List <DtoShowCar> showSoldCars(){
+        List<DtoShowCar> listIn = showCars();
+        List<DtoShowCar> listOut = new ArrayList<>();
+        List<SellingContracts> sellingContracts = (List<SellingContracts>) sellingContractsRepository.findAll();
+        for (SellingContracts sc:sellingContracts){
+            for (DtoShowCar dtoShowCar:listIn){
+                if ((sc.getCars().getId().equals(dtoShowCar.getId()))){
+                    listOut.add(dtoShowCar);
+                    break;
+                }
+            }
+        }
+        return listOut;
     }
 }

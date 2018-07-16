@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.w3.org/1999/xhtml">
+<head>
+    <meta charset="UTF-8"/>
+    <tittle><h1>Sprzedane samochody</h1></tittle>
+</head>
+<body>
+<table>
+    <tr>
+
+        <th>marka</th>
+        <th>model</th>
+        <th>rok</th>
+        <th>przebieg</th>
+        <th>cena</th>
+
+    </tr>
+    <tr th:each="car, index : ${cars2}">
+
+        <td th:text="${car.carManufacturer}"></td>
+        <td th:text="${car.carModel}"></td>
+        <td th:text="${car.carYearProduction}"></td>
+        <td th:text="${car.carMilage}"></td>
+        <td th:text="${car.buyingContractsPrice}"></td>
+
+
+
+
+
+    </tr>
+</table>
+</body>
+</html>

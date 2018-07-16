@@ -15,14 +15,14 @@ import java.util.List;
 
 @Controller
 @RequestMapping("/cars")
-public class ShowAllCars {
+public class ShowCars {
 
     private CarsService carsService;
     private final CarsRepository carsRepository;
     private final BuyingContractsRepository buyingContractsRepository;
     private final SellingContractsRepository sellingContractsRepository;
 
-    public ShowAllCars(CarsService carsService, CarsRepository carsRepository, BuyingContractsRepository buyingContractsRepository, SellingContractsRepository sellingContractsRepository) {
+    public ShowCars(CarsService carsService, CarsRepository carsRepository, BuyingContractsRepository buyingContractsRepository, SellingContractsRepository sellingContractsRepository) {
         this.carsService = carsService;
         this.carsRepository = carsRepository;
         this.buyingContractsRepository = buyingContractsRepository;
@@ -37,7 +37,7 @@ public class ShowAllCars {
         List<DtoShowCar> list2 = carsService.showAvailableCars();
 
         model.addAttribute("cars1", list2);
-        return "allCars";
+        return "availableCars";
 
     }
 
@@ -100,5 +100,13 @@ public class ShowAllCars {
 
         return "redirect:/cars";
 
+    }
+
+    @RequestMapping("/soldcars")
+    public String soldCars(Model model){
+
+        List<DtoShowCar> list = carsService.showSoldCars();
+        model.addAttribute("cars2",list);
+        return "soldCars";
     }
 }
