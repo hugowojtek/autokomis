@@ -8,7 +8,7 @@ import java.io.Serializable;
 import java.util.Date;
 
 @Entity
-public class BuyingContracts extends BaseModel implements Serializable{
+public class SellingContracts extends BaseModel implements Serializable{
     @Column
     private Date date;
     @Column
@@ -19,22 +19,6 @@ public class BuyingContracts extends BaseModel implements Serializable{
     @OneToOne
     @JoinColumn(name="idcustomers")
     private Customers customers;
-
-    public Cars getCars() {
-        return cars;
-    }
-
-    public void setCars(Cars cars) {
-        this.cars = cars;
-    }
-
-    public Customers getCustomers() {
-        return customers;
-    }
-
-    public void setCustomers(Customers customers) {
-        this.customers = customers;
-    }
 
     public Date getDate() {
         return date;
@@ -50,5 +34,21 @@ public class BuyingContracts extends BaseModel implements Serializable{
 
     public void setPrice(Long price) {
         this.price = price;
+    }
+
+    public Cars getCars() {
+        return cars;
+    }
+
+    public void setCars(Cars cars) {
+        this.cars = cars;
+    }
+
+    public Customers getCustomers() {
+        return customers;
+    }
+
+    public void setCustomers(Customers customers) {
+        this.customers = customers;
     }
 }

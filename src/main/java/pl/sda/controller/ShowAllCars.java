@@ -5,10 +5,8 @@ import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.*;
 import pl.sda.Repository.BuyingContractsRepository;
 import pl.sda.Repository.CarsRepository;
-import pl.sda.model.BuyingContracts;
-import pl.sda.model.Cars;
-import pl.sda.model.DtoBuyCar;
-import pl.sda.model.DtoShowCar;
+import pl.sda.Repository.SellingContractsRepository;
+import pl.sda.model.*;
 
 import java.util.ArrayList;
 import java.util.Date;
@@ -21,10 +19,12 @@ public class ShowAllCars {
 
     private final CarsRepository carsRepository;
     private final BuyingContractsRepository buyingContractsRepository;
+    private final SellingContractsRepository sellingContractsRepository;
 
-    public ShowAllCars(CarsRepository carsRepository, BuyingContractsRepository buyingContractsRepository) {
+    public ShowAllCars(CarsRepository carsRepository, BuyingContractsRepository buyingContractsRepository, SellingContractsRepository sellingContractsRepository) {
         this.carsRepository = carsRepository;
         this.buyingContractsRepository = buyingContractsRepository;
+        this.sellingContractsRepository = sellingContractsRepository;
     }
 
     @RequestMapping(method = RequestMethod.GET)
@@ -92,5 +92,27 @@ public class ShowAllCars {
         buyingContractsRepository.save(buyingContracts);
 
         return "redirect:/cars";
+    }
+
+    @RequestMapping("/{carId}/buy")
+    public String buyCar(
+            @PathVariable("carId") Long id, Model model) {
+        Cars car = carsRepository.findOne(id);
+        List<BuyingContracts> list = (List<BuyingContracts>) buyingContractsRepository.findAll();
+
+        SellingContracts sellingContracts = new SellingContracts();
+        for (BuyingContracts bc:list){
+            if (id.equals(bc.getCars().getId())){
+                sellingContracts.setPrice(bc.getPrice());
+            }
+        }
+
+        sellingContracts.setDate(new Date());
+        sellingContracts.setCars(car);
+
+        sellingContractsRepository.save(sellingContracts);
+
+        return "redirect:/cars";
+
     }
 }

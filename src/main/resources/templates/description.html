@@ -8,6 +8,8 @@
 <h1 th:text = "${car1.manufacturer}"></h1>
 <h1 th:text = "${car1.model}"></h1>
 <h1 th:text = "${car1.description}"></h1>
+<a th:href="@{/cars/{carId}/buy(carId=${car1.id})}">kup_to_auto</a>
+
 
 </body>
 </html>
