@@ -70,6 +70,7 @@ public class ShowCars {
         car.setModel(dtoBuyCar.getCarModel());
         car.setMilage(dtoBuyCar.getCarMilage());
         car.setDescription(dtoBuyCar.getCarDescription());
+        car.setPrice(dtoBuyCar.getCarPrice());
 
         buyingContracts.setPrice(dtoBuyCar.getBuyingContractsPrice());
         buyingContracts.setDate(new Date());

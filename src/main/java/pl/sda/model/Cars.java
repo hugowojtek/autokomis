@@ -30,8 +30,18 @@ public class Cars extends BaseModel implements Serializable {
     private String description;
     @Column
     private Long testDrives;
+
     @Column
     private Long price;
+
+    public Long getPrice() {
+        return price;
+    }
+
+    public void setPrice(Long price) {
+        this.price = price;
+    }
+
 
     public String getYearProduction() {
         return yearProduction;

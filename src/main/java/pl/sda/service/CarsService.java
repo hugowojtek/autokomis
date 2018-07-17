@@ -37,13 +37,8 @@ public class CarsService {
             dtoShowCar.setCarModel(c.getModel());
             dtoShowCar.setCarYearProduction(c.getYearProduction());
             dtoShowCar.setCarMilage(c.getMilage());
+            dtoShowCar.setCarPrice(c.getPrice());
 
-            for (BuyingContracts bc : buyingContracts) {
-
-                if (c.equals(bc.getCars())) {
-                    dtoShowCar.setBuyingContractsPrice(bc.getPrice());
-                }
-            }
             list.add(dtoShowCar);
 
         }

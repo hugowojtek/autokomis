@@ -30,9 +30,20 @@ public class DtoBuyCar {
 
     private Long carTestDrives;
 
+    private Long carPrice;
+
     private Date buyingContractsDate;
 
     private Long buyingContractsPrice;
+
+
+    public Long getCarPrice(){
+        return this.carPrice;
+    }
+
+    public void setCarPrice(Long carPrice){
+        this.carPrice = carPrice;
+    }
 
     public String getCarYearProduction() {
         return carYearProduction;
