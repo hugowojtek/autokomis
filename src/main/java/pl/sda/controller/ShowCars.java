@@ -62,7 +62,7 @@ public class ShowCars {
 
     @PostMapping
     //zapisze do bazy i idzie na nowa strone
-    public String saveVehicle(@Valid @ModelAttribute("addedCar") DtoBuyCar dtoBuyCar, BindingResult bindingResult ) {
+    public String saveVehicle(@Valid @ModelAttribute("addedCar") DtoBuyCar dtoBuyCar, BindingResult bindingResult, Model model) {
 
         if (bindingResult.hasErrors()){
             return "addCar";
@@ -70,6 +70,15 @@ public class ShowCars {
 
         Cars car = new Cars();
         BuyingContracts buyingContracts = new BuyingContracts();
+
+        List<Cars> cars = (List<Cars>) carsRepository.findAll();
+        for (Cars c:cars) {
+            if (c.getNrChassis().equals(dtoBuyCar.getCarNrChassis())) {
+                final String text = "samochod nie moze byc dodany bo juz był kiedyś kupiony";
+                model.addAttribute("message",text);
+                return "addCar";
+            }
+        }
 
         car.setYearProduction(dtoBuyCar.getCarYearProduction());
         car.setManufacturer(dtoBuyCar.getCarManufacturer());
