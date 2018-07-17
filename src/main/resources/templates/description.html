@@ -6,11 +6,13 @@
 </head>
 <body>
 <h1>opis_samochodu</h1>
-<h2 th:text = "${car1.manufacturer}"></h2>
-<h3 th:text = "${car1.model}"></h3>
-<h4 th:text = "${car1.description}"></h4>
-<a th:href="@{/cars/{carId}/buy(carId=${car1.id})}">kup_to_auto</a>
-<a th:href="@{/cars}">dostepne_samochody</a>
+<h2>marka: <span th:text = "${car1.manufacturer}"></span></h2>
+<h3>model: <span th:text = "${car1.model}"></span></h3>
+<h3>rok_produkcji: <span th:text = "${car1.yearProduction}"></span></h3>
+<h4>nr_nadwozia: <span th:text = "${car1.nrChassis}"></span></h4>
+<h5>opis_auta: <span th:text = "${car1.description}"></span></h5>
+<p><a th:href="@{/cars/{carId}/buy(carId=${car1.id})}">kup_to_auto</a></p>
+<p><a th:href="@{/cars}">dostepne_samochody</a></p>
 
 
 </body>

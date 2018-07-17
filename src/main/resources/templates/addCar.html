@@ -37,6 +37,13 @@
         </tr>
 
         <tr>
+            <td>nr_nadwozia</td>
+            <td><input type="text" th:field="*{carNrChassis}"/>
+                <span th:="${#fields.hasErrors('carNrChassis')}" th:errors="*{carNrChassis}"/>
+            </td>
+        </tr>
+
+        <tr>
             <td>opis</td>
             <td><input type="text" th:field="*{carDescription}"/>
                 <span th:="${#fields.hasErrors('carDescription')}" th:errors="*{carDescription}"/>

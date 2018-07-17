@@ -30,9 +30,18 @@ public class Cars extends BaseModel implements Serializable {
     private String description;
     @Column
     private Long testDrives;
-
     @Column
     private Long price;
+    @Column
+    private String nrChassis;
+
+    public String getNrChassis() {
+        return nrChassis;
+    }
+
+    public void setNrChassis(String nrChassis) {
+        this.nrChassis = nrChassis;
+    }
 
     public Long getPrice() {
         return price;

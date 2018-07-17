@@ -37,6 +37,7 @@ public class CarsService {
             dtoShowCar.setCarModel(c.getModel());
             dtoShowCar.setCarYearProduction(c.getYearProduction());
             dtoShowCar.setCarMilage(c.getMilage());
+            dtoShowCar.setCarNrChassis(c.getNrChassis());
             dtoShowCar.setCarPrice(c.getPrice());
 
             list.add(dtoShowCar);

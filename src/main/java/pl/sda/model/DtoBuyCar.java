@@ -1,38 +1,36 @@
 package pl.sda.model;
 
 
-import javax.persistence.Column;
 import javax.validation.constraints.DecimalMin;
 import javax.validation.constraints.NotNull;
 import javax.validation.constraints.Size;
-import java.util.Date;
 
 public class DtoBuyCar {
 
     @NotNull
-    @Size(min = 4, message = "zła data")
+    @Size(min = 1, message = "za mało znaków co najmniej 1 znak")
+    private String carNrChassis;
+
+    @NotNull
+    @Size(min = 4, message = "zła data min 4 znaki")
     private String carYearProduction;
 
     @NotNull
-    @Size(min = 2, message = "za mało znaków")
+    @Size(min = 2, message = "za mało znaków min 2 znaki")
     private String carManufacturer;
 
     @NotNull
-    @Size(min = 2, message = "za mało znaków")
+    @Size(min = 2, message = "za mało znaków min 2 znaki")
     private String carModel;
-
 
     private String carNrOc;
 
-
     private String carNrCarReg;
-
 
     private String carFuel;
 
-
     @NotNull
-    @Size(min = 1, message = "brak przebiegu")
+    @Size(min = 1, message = "brak przebiegu co najmniej 1 znak")
     private String carMilage;
 
 
@@ -45,8 +43,10 @@ public class DtoBuyCar {
     private String carGearBox;
 
 
+
+
     @NotNull
-    @Size(min = 1, message = "brak opisu")
+    @Size(min = 1, message = "brak opisu co najmniej jeden znak")
     private String carDescription;
 
 
@@ -69,6 +69,14 @@ public class DtoBuyCar {
 
     public void setCarPrice(Long carPrice){
         this.carPrice = carPrice;
+    }
+
+    public String getCarNrChassis() {
+        return carNrChassis;
+    }
+
+    public void setCarNrChassis(String carNrChassis) {
+        this.carNrChassis = carNrChassis;
     }
 
     public String getCarYearProduction() {
