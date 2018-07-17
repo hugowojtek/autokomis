@@ -17,32 +17,45 @@
         </tr>
         <tr>
             <td>model</td>
-            <td><input type="text" th:field="*{carModel}"/></td>
+            <td><input type="text" th:field="*{carModel}"/>
+                <span th:="${#fields.hasErrors('carModel')}" th:errors="*{carModel}"/>
+            </td>
+
         </tr>
         <tr>
             <td>rok</td>
-            <td><input type="text" th:field="*{carYearProduction}"/></td>
+            <td><input type="text" th:field="*{carYearProduction}"/>
+                <span th:="${#fields.hasErrors('carYearProduction')}" th:errors="*{carYearProduction}"/>
+            </td>
         </tr>
 
         <tr>
             <td>przebieg</td>
-            <td><input type="text" th:field="*{carMilage}"/></td>
+            <td><input type="text" th:field="*{carMilage}"/>
+                <span th:="${#fields.hasErrors('carMilage')}" th:errors="*{carMilage}"/>
+            </td>
         </tr>
 
         <tr>
             <td>opis</td>
-            <td><input type="text" th:field="*{carDescription}"/></td>
+            <td><input type="text" th:field="*{carDescription}"/>
+                <span th:="${#fields.hasErrors('carDescription')}" th:errors="*{carDescription}"/>
+            </td>
         </tr>
 
         <tr>
             <td>cena zakupu</td>
-            <td><input type="text" th:field="*{buyingContractsPrice}"/></td>
+            <td><input type="text" th:field="*{buyingContractsPrice}"/>
+                <span th:="${#fields.hasErrors('buyingContractsPrice')}" th:errors="*{buyingContractsPrice}"/>
+            </td>
 
         </tr>
 
         <tr>
             <td>cena sprzedaży</td>
-            <td><input type="text" th:field="*{carPrice}"/></td>
+            <td><input type="text" th:field="*{carPrice}"/>
+                <span th:="${#fields.hasErrors('carPrice')}" th:errors="*{carPrice}"/>
+            </td>
 
         </tr>
 

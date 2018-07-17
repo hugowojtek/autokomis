@@ -31,6 +31,8 @@ public class DtoBuyCar {
     private String carFuel;
 
 
+    @NotNull
+    @Size(min = 1, message = "brak przebiegu")
     private String carMilage;
 
 
@@ -43,17 +45,21 @@ public class DtoBuyCar {
     private String carGearBox;
 
 
+    @NotNull
+    @Size(min = 1, message = "brak opisu")
     private String carDescription;
 
 
     private Long carTestDrives;
 
     @NotNull
-    @DecimalMin(value="5000.00", message = "za mała wartość")
+    @DecimalMin(value="5000.00", message = "za mała wartość co najmniej 5000zł")
     private Long carPrice;
 
 //    private Date buyingContractsDate;
 
+    @NotNull
+    @DecimalMin(value="1.00", message = "za mała wartość co najmniej 1zł")
     private Long buyingContractsPrice;
 
 

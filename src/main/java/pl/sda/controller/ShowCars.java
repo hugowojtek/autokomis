@@ -62,7 +62,7 @@ public class ShowCars {
 
     @PostMapping
     //zapisze do bazy i idzie na nowa strone
-    public String saveVehicle(@Valid @ModelAttribute("addedCar") DtoBuyCar dtoBuyCar, BindingResult bindingResult) {
+    public String saveVehicle(@Valid @ModelAttribute("addedCar") DtoBuyCar dtoBuyCar, BindingResult bindingResult ) {
 
         if (bindingResult.hasErrors()){
             return "addCar";
