@@ -2,6 +2,7 @@ package pl.sda.controller;
 
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
+import org.springframework.validation.BindingResult;
 import org.springframework.web.bind.annotation.*;
 import pl.sda.Repository.BuyingContractsRepository;
 import pl.sda.Repository.CarsRepository;
@@ -9,6 +10,7 @@ import pl.sda.Repository.SellingContractsRepository;
 import pl.sda.model.*;
 import pl.sda.service.CarsService;
 
+import javax.validation.Valid;
 import java.util.ArrayList;
 import java.util.Date;
 import java.util.List;
@@ -60,7 +62,11 @@ public class ShowCars {
 
     @PostMapping
     //zapisze do bazy i idzie na nowa strone
-    public String saveVehicle(@ModelAttribute("addedCar") DtoBuyCar dtoBuyCar) {
+    public String saveVehicle(@Valid @ModelAttribute("addedCar") DtoBuyCar dtoBuyCar, BindingResult bindingResult) {
+
+        if (bindingResult.hasErrors()){
+            return "addCar";
+        }
 
         Cars car = new Cars();
         BuyingContracts buyingContracts = new BuyingContracts();

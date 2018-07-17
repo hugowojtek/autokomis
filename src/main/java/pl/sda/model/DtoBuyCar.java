@@ -2,37 +2,57 @@ package pl.sda.model;
 
 
 import javax.persistence.Column;
+import javax.validation.constraints.DecimalMin;
+import javax.validation.constraints.NotNull;
+import javax.validation.constraints.Size;
 import java.util.Date;
 
 public class DtoBuyCar {
 
+    @NotNull
+    @Size(min = 4, message = "zła data")
     private String carYearProduction;
 
+    @NotNull
+    @Size(min = 2, message = "za mało znaków")
     private String carManufacturer;
 
+    @NotNull
+    @Size(min = 2, message = "za mało znaków")
     private String carModel;
+
 
     private String carNrOc;
 
+
     private String carNrCarReg;
+
 
     private String carFuel;
 
+
     private String carMilage;
+
 
     private Integer carEngineVolume;
 
+
     private Integer carEnginePower;
+
 
     private String carGearBox;
 
+
     private String carDescription;
+
 
     private Long carTestDrives;
 
+    @NotNull
+    @DecimalMin(value="5000.00", message = "za mała wartość")
     private Long carPrice;
 
-    private Date buyingContractsDate;
+//    private Date buyingContractsDate;
 
     private Long buyingContractsPrice;
 
@@ -141,13 +161,13 @@ public class DtoBuyCar {
         this.carTestDrives = carTestDrives;
     }
 
-    public Date getBuyingContractsDate() {
-        return buyingContractsDate;
-    }
-
-    public void setBuyingContractsDate(Date buyingContractsDate) {
-        this.buyingContractsDate = buyingContractsDate;
-    }
+//    public Date getBuyingContractsDate() {
+//        return buyingContractsDate;
+//    }
+//
+//    public void setBuyingContractsDate(Date buyingContractsDate) {
+//        this.buyingContractsDate = buyingContractsDate;
+//    }
 
     public Long getBuyingContractsPrice() {
         return buyingContractsPrice;

@@ -10,7 +10,10 @@
     <table>
         <tr>
             <td>marka</td>
-            <td><input type="text" th:field="*{carManufacturer}"/></td>
+            <td><input type="text" th:field="*{carManufacturer}"/>
+            <span th:="${#fields.hasErrors('carManufacturer')}" th:errors="*{carManufacturer}"/>
+            </td>
+
         </tr>
         <tr>
             <td>model</td>
