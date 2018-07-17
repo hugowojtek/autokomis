@@ -89,14 +89,9 @@ public class ShowCars {
         List<BuyingContracts> list = (List<BuyingContracts>) buyingContractsRepository.findAll();
 
         SellingContracts sellingContracts = new SellingContracts();
-        for (BuyingContracts bc : list) {
-            if (id.equals(bc.getCars().getId())) {
-                sellingContracts.setPrice(bc.getPrice());
-            }
-        }
-
         sellingContracts.setDate(new Date());
         sellingContracts.setCars(car);
+        sellingContracts.setPrice(car.getPrice());
 
         sellingContractsRepository.save(sellingContracts);
 
