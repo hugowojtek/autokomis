@@ -1,0 +1,83 @@
+<!DOCTYPE html>
+<html xmlns:th="https://www.thymeleaf.org" lang="en">
+<head>
+    <meta charset="UTF-8"/>
+    <tittle>Pełny_raport</tittle>
+</head>
+<body>
+<h1>pełny_raport</h1>
+<table>
+
+    <h2>samochody_kupione</h2>
+
+    <tr>
+
+        <th>marka</th>
+        <th>model</th>
+        <th>rok</th>
+        <th>przebieg</th>
+        <th>nr_nadwozia</th>
+        <th>cena_zakupu</th>
+
+    </tr>
+    <tr th:each="car, index : ${cars1}">
+
+        <td th:text="${car.carManufacturer}"></td>
+        <td th:text="${car.carModel}"></td>
+        <td th:text="${car.carYearProduction}"></td>
+        <td th:text="${car.carMilage}"></td>
+        <td th:text="${car.carNrChassis}"></td>
+        <td th:text="${car.carPrice}"></td>
+    </tr>
+</table>
+<table>
+    <h2>samochody_dostępne</h2>
+
+    <tr>
+
+        <th>marka</th>
+        <th>model</th>
+        <th>rok</th>
+        <th>przebieg</th>
+        <th>nr_nadwozia</th>
+        <th>cena_oferty</th>
+
+    </tr>
+    <tr th:each="car, index : ${cars2}">
+
+        <td th:text="${car.carManufacturer}"></td>
+        <td th:text="${car.carModel}"></td>
+        <td th:text="${car.carYearProduction}"></td>
+        <td th:text="${car.carMilage}"></td>
+        <td th:text="${car.carNrChassis}"></td>
+        <td th:text="${car.carPrice}"></td>
+    </tr>
+</table>
+<table>
+    <h2>samochody_sprzedane</h2>
+
+    <tr>
+
+        <th>marka</th>
+        <th>model</th>
+        <th>rok</th>
+        <th>przebieg</th>
+        <th>nr_nadwozia</th>
+        <th>cena_sprzedaży</th>
+
+    </tr>
+    <tr th:each="car, index : ${cars3}">
+
+        <td th:text="${car.carManufacturer}"></td>
+        <td th:text="${car.carModel}"></td>
+        <td th:text="${car.carYearProduction}"></td>
+        <td th:text="${car.carMilage}"></td>
+        <td th:text="${car.carNrChassis}"></td>
+        <td th:text="${car.carPrice}"></td>
+    </tr>
+
+
+</table>
+<a th:href="@{/cars}">dostepne_samochody</a>
+</body>
+</html>
