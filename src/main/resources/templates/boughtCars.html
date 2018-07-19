@@ -2,10 +2,10 @@
 <html xmlns:th="https://www.thymeleaf.org" lang="en">
 <head>
     <meta charset="UTF-8"/>
-    <tittle>Sprzedane_samochody</tittle>
+    <tittle>Kupione_samochody</tittle>
 </head>
 <body>
-<h1>sprzedane_samochody</h1>
+<h1>kupione_samochody</h1>
 <table>
     <tr>
 
@@ -14,10 +14,10 @@
         <th>rok</th>
         <th>przebieg</th>
         <th>nr_nadwozia</th>
-        <th>cena_sprzedaży</th>
+        <th>cena_zakupu</th>
 
     </tr>
-    <tr th:each="car, index : ${cars2}">
+    <tr th:each="car, index : ${cars3}">
 
         <td th:text="${car.carManufacturer}"></td>
         <td th:text="${car.carModel}"></td>

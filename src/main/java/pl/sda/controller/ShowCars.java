@@ -122,4 +122,13 @@ public class ShowCars {
         model.addAttribute("cars2",list);
         return "soldCars";
     }
+
+    @RequestMapping("/boughtcars")
+    public String boughtCars(Model model){
+        List<DtoShowCar> list = carsService.showBoughtCars();
+        model.addAttribute("cars3",list);
+        return "boughtCars";
+
+
+    }
 }

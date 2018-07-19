@@ -4,6 +4,7 @@ import org.springframework.stereotype.Service;
 import pl.sda.Repository.BuyingContractsRepository;
 import pl.sda.Repository.CarsRepository;
 import pl.sda.Repository.SellingContractsRepository;
+import pl.sda.controller.ShowCars;
 import pl.sda.model.BuyingContracts;
 import pl.sda.model.Cars;
 import pl.sda.model.DtoShowCar;
@@ -25,7 +26,7 @@ public class CarsService {
         this.sellingContractsRepository = sellingContractsRepository;
     }
 
-    public List<DtoShowCar> showCars(){
+    public List<DtoShowCar> showCars() {
         List<Cars> cars = (List<Cars>) carsRepository.findAll();
         List<BuyingContracts> buyingContracts = (List<BuyingContracts>) buyingContractsRepository.findAll();
         List<DtoShowCar> list = new ArrayList<>();
@@ -44,16 +45,16 @@ public class CarsService {
 
         }
 
-           return list;
+        return list;
     }
 
-    public List<DtoShowCar> showAvailableCars(){
+    public List<DtoShowCar> showAvailableCars() {
         List<DtoShowCar> list = showCars();
         List<SellingContracts> sellingContracts = (List<SellingContracts>) sellingContractsRepository.findAll();
 
-        for (SellingContracts sc:sellingContracts){
-            for (DtoShowCar dtoShowCar:list){
-                    if ((sc.getCars().getId().equals(dtoShowCar.getId()))){
+        for (SellingContracts sc : sellingContracts) {
+            for (DtoShowCar dtoShowCar : list) {
+                if ((sc.getCars().getId().equals(dtoShowCar.getId()))) {
                     list.remove(dtoShowCar);
                     break;
                 }
@@ -62,18 +63,32 @@ public class CarsService {
         return list;
     }
 
-    public List <DtoShowCar> showSoldCars(){
+    public List<DtoShowCar> showSoldCars() {
         List<DtoShowCar> listIn = showCars();
         List<DtoShowCar> listOut = new ArrayList<>();
         List<SellingContracts> sellingContracts = (List<SellingContracts>) sellingContractsRepository.findAll();
-        for (SellingContracts sc:sellingContracts){
-            for (DtoShowCar dtoShowCar:listIn){
-                if ((sc.getCars().getId().equals(dtoShowCar.getId()))){
+        for (SellingContracts sc : sellingContracts) {
+            for (DtoShowCar dtoShowCar : listIn) {
+                if ((sc.getCars().getId().equals(dtoShowCar.getId()))) {
                     listOut.add(dtoShowCar);
                     break;
                 }
             }
         }
         return listOut;
+    }
+
+    public List<DtoShowCar> showBoughtCars() {
+        List<DtoShowCar> list = showCars();
+        List<BuyingContracts> buyingContracts = (List<BuyingContracts>) buyingContractsRepository.findAll();
+
+        for (BuyingContracts bc : buyingContracts) {
+            for (DtoShowCar dtoShowCar : list) {
+                if (bc.getCars().getId().equals(dtoShowCar.getId())) {
+                    dtoShowCar.setCarPrice(bc.getPrice());
+                }
+            }
+        }
+        return list;
     }
 }
