@@ -12,6 +12,7 @@
 
     <tr>
 
+        <th>lp</th>
         <th>marka</th>
         <th>model</th>
         <th>rok</th>
@@ -20,8 +21,9 @@
         <th>cena_zakupu</th>
 
     </tr>
-    <tr th:each="car, index : ${cars1}">
+    <tr th:each="car, iterationInfo : ${cars1}">
 
+        <td th:text="${iterationInfo.index}+1"></td>
         <td th:text="${car.carManufacturer}"></td>
         <td th:text="${car.carModel}"></td>
         <td th:text="${car.carYearProduction}"></td>
@@ -35,6 +37,7 @@
 
     <tr>
 
+        <th>lp</th>
         <th>marka</th>
         <th>model</th>
         <th>rok</th>
@@ -43,8 +46,9 @@
         <th>cena_oferty</th>
 
     </tr>
-    <tr th:each="car, index : ${cars2}">
+    <tr th:each="car, iterationInfo : ${cars2}">
 
+        <td th:text="${iterationInfo.index}+1"></td>
         <td th:text="${car.carManufacturer}"></td>
         <td th:text="${car.carModel}"></td>
         <td th:text="${car.carYearProduction}"></td>
@@ -58,6 +62,7 @@
 
     <tr>
 
+        <th>lp</th>
         <th>marka</th>
         <th>model</th>
         <th>rok</th>
@@ -66,8 +71,9 @@
         <th>cena_sprzedaży</th>
 
     </tr>
-    <tr th:each="car, index : ${cars3}">
+    <tr th:each="car, iterationInfo : ${cars3}">
 
+        <td th:text="${iterationInfo.index}+1"></td>
         <td th:text="${car.carManufacturer}"></td>
         <td th:text="${car.carModel}"></td>
         <td th:text="${car.carYearProduction}"></td>

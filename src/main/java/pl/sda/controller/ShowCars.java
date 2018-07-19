@@ -34,11 +34,9 @@ public class ShowCars {
     @RequestMapping(method = RequestMethod.GET)
     public String getCars(Model model) {
 
+        List<DtoShowCar> list = carsService.showAvailableCars();
 
-        List<DtoShowCar> list = carsService.showCars();
-        List<DtoShowCar> list2 = carsService.showAvailableCars();
-
-        model.addAttribute("cars1", list2);
+        model.addAttribute("cars1", list);
         return "availableCars";
 
     }

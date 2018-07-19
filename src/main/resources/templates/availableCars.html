@@ -9,6 +9,7 @@
 <table>
     <tr>
 
+        <th>lp</th>
         <th>marka</th>
         <th>model</th>
         <th>rok</th>
@@ -16,8 +17,9 @@
         <th>cena</th>
 
     </tr>
-    <tr th:each="car, index : ${cars1}">
+    <tr th:each="car, iterationInfo : ${cars1}">
 
+        <td th:text="${iterationInfo.index}+1"></td>
         <td th:text="${car.carManufacturer}"></td>
         <td th:text="${car.carModel}"></td>
         <td th:text="${car.carYearProduction}"></td>
