@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html xmlns:th="https://www.thymeleaf.org" lang="en">
+<head>
+    <meta charset="UTF-8"/>
+    <title>formularz raportu do raportu sprzedazy</title>
+</head>
+<body>
+<h1>wybierz daty do raportu sprzedaży</h1>
+
+<form th:action="@{/raports}" th:object="${saleRaport}" method="post">
+    <table>
+        <tr>
+            <td>od</td>
+            <td><input type="text" th:field="*{dateFrom}"/>
+            </td>
+        </tr>
+        <tr>
+            <td>do</td>
+            <td><input type="text" th:field="*{dateTo}"/>
+            </td>
+        </tr>
+        <tr>
+            <td colspan="20"> <input type="submit" value="pokaż_raport"/> </td>
+        </tr>
+        <tr>
+            <td><a th:href="@{/raports}">pełny_raport</a></td>
+        </tr>
+    </table>
+
+
+</form>
+</body>
+</html>

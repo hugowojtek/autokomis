@@ -1,10 +1,15 @@
 package pl.sda.controller;
 
+import com.sun.org.apache.xpath.internal.operations.Mod;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
+import org.springframework.web.bind.annotation.ModelAttribute;
+import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import pl.sda.model.Cars;
+import pl.sda.model.DtoBuyCar;
+import pl.sda.model.DtoRaport;
 import pl.sda.model.DtoShowCar;
 import pl.sda.service.CarsService;
 import pl.sda.service.RaportsService;
@@ -18,8 +23,10 @@ import java.util.List;
 @RequestMapping("/raports")
 public class Raports {
 
-    CarsService carsService;
-    RaportsService raportsService;
+    private String dateFrom;
+    private String dateTo;
+    private CarsService carsService;
+    private RaportsService raportsService;
 
     public Raports(CarsService carsService, RaportsService raportsService) {
         this.carsService = carsService;
@@ -42,12 +49,12 @@ public class Raports {
         return "fullRaports";
     }
 
-    @RequestMapping("/sale")
+    @RequestMapping("/salefilter")
     public String ShowSaleRaport(Model model){
         Date date1 = null;
         Date date2 = null;
-        String strDate1 = "2018-06-06";
-        String strDate2 = "2018-06-30";
+        String strDate1 = dateFrom;
+        String strDate2 = dateTo;
         try {
             date1 = new SimpleDateFormat("yyyy-MM-dd").parse(strDate1);
             date2 = new SimpleDateFormat("yyyy-MM-dd").parse(strDate2);
@@ -68,5 +75,22 @@ public class Raports {
 
         return "saleRaports";
     }
+
+
+    @RequestMapping("/saleraport")
+    public String addCarForm(Model model) {
+        model.addAttribute("saleRaport", new DtoRaport());
+        return "saleForm";
+    }
+
+    @PostMapping
+    public String saveDateForSaleRaport(@ModelAttribute("saleRaport") DtoRaport dtoRaport, Model model){
+        dateFrom = dtoRaport.getDateFrom();
+        dateTo = dtoRaport.getDateTo();
+
+
+        return "redirect:/raports/salefilter";
+    }
+
 
 }
