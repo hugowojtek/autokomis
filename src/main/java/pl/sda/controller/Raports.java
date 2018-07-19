@@ -46,14 +46,25 @@ public class Raports {
     public String ShowSaleRaport(Model model){
         Date date1 = null;
         Date date2 = null;
+        String strDate1 = "2018-06-06";
+        String strDate2 = "2018-06-30";
         try {
-            date1 = new SimpleDateFormat("yyyy-MM-dd").parse("2018-06-06");
-            date2 = new SimpleDateFormat("yyyy-MM-dd").parse("2018-06-30");
+            date1 = new SimpleDateFormat("yyyy-MM-dd").parse(strDate1);
+            date2 = new SimpleDateFormat("yyyy-MM-dd").parse(strDate2);
         } catch (ParseException e) {
             e.printStackTrace();
         }
 
         List<DtoShowCar> list = raportsService.SaleFilter(date1,date2);
+        Long value = raportsService.CalculateSaleFilterValue(list);
+
+        String formattedStrDate1 = new SimpleDateFormat("yyyy-MM-dd").format(date1);
+        String formattedStrDate2 = new SimpleDateFormat("yyyy-MM-dd").format(date2);
+
+        model.addAttribute("list",list);
+        model.addAttribute("value",value);
+        model.addAttribute("date1",formattedStrDate1);
+        model.addAttribute("date2",formattedStrDate2);
 
         return "saleRaports";
     }

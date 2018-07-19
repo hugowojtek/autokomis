@@ -85,6 +85,14 @@ public class RaportsService {
         return listOut;
     }
 
+    public Long CalculateSaleFilterValue(List<DtoShowCar> list){
+        Long value=0L;
+        for (DtoShowCar dtoShowCar:list){
+            value+=dtoShowCar.getCarPrice();
+        }
+        return value;
+    }
+
 
 }
 
