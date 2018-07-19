@@ -8,6 +8,8 @@ import pl.sda.model.Cars;
 import pl.sda.model.DtoShowCar;
 import pl.sda.model.SellingContracts;
 
+import java.util.ArrayList;
+import java.util.Date;
 import java.util.List;
 
 import static java.lang.Math.round;
@@ -17,15 +19,11 @@ public class RaportsService {
 
 
     CarsService carsService;
-    final BuyingContractsRepository buyingContractsRepository;
-    final CarsRepository carsRepository;
-    final SellingContractsRepository sellingContractsRepository;
 
-    public RaportsService(CarsService carsService, BuyingContractsRepository buyingContractsRepository, CarsRepository carsRepository, SellingContractsRepository sellingContractsRepository) {
+
+    public RaportsService(CarsService carsService) {
         this.carsService = carsService;
-        this.buyingContractsRepository = buyingContractsRepository;
-        this.carsRepository = carsRepository;
-        this.sellingContractsRepository = sellingContractsRepository;
+
     }
 
 
@@ -37,7 +35,7 @@ public class RaportsService {
                 if (sc.getId().equals(bc.getId())) {
                     Long profit = sc.getCarPrice() - bc.getCarPrice();
                     sc.setProfit(profit);
-                    float margin = (((float)profit / sc.getCarPrice()) * 100);
+                    float margin = (((float) profit / sc.getCarPrice()) * 100);
                     float margin_round = round(margin);
                     sc.setMargin(margin_round);
                 }
@@ -46,25 +44,51 @@ public class RaportsService {
         return soldCars;
     }
 
-    public Long CalculateAllProfit(){
+    public Long CalculateAllSumOfBoughtCars() {
+        List<DtoShowCar> soldCars = carsService.showBoughtCars();
+        Long value = 0L;
+        for (DtoShowCar sc : soldCars) {
+            value += sc.getCarPrice();
+        }
+        return value;
+    }
+
+    public Long CalculateAllSumOfSoldCars() {
         List<DtoShowCar> soldCars = carsService.showSoldCars();
         List<DtoShowCar> boughtCars = carsService.showBoughtCars();
-        Long value=0L;
+        Long value = 0L;
         for (DtoShowCar sc : soldCars) {
             for (DtoShowCar bc : boughtCars) {
                 if (sc.getId().equals(bc.getId())) {
                     Long profit = sc.getCarPrice() - bc.getCarPrice();
                     sc.setProfit(profit);
-                    float margin = (((float)profit / sc.getCarPrice()) * 100);
+                    float margin = (((float) profit / sc.getCarPrice()) * 100);
                     sc.setMargin(margin);
-                    value+=sc.getCarPrice();
+                    value += sc.getCarPrice();
                 }
             }
         }
         return value;
     }
 
-
+    public List<DtoShowCar> SaleFilter(Date DateBefore, Date DateAfter) {
+        List<DtoShowCar> listIn = carsService.showSoldCars();
+        List<DtoShowCar> listOut = new ArrayList<>();
+        for (DtoShowCar dtoShowCar : listIn) {
+            Date date = dtoShowCar.getSaleDate();
+            if ((DateBefore.before(date))) {
+                if ((DateAfter.after(date))) {
+                    listOut.add(dtoShowCar);
+                }
+            }
+        }
+        return listOut;
+    }
 
 
 }
+
+
+
+
+

@@ -32,6 +32,7 @@
         <td th:text="${car.carPrice}"></td>
     </tr>
 </table>
+<h3>Całkowita suma zakupu samochodów wynosi: <span th:text = "${value1}"></span></h3>
 <table>
     <h2>samochody_dostępne</h2>
 
@@ -70,7 +71,7 @@
         <th>nr_nadwozia</th>
         <th>cena_sprzedaży</th>
         <th>marża</th>
-        <th>zysk_butto</th>
+        <th>zysk</th>
 
     </tr>
     <tr th:each="car, iterationInfo : ${cars3}">
@@ -87,7 +88,7 @@
 
     </tr>
 </table>
-<h3>Całkowity zysk brutto wynosi: <span th:text = "${value}"></span></h3>
+<h3>Całkowita suma sprzedaży samochodów wynosi: <span th:text = "${value2}"></span></h3>
 <a th:href="@{/cars}">dostepne_samochody</a>
 </body>
 </html>

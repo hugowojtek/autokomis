@@ -29,6 +29,7 @@ public class CarsService {
     public List<DtoShowCar> showCars() {
         List<Cars> cars = (List<Cars>) carsRepository.findAll();
         List<BuyingContracts> buyingContracts = (List<BuyingContracts>) buyingContractsRepository.findAll();
+        List<SellingContracts> sellingContracts = (List<SellingContracts>) sellingContractsRepository.findAll();
         List<DtoShowCar> list = new ArrayList<>();
         for (Cars c : cars) {
 
@@ -40,6 +41,21 @@ public class CarsService {
             dtoShowCar.setCarMilage(c.getMilage());
             dtoShowCar.setCarNrChassis(c.getNrChassis());
             dtoShowCar.setCarPrice(c.getPrice());
+
+            for (BuyingContracts bc:buyingContracts){
+                if (c.getId().equals((bc.getDate()))){
+                    dtoShowCar.setPurchaseDate(bc.getDate());
+                    break;
+                }
+            }
+
+            for (SellingContracts sc:sellingContracts){
+                if (c.getId().equals(sc.getCars().getId())){
+                    dtoShowCar.setSaleDate(sc.getDate());
+                    break;
+                }
+            }
+
 
             list.add(dtoShowCar);
 
