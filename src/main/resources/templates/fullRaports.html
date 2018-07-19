@@ -69,6 +69,8 @@
         <th>przebieg</th>
         <th>nr_nadwozia</th>
         <th>cena_sprzedaży</th>
+        <th>marża</th>
+        <th>zysk_butto</th>
 
     </tr>
     <tr th:each="car, iterationInfo : ${cars3}">
@@ -80,10 +82,12 @@
         <td th:text="${car.carMilage}"></td>
         <td th:text="${car.carNrChassis}"></td>
         <td th:text="${car.carPrice}"></td>
+        <td th:text="${car.margin}"></td>
+        <td th:text="${car.profit}"></td>
+
     </tr>
-
-
 </table>
+<h3>Całkowity zysk brutto wynosi: <span th:text = "${value}"></span></h3>
 <a th:href="@{/cars}">dostepne_samochody</a>
 </body>
 </html>
