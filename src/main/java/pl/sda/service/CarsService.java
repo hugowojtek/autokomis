@@ -10,7 +10,9 @@ import pl.sda.model.Cars;
 import pl.sda.model.DtoShowCar;
 import pl.sda.model.SellingContracts;
 
+import java.text.SimpleDateFormat;
 import java.util.ArrayList;
+import java.util.Date;
 import java.util.List;
 
 @Service
@@ -42,15 +44,15 @@ public class CarsService {
             dtoShowCar.setCarNrChassis(c.getNrChassis());
             dtoShowCar.setCarPrice(c.getPrice());
 
-            for (BuyingContracts bc:buyingContracts){
-                if (c.getId().equals((bc.getDate()))){
+            for (BuyingContracts bc : buyingContracts) {
+                if (c.getId().equals((bc.getDate()))) {
                     dtoShowCar.setPurchaseDate(bc.getDate());
                     break;
                 }
             }
 
-            for (SellingContracts sc:sellingContracts){
-                if (c.getId().equals(sc.getCars().getId())){
+            for (SellingContracts sc : sellingContracts) {
+                if (c.getId().equals(sc.getCars().getId())) {
                     dtoShowCar.setSaleDate(sc.getDate());
                     break;
                 }
@@ -102,6 +104,9 @@ public class CarsService {
             for (DtoShowCar dtoShowCar : list) {
                 if (bc.getCars().getId().equals(dtoShowCar.getId())) {
                     dtoShowCar.setCarPrice(bc.getPrice());
+                    Date date = bc.getDate();
+                    dtoShowCar.setPurchaseDate(date);
+                    break;
                 }
             }
         }

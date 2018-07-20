@@ -19,6 +19,7 @@
         <th>przebieg</th>
         <th>nr_nadwozia</th>
         <th>cena_zakupu</th>
+        <th>data_zakupu</th>
 
     </tr>
     <tr th:each="car, iterationInfo : ${cars1}">
@@ -30,6 +31,7 @@
         <td th:text="${car.carMilage}"></td>
         <td th:text="${car.carNrChassis}"></td>
         <td th:text="${car.carPrice}"></td>
+        <td th:text="${car.purchaseDate}"></td>
     </tr>
 </table>
 <h3>Całkowita wartość zakupu samochodów wynosi: <span th:text = "${value1}"></span></h3>
@@ -70,6 +72,7 @@
         <th>przebieg</th>
         <th>nr_nadwozia</th>
         <th>cena_sprzedaży</th>
+        <th>data_sprzedaży</th>
         <th>marża</th>
         <th>zysk</th>
 
@@ -83,8 +86,10 @@
         <td th:text="${car.carMilage}"></td>
         <td th:text="${car.carNrChassis}"></td>
         <td th:text="${car.carPrice}"></td>
+        <td th:text="${car.saleDate}"></td>
         <td th:text="${car.margin}"></td>
         <td th:text="${car.profit}"></td>
+
 
     </tr>
 </table>

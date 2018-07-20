@@ -22,6 +22,8 @@
         <th>przebieg</th>
         <th>nr_nadwozia</th>
         <th>cena_sprzedaży</th>
+        <th>data_sprzedaży</th>
+
 
     </tr>
     <tr th:each="car, iterationInfo : ${list}">
@@ -33,6 +35,7 @@
         <td th:text="${car.carMilage}"></td>
         <td th:text="${car.carNrChassis}"></td>
         <td th:text="${car.carPrice}"></td>
+        <td th:text="${car.saleDate}"></td>
 
     </tr>
 </table>
