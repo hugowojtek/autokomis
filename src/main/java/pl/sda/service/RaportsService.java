@@ -85,7 +85,8 @@ public class RaportsService {
                     Long profit = sc.getCarPrice() - bc.getCarPrice();
                     sc.setProfit(profit);
                     float margin = (((float) profit / sc.getCarPrice()) * 100);
-                    sc.setMargin(margin);
+                    float margin_round = round(margin* 10.0f) / 10.0f;
+                    sc.setMargin(margin_round);
                     value += sc.getCarPrice();
                 }
             }
@@ -161,6 +162,22 @@ public class RaportsService {
         }
         return value;
     }
+
+    public Long CalculateProfit2(Cars car, Long purchasePrice){
+        Long profit=0L;
+        profit = car.getPrice()-purchasePrice;
+        return profit;
+    }
+
+    public float CalculateMargin(Cars car, Long purchasePrice){
+        Long profit=CalculateProfit2(car,purchasePrice);
+        float margin = (((float) profit / car.getPrice()) * 100);
+        float margin_round = round(margin* 10.0f) / 10.0f;
+        return margin_round;
+
+    }
+
+
 
 
 }

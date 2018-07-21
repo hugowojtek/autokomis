@@ -5,12 +5,93 @@
     <title>Edytuj_samochod</title>
 </head>
 <body>
-<h1>edytuj_samochod</h1>
+<h1>opis_samochodu</h1>
 <h2>marka: <span th:text = "${car1.manufacturer}"></span></h2>
-<h3>model: <span th:text = "${car1.model}"></span></h3>
+<h2>model: <span th:text = "${car1.model}"></span></h2>
 <h3>rok_produkcji: <span th:text = "${car1.yearProduction}"></span></h3>
+<h3>przebieg: <span th:text = "${car1.milage}"></span></h3>
 <h4>nr_nadwozia: <span th:text = "${car1.nrChassis}"></span></h4>
-<h5>opis_auta: <span th:text = "${car1.description}"></span></h5>
+<h4>opis_auta: <span th:text = "${car1.description}"></span></h4>
+<h2>cena_kupna: <span th:text = "${purchasePrice}"></span></h2>
+<h2>cena_oferty: <span th:text = "${car1.price}"></span></h2>
+<h3>zysk: <span th:text = "${profit}"></span></h3>
+<h3>marża: <span th:text = "${margin}"></span></h3>
+
+<h1>edytuj_samochod</h1>
+<!--<h2><span th:text = "${message}"></span></h2>-->
+<form th:action="@{/edit}" th:object="${editedCar}" method="post">
+    <table>
+        <tr>
+            <td>widoczność</td>
+            <td><input type="text" th:field="*{carVisibility}"/>
+                <span th:="${#fields.hasErrors('carVisibility')}" th:errors="*{carVisibility}"/>
+            </td>
+
+        </tr>
+        <tr>
+            <td>marka</td>
+            <td><input type="text" th:field="*{carManufacturer}"/>
+                <span th:="${#fields.hasErrors('carManufacturer')}" th:errors="*{carManufacturer}"/>
+            </td>
+
+        </tr>
+        <tr>
+            <td>model</td>
+            <td><input type="text" th:field="*{carModel}"/>
+                <span th:="${#fields.hasErrors('carModel')}" th:errors="*{carModel}"/>
+            </td>
+
+        </tr>
+        <tr>
+            <td>rok</td>
+            <td><input type="text" th:field="*{carYearProduction}"/>
+                <span th:="${#fields.hasErrors('carYearProduction')}" th:errors="*{carYearProduction}"/>
+            </td>
+        </tr>
+
+        <tr>
+            <td>przebieg</td>
+            <td><input type="text" th:field="*{carMilage}"/>
+                <span th:="${#fields.hasErrors('carMilage')}" th:errors="*{carMilage}"/>
+            </td>
+        </tr>
+
+        <tr>
+            <td>cena sprzedaży</td>
+            <td><input type="text" th:field="*{carPrice}"/>
+                <span th:="${#fields.hasErrors('carPrice')}" th:errors="*{carPrice}"/>
+            </td>
+
+        </tr>
+
+
+        <tr>
+            <td>nr_nadwozia</td>
+            <td><input type="text" th:field="*{carNrChassis}"/>
+                <span th:="${#fields.hasErrors('carNrChassis')}" th:errors="*{carNrChassis}"/>
+            </td>
+        </tr>
+
+        <tr>
+            <td>opis</td>
+            <td><input type="text" th:field="*{carDescription}"/>
+                <span th:="${#fields.hasErrors('carDescription')}" th:errors="*{carDescription}"/>
+            </td>
+        </tr>
+
+
+
+        <tr>
+            <td colspan="10"> <input type="submit" value="zapisz_dane"/> </td>
+
+        </tr>
+        <tr>
+            <td><a th:href="@{/cars}">dostepne_samochody</a></td>
+        </tr>
+    </table>
+
+
+</form>
 
 </body>
 </html>

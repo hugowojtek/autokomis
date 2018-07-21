@@ -19,7 +19,7 @@
         <th>model</th>
         <th>rok</th>
         <th>przebieg</th>
-        <th>cena</th>
+        <th>cena_oferty</th>
 
     </tr>
     <tr th:each="car, iterationInfo : ${cars1}">
@@ -33,7 +33,7 @@
         <td th:text="${car.carPrice}"></td>
 
 
-        <td><a th:href="@{/edit/{carId}/desc(carId=${car.id})}">edytuj</a></td>
+        <td><a th:href="@{/edit/{carId}/editable(carId=${car.id})}">edytuj</a></td>
 
 
     </tr>

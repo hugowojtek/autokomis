@@ -3,13 +3,15 @@ package pl.sda.controller;
 
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
-import org.springframework.web.bind.annotation.PathVariable;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RequestMethod;
+import org.springframework.web.bind.annotation.*;
+import pl.sda.Repository.BuyingContractsRepository;
 import pl.sda.Repository.CarsRepository;
+import pl.sda.model.BuyingContracts;
 import pl.sda.model.Cars;
+import pl.sda.model.DtoBuyCar;
 import pl.sda.model.DtoShowCar;
 import pl.sda.service.CarsService;
+import pl.sda.service.RaportsService;
 
 import java.util.List;
 
@@ -18,30 +20,53 @@ import java.util.List;
 public class EditCarsController {
 
     private CarsService carsService;
+    private RaportsService raportsService;
     private final CarsRepository carsRepository;
+    private final BuyingContractsRepository buyingContractsRepository;
 
-    public EditCarsController(CarsService carsService, CarsRepository carsRepository) {
+    public EditCarsController(CarsService carsService, RaportsService raportsService, CarsRepository carsRepository, BuyingContractsRepository buyingContractsRepository) {
         this.carsService = carsService;
+        this.raportsService = raportsService;
         this.carsRepository = carsRepository;
+        this.buyingContractsRepository = buyingContractsRepository;
     }
 
     @RequestMapping(method = RequestMethod.GET)
-    public String getCars(Model model) {
+    public String selectCarToEdit(Model model) {
 
         List<DtoShowCar> list = carsService.showAvailableCars();
-
         model.addAttribute("cars1", list);
         return "editCar";
 
     }
 
-    @RequestMapping("/{carId}/desc")
-    public String getCarDescription(
+    @RequestMapping("/{carId}/editable")
+    public String editCarForm(
             @PathVariable("carId") Long carId, Model model) {
         Cars car = carsRepository.findOne(carId);
-//        String description = car.getDescription();
+        Long purchasePrice = 0L;
+        List<BuyingContracts> buyingContracts = (List<BuyingContracts>) buyingContractsRepository.findAll();
+        for (BuyingContracts bc : buyingContracts) {
+            if (bc.getCars().getId().equals(car.getId())) {
+                purchasePrice = bc.getPrice();
+                break;
+            }
+        }
+
+        Long profit = raportsService.CalculateProfit2(car,purchasePrice);
+        float margin = raportsService.CalculateMargin(car,purchasePrice);
+
         model.addAttribute("car1", car);
+        model.addAttribute("purchasePrice", purchasePrice);
+        model.addAttribute("profit", profit);
+        model.addAttribute("margin", margin);
+        model.addAttribute("editedCar",new DtoBuyCar());
         return "editForm";
     }
 
+    @PostMapping
+    public String saveEditedCar(@ModelAttribute("editedCar") DtoBuyCar dtoBuyCar, Model model) {
+        return "redirect:/cars";
+
+    }
 }

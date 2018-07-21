@@ -54,16 +54,16 @@ public class ShowCarsController {
 //    generuje strone z pustym cars
     public String addCarForm(Model model) {
         model.addAttribute("addedCar", new DtoBuyCar());
-        return "addCar";
+        return "addCarForm";
 
     }
 
     @PostMapping
     //zapisze do bazy i idzie na nowa strone
-    public String saveVehicle(@Valid @ModelAttribute("addedCar") DtoBuyCar dtoBuyCar, BindingResult bindingResult, Model model) {
+    public String saveNewCar(@Valid @ModelAttribute("addedCar") DtoBuyCar dtoBuyCar, BindingResult bindingResult, Model model) {
 
         if (bindingResult.hasErrors()){
-            return "addCar";
+            return "addCarForm";
         }
 
         Cars car = new Cars();
@@ -74,7 +74,7 @@ public class ShowCarsController {
             if (c.getNrChassis().equals(dtoBuyCar.getCarNrChassis())) {
                 final String text = "samochod nie moze byc dodany bo juz był kiedyś kupiony";
                 model.addAttribute("message",text);
-                return "addCar";
+                return "addCarForm";
             }
         }
 
@@ -85,6 +85,7 @@ public class ShowCarsController {
         car.setDescription(dtoBuyCar.getCarDescription());
         car.setPrice(dtoBuyCar.getCarPrice());
         car.setNrChassis(dtoBuyCar.getCarNrChassis());
+        car.setVisibility(true);//każdy kupiony samochód widoczny
 
         buyingContracts.setPrice(dtoBuyCar.getBuyingContractsPrice());
         buyingContracts.setDate(new Date());

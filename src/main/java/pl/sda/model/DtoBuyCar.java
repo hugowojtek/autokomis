@@ -63,6 +63,15 @@ public class DtoBuyCar {
     @DecimalMin(value="1.00", message = "za mała wartość co najmniej 1zł")
     private Long buyingContractsPrice;
 
+    private Boolean carVisibility;
+
+    public Boolean getCarVisibility() {
+        return carVisibility;
+    }
+
+    public void setCarVisibility(Boolean carVisibility) {
+        this.carVisibility = carVisibility;
+    }
 
     public Long getCarPrice(){
         return this.carPrice;
