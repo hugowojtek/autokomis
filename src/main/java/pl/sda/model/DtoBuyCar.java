@@ -1,9 +1,7 @@
 package pl.sda.model;
 
 
-import javax.validation.constraints.DecimalMin;
-import javax.validation.constraints.NotNull;
-import javax.validation.constraints.Size;
+import javax.validation.constraints.*;
 
 public class DtoBuyCar {
 
@@ -63,6 +61,8 @@ public class DtoBuyCar {
     @DecimalMin(value="1.00", message = "za mała wartość co najmniej 1zł")
     private Long buyingContractsPrice;
 
+    @Min(value=0,message = "wartosc z przedzialu <0,1>")
+    @Max(value=1,message = "wartosc z przedzialu <0,1>")
     private Boolean carVisibility;
 
     public Boolean getCarVisibility() {

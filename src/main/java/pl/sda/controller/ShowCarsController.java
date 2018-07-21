@@ -66,17 +66,18 @@ public class ShowCarsController {
             return "addCarForm";
         }
 
-        Cars car = new Cars();
-        BuyingContracts buyingContracts = new BuyingContracts();
-
         List<Cars> cars = (List<Cars>) carsRepository.findAll();
         for (Cars c:cars) {
             if (c.getNrChassis().equals(dtoBuyCar.getCarNrChassis())) {
-                final String text = "samochod nie moze byc dodany bo juz był kiedyś kupiony";
-                model.addAttribute("message",text);
-                return "addCarForm";
+               final String message = "samochod nie moze byc sprzedany bo juz kiedys byl kupiony";
+               model.addAttribute("message",message);
+               return "addCarForm";
             }
         }
+
+        Cars car = new Cars();
+        BuyingContracts buyingContracts = new BuyingContracts();
+
 
         car.setYearProduction(dtoBuyCar.getCarYearProduction());
         car.setManufacturer(dtoBuyCar.getCarManufacturer());

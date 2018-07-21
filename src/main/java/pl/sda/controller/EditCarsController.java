@@ -3,6 +3,7 @@ package pl.sda.controller;
 
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
+import org.springframework.validation.BindingResult;
 import org.springframework.web.bind.annotation.*;
 import pl.sda.Repository.BuyingContractsRepository;
 import pl.sda.Repository.CarsRepository;
@@ -13,6 +14,7 @@ import pl.sda.model.DtoShowCar;
 import pl.sda.service.CarsService;
 import pl.sda.service.RaportsService;
 
+import javax.validation.Valid;
 import java.util.List;
 
 @Controller
@@ -65,7 +67,33 @@ public class EditCarsController {
     }
 
     @PostMapping
-    public String saveEditedCar(@ModelAttribute("editedCar") DtoBuyCar dtoBuyCar, Model model) {
+    public String saveEditedCar(@Valid @ModelAttribute("editedCar") DtoBuyCar dtoBuyCar, BindingResult bindingResult, Model model) {
+
+        if (bindingResult.hasErrors()){
+            return "editForm";
+        }
+
+        List<Cars> cars = (List<Cars>) carsRepository.findAll();
+        for (Cars c:cars) {
+            if (c.getNrChassis().equals(dtoBuyCar.getCarNrChassis())) {
+                final String message = "samochod nie moze byc sprzedany bo juz kiedys byl kupiony";
+                model.addAttribute("message",message);
+                return "editForm";
+            }
+        }
+
+        Cars car = new Cars();
+        car.setYearProduction(dtoBuyCar.getCarYearProduction());
+        car.setManufacturer(dtoBuyCar.getCarManufacturer());
+        car.setModel(dtoBuyCar.getCarModel());
+        car.setMilage(dtoBuyCar.getCarMilage());
+        car.setDescription(dtoBuyCar.getCarDescription());
+        car.setPrice(dtoBuyCar.getCarPrice());
+        car.setNrChassis(dtoBuyCar.getCarNrChassis());
+        car.setVisibility(dtoBuyCar.getCarVisibility());
+
+        carsRepository.save(car);
+
         return "redirect:/cars";
 
     }
