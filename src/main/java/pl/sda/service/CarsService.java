@@ -4,10 +4,8 @@ import org.springframework.stereotype.Service;
 import pl.sda.Repository.BuyingContractsRepository;
 import pl.sda.Repository.CarsRepository;
 import pl.sda.Repository.SellingContractsRepository;
-import pl.sda.controller.ShowCars;
 import pl.sda.model.*;
 
-import java.text.SimpleDateFormat;
 import java.util.ArrayList;
 import java.util.Date;
 import java.util.List;

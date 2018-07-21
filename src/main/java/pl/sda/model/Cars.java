@@ -34,6 +34,16 @@ public class Cars extends BaseModel implements Serializable {
     private Long price;
     @Column
     private String nrChassis;
+    @Column
+    private Boolean visibility;
+
+    public Boolean getVisibility(){
+        return visibility;
+    }
+
+    public void setVisibility(Boolean visibility){
+        this.visibility=visibility;
+    }
 
     public String getNrChassis() {
         return nrChassis;

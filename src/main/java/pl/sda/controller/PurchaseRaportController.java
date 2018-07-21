@@ -17,14 +17,14 @@ import java.util.List;
 
 @Controller
 @RequestMapping("/purchase")
-public class PurchaseRaport {
+public class PurchaseRaportController {
 
     private String dateFrom;
     private String dateTo;
     private CarsService carsService;
     private RaportsService raportsService;
 
-    public PurchaseRaport(CarsService carsService, RaportsService raportsService) {
+    public PurchaseRaportController(CarsService carsService, RaportsService raportsService) {
         this.carsService = carsService;
         this.raportsService = raportsService;
     }
