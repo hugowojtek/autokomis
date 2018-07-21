@@ -78,7 +78,7 @@ public class Raports {
 
 
     @RequestMapping("/saleraport")
-    public String addCarForm(Model model) {
+    public String saleRaportForm(Model model) {
         model.addAttribute("saleRaport", new DtoRaport());
         return "saleForm";
     }
@@ -91,6 +91,10 @@ public class Raports {
 
         return "redirect:/raports/salefilter";
     }
+
+
+
+
 
 
 }

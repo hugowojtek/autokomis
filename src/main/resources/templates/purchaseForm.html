@@ -2,12 +2,12 @@
 <html xmlns:th="https://www.thymeleaf.org" lang="en">
 <head>
     <meta charset="UTF-8"/>
-    <title>formularz do raportu sprzedazy</title>
+    <title>formularz do raportu kupna</title>
 </head>
 <body>
-<h1>wybierz daty do raportu sprzedaży</h1>
+<h1>wybierz daty do raportu kupna</h1>
 
-<form th:action="@{/raports}" th:object="${saleRaport}" method="post">
+<form th:action="@{/purchase}" th:object="${purchaseRaport}" method="post">
     <table>
         <tr>
             <td>od</td>

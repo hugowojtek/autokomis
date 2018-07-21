@@ -4,6 +4,7 @@ import org.springframework.stereotype.Service;
 import pl.sda.Repository.BuyingContractsRepository;
 import pl.sda.Repository.CarsRepository;
 import pl.sda.Repository.SellingContractsRepository;
+import pl.sda.model.BuyingContracts;
 import pl.sda.model.Cars;
 import pl.sda.model.DtoShowCar;
 import pl.sda.model.SellingContracts;
@@ -19,13 +20,14 @@ public class RaportsService {
 
 
     CarsService carsService;
+    SellingContractsRepository sellingContractsRepository;
+    BuyingContractsRepository buyingContractsRepository;
 
-
-    public RaportsService(CarsService carsService) {
+    public RaportsService(CarsService carsService, SellingContractsRepository sellingContractsRepository, BuyingContractsRepository buyingContractsRepository) {
         this.carsService = carsService;
-
+        this.sellingContractsRepository = sellingContractsRepository;
+        this.buyingContractsRepository = buyingContractsRepository;
     }
-
 
     public List<DtoShowCar> ShowSoldCarsWithMarginAndProfit() {
         List<DtoShowCar> soldCars = carsService.showSoldCars();
@@ -93,7 +95,34 @@ public class RaportsService {
         return value;
     }
 
+    public List<DtoShowCar> PurchaseFilter(Date DateBefore, Date DateAfter){
+        List<DtoShowCar> listIn = carsService.showBoughtCars();
+        List<DtoShowCar> listOut = new ArrayList<>();
+        for (DtoShowCar dtoShowCar : listIn) {
+            Date date = dtoShowCar.getPurchaseDate();
+            if ((DateBefore.before(date))) {
+                if ((DateAfter.after(date))) {
+                    listOut.add(dtoShowCar);
+                }
+            }
+        }
+        return listOut;
+    }
 
+    public Long CalculatePurchaseFilterValue(List<DtoShowCar> list){
+        List<BuyingContracts> buyingContracts = (List<BuyingContracts>) buyingContractsRepository.findAll();
+        Long value=0L;
+        for (DtoShowCar dtoShowCar:list){
+            for (BuyingContracts bc:buyingContracts){
+                if (bc.getCars().getId().equals(dtoShowCar.getId())){
+                value+=bc.getPrice();
+                }
+
+            }
+
+        }
+        return value;
+    }
 }
 
 
