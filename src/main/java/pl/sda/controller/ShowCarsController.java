@@ -17,14 +17,14 @@ import java.util.List;
 
 @Controller
 @RequestMapping("/cars")
-public class ShowAndAddCarsController {
+public class ShowCarsController {
 
     private CarsService carsService;
     private final CarsRepository carsRepository;
     private final BuyingContractsRepository buyingContractsRepository;
     private final SellingContractsRepository sellingContractsRepository;
 
-    public ShowAndAddCarsController(CarsService carsService, CarsRepository carsRepository, BuyingContractsRepository buyingContractsRepository, SellingContractsRepository sellingContractsRepository) {
+    public ShowCarsController(CarsService carsService, CarsRepository carsRepository, BuyingContractsRepository buyingContractsRepository, SellingContractsRepository sellingContractsRepository) {
         this.carsService = carsService;
         this.carsRepository = carsRepository;
         this.buyingContractsRepository = buyingContractsRepository;
