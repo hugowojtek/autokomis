@@ -93,19 +93,24 @@ public class RaportsService {
         return value;
     }
 
-    public List<DtoShowCar> SaleFilter(Date DateBefore, Date DateAfter) {
+    public List<DtoShowCar> SaleFilter(Date dateFrom, Date dateTo) {
         List<DtoShowCar> listIn = carsService.showSoldCars();
         List<DtoShowCar> listOut = new ArrayList<>();
+        dateTo.setHours(23);
+        dateTo.setMinutes(59);
+        dateTo.setSeconds(59);
+
         for (DtoShowCar dtoShowCar : listIn) {
             Date date = dtoShowCar.getSaleDate();
-            if ((DateBefore.before(date))) {
-                if ((DateAfter.after(date))) {
-                    listOut.add(dtoShowCar);
+            if ((date.after(dateFrom))) {
+                if ((date.before(dateTo))) {
+
+                        listOut.add(dtoShowCar);
+                    }
                 }
             }
+            return listOut;
         }
-        return listOut;
-    }
 
     public Long CalculateSaleFilterValue(List<DtoShowCar> list) {
         Long value = 0L;
@@ -115,13 +120,18 @@ public class RaportsService {
         return value;
     }
 
-    public List<DtoShowCar> PurchaseFilter(Date DateBefore, Date DateAfter) {
+    public List<DtoShowCar> PurchaseFilter(Date dateFrom, Date dateTo) {
         List<DtoShowCar> listIn = carsService.showBoughtCars();
         List<DtoShowCar> listOut = new ArrayList<>();
+        dateTo.setHours(23);
+        dateTo.setMinutes(59);
+        dateTo.setSeconds(59);
+
         for (DtoShowCar dtoShowCar : listIn) {
             Date date = dtoShowCar.getPurchaseDate();
-            if ((DateBefore.before(date))) {
-                if ((DateAfter.after(date))) {
+            if ((date.after(dateFrom))) {
+                if ((date.before(dateTo))) {
+
                     listOut.add(dtoShowCar);
                 }
             }
