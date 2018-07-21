@@ -5,10 +5,7 @@ import pl.sda.Repository.BuyingContractsRepository;
 import pl.sda.Repository.CarsRepository;
 import pl.sda.Repository.SellingContractsRepository;
 import pl.sda.controller.ShowCars;
-import pl.sda.model.BuyingContracts;
-import pl.sda.model.Cars;
-import pl.sda.model.DtoShowCar;
-import pl.sda.model.SellingContracts;
+import pl.sda.model.*;
 
 import java.text.SimpleDateFormat;
 import java.util.ArrayList;
@@ -112,4 +109,6 @@ public class CarsService {
         }
         return list;
     }
+
+
 }
