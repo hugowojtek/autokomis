@@ -38,7 +38,7 @@ public class RaportsService {
                     Long profit = sc.getCarPrice() - bc.getCarPrice();
                     sc.setProfit(profit);
                     float margin = (((float) profit / sc.getCarPrice()) * 100);
-                    float margin_round = round(margin);
+                    float margin_round = round(margin * 10.0f) / 10.0f;
                     sc.setMargin(margin_round);
                     break;
                 }
@@ -47,22 +47,22 @@ public class RaportsService {
         return soldCars;
     }
 
-    public List<DtoShowCar> ShowSoldCarsWithMarginAndProfit2(List<DtoShowCar> listIn){
+    public List<DtoShowCar> ShowSoldCarsWithMarginAndProfit2(List<DtoShowCar> listIn) {
         List<DtoShowCar> listOut = new ArrayList<>();
         List<DtoShowCar> boughtCar = carsService.showBoughtCars();
-            for(DtoShowCar c:listIn){
-                for (DtoShowCar b:boughtCar){
-                    if (c.getId().equals(b.getId())){
-                        Long profit = c.getCarPrice() - b.getCarPrice();
-                        c.setProfit(profit);
-                        float margin = (((float) profit / c.getCarPrice()) * 100);
-                        float margin_round = round(margin*10.0f)/10.0f;
-                        c.setMargin(margin_round);
-                        break;
-                    }
+        for (DtoShowCar c : listIn) {
+            for (DtoShowCar b : boughtCar) {
+                if (c.getId().equals(b.getId())) {
+                    Long profit = c.getCarPrice() - b.getCarPrice();
+                    c.setProfit(profit);
+                    float margin = (((float) profit / c.getCarPrice()) * 100);
+                    float margin_round = round(margin * 10.0f) / 10.0f;
+                    c.setMargin(margin_round);
+                    break;
                 }
-                listOut.add(c);
             }
+            listOut.add(c);
+        }
         return listOut;
     }
 
@@ -107,15 +107,15 @@ public class RaportsService {
         return listOut;
     }
 
-    public Long CalculateSaleFilterValue(List<DtoShowCar> list){
-        Long value=0L;
-        for (DtoShowCar dtoShowCar:list){
-            value+=dtoShowCar.getCarPrice();
+    public Long CalculateSaleFilterValue(List<DtoShowCar> list) {
+        Long value = 0L;
+        for (DtoShowCar dtoShowCar : list) {
+            value += dtoShowCar.getCarPrice();
         }
         return value;
     }
 
-    public List<DtoShowCar> PurchaseFilter(Date DateBefore, Date DateAfter){
+    public List<DtoShowCar> PurchaseFilter(Date DateBefore, Date DateAfter) {
         List<DtoShowCar> listIn = carsService.showBoughtCars();
         List<DtoShowCar> listOut = new ArrayList<>();
         for (DtoShowCar dtoShowCar : listIn) {
@@ -129,13 +129,13 @@ public class RaportsService {
         return listOut;
     }
 
-    public Long CalculatePurchaseFilterValue(List<DtoShowCar> list){
+    public Long CalculatePurchaseFilterValue(List<DtoShowCar> list) {
         List<BuyingContracts> buyingContracts = (List<BuyingContracts>) buyingContractsRepository.findAll();
-        Long value=0L;
-        for (DtoShowCar dtoShowCar:list){
-            for (BuyingContracts bc:buyingContracts){
-                if (bc.getCars().getId().equals(dtoShowCar.getId())){
-                value+=bc.getPrice();
+        Long value = 0L;
+        for (DtoShowCar dtoShowCar : list) {
+            for (BuyingContracts bc : buyingContracts) {
+                if (bc.getCars().getId().equals(dtoShowCar.getId())) {
+                    value += bc.getPrice();
                 }
 
             }
@@ -143,6 +143,16 @@ public class RaportsService {
         }
         return value;
     }
+
+    public Long CalculateProfit(List<DtoShowCar> list) {
+        long value = 0L;
+        for (DtoShowCar c : list) {
+            value += c.getProfit();
+        }
+        return value;
+    }
+
+
 }
 
 

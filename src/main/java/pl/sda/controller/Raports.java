@@ -41,11 +41,13 @@ public class Raports {
         List<DtoShowCar> list3 = raportsService.ShowSoldCarsWithMarginAndProfit();
         Long value1 = raportsService.CalculateAllSumOfBoughtCars();
         Long value2 = raportsService.CalculateAllSumOfSoldCars();
+        Long value3 = raportsService.CalculateProfit(list3);
         model.addAttribute("cars1",list1);
         model.addAttribute("cars2",list2);
         model.addAttribute("cars3",list3);
         model.addAttribute("value1",value1);
         model.addAttribute("value2",value2);
+        model.addAttribute("value3",value3);
         return "fullRaports";
     }
 
@@ -65,12 +67,14 @@ public class Raports {
         List<DtoShowCar> list = raportsService.SaleFilter(date1,date2);
         List<DtoShowCar> list2 = raportsService.ShowSoldCarsWithMarginAndProfit2(list);
         Long value = raportsService.CalculateSaleFilterValue(list);
+        Long value2 = raportsService.CalculateProfit(list2);
 
         String formattedStrDate1 = new SimpleDateFormat("yyyy-MM-dd").format(date1);
         String formattedStrDate2 = new SimpleDateFormat("yyyy-MM-dd").format(date2);
 
         model.addAttribute("list",list2);
         model.addAttribute("value",value);
+        model.addAttribute("value2",value2);
         model.addAttribute("date1",formattedStrDate1);
         model.addAttribute("date2",formattedStrDate2);
 
