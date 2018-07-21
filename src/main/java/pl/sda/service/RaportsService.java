@@ -40,10 +40,30 @@ public class RaportsService {
                     float margin = (((float) profit / sc.getCarPrice()) * 100);
                     float margin_round = round(margin);
                     sc.setMargin(margin_round);
+                    break;
                 }
             }
         }
         return soldCars;
+    }
+
+    public List<DtoShowCar> ShowSoldCarsWithMarginAndProfit2(List<DtoShowCar> listIn){
+        List<DtoShowCar> listOut = new ArrayList<>();
+        List<DtoShowCar> boughtCar = carsService.showBoughtCars();
+            for(DtoShowCar c:listIn){
+                for (DtoShowCar b:boughtCar){
+                    if (c.getId().equals(b.getId())){
+                        Long profit = c.getCarPrice() - b.getCarPrice();
+                        c.setProfit(profit);
+                        float margin = (((float) profit / c.getCarPrice()) * 100);
+                        float margin_round = round(margin*10.0f)/10.0f;
+                        c.setMargin(margin_round);
+                        break;
+                    }
+                }
+                listOut.add(c);
+            }
+        return listOut;
     }
 
     public Long CalculateAllSumOfBoughtCars() {

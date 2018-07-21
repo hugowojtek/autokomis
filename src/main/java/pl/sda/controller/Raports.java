@@ -63,12 +63,13 @@ public class Raports {
         }
 
         List<DtoShowCar> list = raportsService.SaleFilter(date1,date2);
+        List<DtoShowCar> list2 = raportsService.ShowSoldCarsWithMarginAndProfit2(list);
         Long value = raportsService.CalculateSaleFilterValue(list);
 
         String formattedStrDate1 = new SimpleDateFormat("yyyy-MM-dd").format(date1);
         String formattedStrDate2 = new SimpleDateFormat("yyyy-MM-dd").format(date2);
 
-        model.addAttribute("list",list);
+        model.addAttribute("list",list2);
         model.addAttribute("value",value);
         model.addAttribute("date1",formattedStrDate1);
         model.addAttribute("date2",formattedStrDate2);
