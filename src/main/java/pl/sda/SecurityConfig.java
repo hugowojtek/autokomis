@@ -18,24 +18,18 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter {
     @Override
     protected void configure(HttpSecurity http) throws Exception {
         http.authorizeRequests()
-                // niech adres "/" będzie dostepny dla kazdego
                 .antMatchers("/cars").permitAll()
-                // niech adres "/hi" będzie dostepny dla kazdego
-                .antMatchers("/vehicles").permitAll()
-                // niech adres "/login" będzie dostepny tylko dla uzytkownikow, którzy nie sa jeszcze zalogowani
-                .antMatchers("/login").anonymous()
-                // niech wszystkie podstrony "/vehicles" będzie dostepny tylko dla uzytkownikow, którzy posiadaja role VEHICLES
+               // .antMatchers("/login").anonymous()
                 .antMatchers("/cars/*").hasRole("SALES")
-                .antMatchers("/edit/*").hasRole("SALES")
-                .antMatchers("/raports/*").hasRole("ADMIN")
+                .antMatchers("/edit").hasRole("SALES")
+                .antMatchers("/raports").hasRole("SALES")
+                .antMatchers("/cars/*").hasRole("ADMIN")
+                .antMatchers("/edit").hasRole("ADMIN")
+                .antMatchers("/raports").hasRole("ADMIN")
                 .antMatchers("/sale/*").hasRole("ADMIN")
-                // dowolny inny request bedzie obsluzony, jezeli uzytkownik posiada jedna z rol VEHICLES lub SALES
-                .anyRequest().hasAnyRole("VEHICLES", "SALES")
+                .antMatchers("/purchase/*").hasRole("ADMIN")
                 .and()
-                // formularz logowania bedzie znajdowal sie pod adresem "login". Po zalogowaniu, uzytkownik bedzie przekierowany
-                // na adres "/vehicles". Wazne! na adres /login musi byc wyslany POST!
                 .formLogin().loginPage("/login").defaultSuccessUrl("/cars")
-                // wylogowanie przekieruje na strone vehicles.
                 .and().logout().logoutSuccessUrl("/cars");
     }
 }

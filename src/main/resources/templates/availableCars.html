@@ -39,7 +39,11 @@
     <p><a th:href="@{/cars/new}">dodaj_samochod</a></p>
     <p><a th:href="@{/raports}">pełny_raport</a></p>
     <p><a th:href="@{/edit}">edytuj_samochod</a></p>
-    <p><a th:href="@{/login}">edytuj_samochod</a></p>
+    <p><a th:href="@{/login}">logowanie</a></p>
+    <h3 th:inline="text">jesteś zalogowany jako: [[${#httpServletRequest.remoteUser}]]</h3>
+    <form th:action="@{/logout}" method="post">
+    <input type="submit" value="Sign Out"/>
+</form>
 
 </body>
 </html>
