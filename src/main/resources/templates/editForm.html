@@ -24,7 +24,7 @@
         <tr>
             <td>widoczność</td>
             <td><input type="text" th:field="*{carVisibility}"/>
-                <span th:="${#fields.hasErrors('carVisibility')}" th:errors="*{carVisibility}"/>
+                <!--<span th:="${#fields.hasErrors('carVisibility')}" th:errors="*{carVisibility}"/>-->
             </td>
 
         </tr>
@@ -57,15 +57,6 @@
         </tr>
 
         <tr>
-            <td>cena sprzedaży</td>
-            <td><input type="text" th:field="*{carPrice}"/>
-                <span th:="${#fields.hasErrors('carPrice')}" th:errors="*{carPrice}"/>
-            </td>
-
-        </tr>
-
-
-        <tr>
             <td>nr_nadwozia</td>
             <td><input type="text" th:field="*{carNrChassis}"/>
                 <span th:="${#fields.hasErrors('carNrChassis')}" th:errors="*{carNrChassis}"/>
@@ -78,6 +69,25 @@
                 <span th:="${#fields.hasErrors('carDescription')}" th:errors="*{carDescription}"/>
             </td>
         </tr>
+
+        <tr>
+            <td>cena kupna</td>
+            <td><input type="text" th:field="*{buyingContractsPrice}" />
+                <span th:="${#fields.hasErrors('buyingContractsPrice')}" th:errors="*{buyingContractsPrice}"/>
+            </td>
+
+        </tr>
+
+        <tr>
+            <td>cena oferty</td>
+            <td><input type="text" th:field="*{carPrice}"/>
+                <span th:="${#fields.hasErrors('carPrice')}" th:errors="*{carPrice}"/>
+            </td>
+
+        </tr>
+
+
+
 
 
 

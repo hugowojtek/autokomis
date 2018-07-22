@@ -61,8 +61,8 @@ public class DtoBuyCar {
     @DecimalMin(value="1.00", message = "za mała wartość co najmniej 1zł")
     private Long buyingContractsPrice;
 
-    @Min(value=0,message = "wartosc z przedzialu <0,1>")
-    @Max(value=1,message = "wartosc z przedzialu <0,1>")
+//    @Min(value=0,message = "wartosc z przedzialu <0,1>")
+//    @Max(value=1,message = "wartosc z przedzialu <0,1>")
     private Boolean carVisibility;
 
     public Boolean getCarVisibility() {

@@ -15,12 +15,14 @@ import pl.sda.service.CarsService;
 import pl.sda.service.RaportsService;
 
 import javax.validation.Valid;
+import java.util.Date;
 import java.util.List;
 
 @Controller
 @RequestMapping("/edit")
 public class EditCarsController {
 
+    private Cars carLocal;
     private CarsService carsService;
     private RaportsService raportsService;
     private final CarsRepository carsRepository;
@@ -46,6 +48,7 @@ public class EditCarsController {
     public String editCarForm(
             @PathVariable("carId") Long carId, Model model) {
         Cars car = carsRepository.findOne(carId);
+        this.carLocal=car;
         Long purchasePrice = 0L;
         List<BuyingContracts> buyingContracts = (List<BuyingContracts>) buyingContractsRepository.findAll();
         for (BuyingContracts bc : buyingContracts) {
@@ -67,22 +70,12 @@ public class EditCarsController {
     }
 
     @PostMapping
-    public String saveEditedCar(@Valid @ModelAttribute("editedCar") DtoBuyCar dtoBuyCar, BindingResult bindingResult, Model model) {
+    public String saveEditedCar(@Valid @ModelAttribute("editedCar") DtoBuyCar dtoBuyCar, Model model) {
 
-        if (bindingResult.hasErrors()){
-            return "editForm";
-        }
-
-        List<Cars> cars = (List<Cars>) carsRepository.findAll();
-        for (Cars c:cars) {
-            if (c.getNrChassis().equals(dtoBuyCar.getCarNrChassis())) {
-                final String message = "samochod nie moze byc sprzedany bo juz kiedys byl kupiony";
-                model.addAttribute("message",message);
-                return "editForm";
-            }
-        }
-
-        Cars car = new Cars();
+        //Cars car = new Cars();
+        Long l = dtoBuyCar.getBuyingContractsPrice();
+        Cars car = carsRepository.findOne(this.carLocal.getId());
+        //car.setId(this.carLocal.getId());
         car.setYearProduction(dtoBuyCar.getCarYearProduction());
         car.setManufacturer(dtoBuyCar.getCarManufacturer());
         car.setModel(dtoBuyCar.getCarModel());
@@ -92,8 +85,23 @@ public class EditCarsController {
         car.setNrChassis(dtoBuyCar.getCarNrChassis());
         car.setVisibility(dtoBuyCar.getCarVisibility());
 
-        carsRepository.save(car);
+        BuyingContracts buyingContracts = new BuyingContracts();
+        List<BuyingContracts> list = (List<BuyingContracts>) buyingContractsRepository.findAll();
+        for (BuyingContracts bc:list){
+            if (bc.getCars().getId().equals(car.getId())){
+                buyingContracts = buyingContractsRepository.findOne(bc.getId());
+                break;
+            }
+        }
+        buyingContracts.setPrice(dtoBuyCar.getBuyingContractsPrice());
+        buyingContracts.setDate(new Date());
+        buyingContracts.setCars(car);
 
+        System.out.println();
+
+
+        carsRepository.save(car);
+        buyingContractsRepository.save(buyingContracts);
         return "redirect:/cars";
 
     }
