@@ -1,19 +1,23 @@
 <!DOCTYPE html>
-<html xmlns:th="https://www.thymeleaf.org" xmlns:background-color="http://www.w3.org/1999/xhtml" lang="en">
+<html xmlns:th="https://www.thymeleaf.org" xmlns:max-width="http://www.w3.org/1999/xhtml"
+      xmlns:min-width="http://www.w3.org/1999/xhtml" xmlns:margin="http://www.w3.org/1999/xhtml"
+      xmlns:font-size="http://www.w3.org/1999/xhtml" xmlns:background="http://www.w3.org/1999/xhtml" lang="en">
 <head>
     <meta charset="UTF-8"/>
     <title>dodaj auto</title>
     <link rel="stylesheet" href="aaforms.css"/>
 </head>
-<body style="background-color:darkgray">
+<body style="background-color:gray">
 <!--<body style="background-color: burlywood">-->
 
-<h1>Dodawanie samochodu do bazy</h1>
+<h1 style="text-align: center">Dodawanie samochodu do bazy</h1>
 <h2><span th:text = "${message}"></span></h2>
+<div align="center">
+<form style="margin: 0 auto;width: 500px"  th:action="@{/cars}" th:object="${addedCar}" method="post">
+    <div style = "background: darkgray">
 
-<form th:action="@{/cars}" th:object="${addedCar}" method="post">
-    <main>
-        <fieldset >
+    <!--; font-size: 18px; max-width: 650px; min-width: 650px; margin: 40px auto; margin: 40px auto;>-->
+        <fieldset>
     <table>
         <tr>
             <td>marka</td>
@@ -80,11 +84,12 @@
         <tr>
             <td><a th:href="@{/cars}">dostepne_samochody</a></td>
         </tr>
+
     </table>
         </fieldset>
-    </main>
 
+    </div>
 </form>
-
+</div>
 </body>
 </html>
