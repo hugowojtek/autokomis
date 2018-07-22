@@ -102,7 +102,7 @@ public class ShowCarsController {
     public String buyCar(
             @PathVariable("carId") Long id, Model model) {
         Cars car = carsRepository.findOne(id);
-        List<BuyingContracts> list = (List<BuyingContracts>) buyingContractsRepository.findAll();
+//        List<BuyingContracts> list = (List<BuyingContracts>) buyingContractsRepository.findAll();
 
         SellingContracts sellingContracts = new SellingContracts();
         sellingContracts.setDate(new Date());
