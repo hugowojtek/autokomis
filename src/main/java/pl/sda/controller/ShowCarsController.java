@@ -71,7 +71,7 @@ public class ShowCarsController {
         List<Cars> cars = (List<Cars>) carsRepository.findAll();
         for (Cars c:cars) {
             if (c.getNrChassis().equals(dtoBuyCar.getCarNrChassis())) {
-               final String message = "samochod nie moze byc sprzedany bo juz kiedys byl kupiony";
+               final String message = "samochod nie moze byc sprzedany do komisu bo juz kiedys byl kupiony";
                model.addAttribute("message",message);
                return "addCarForm";
             }
