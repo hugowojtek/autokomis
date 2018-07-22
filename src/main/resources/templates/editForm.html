@@ -7,6 +7,7 @@
 </head>
 <body style="background-color:gray">
 <body>
+<div style="float: left; text-align: left">
 <h1 style="text-align: center">opis_samochodu</h1>
 <h2>marka: <span th:text = "${car1.manufacturer}"></span></h2>
 <h2>model: <span th:text = "${car1.model}"></span></h2>
@@ -18,7 +19,8 @@
 <h2>cena_oferty: <span th:text = "${car1.price}"></span></h2>
 <h3>zysk: <span th:text = "${profit}"></span></h3>
 <h3>marża: <span th:text = "${margin}"></span></h3>
-
+</div>
+<div style="float: right; text-align: left">
 <h1>edytuj_samochod</h1>
 <h2><span th:text = "${message}"></span></h2>
 <form th:action="@{/edit}" th:object="${editedCar}" method="post">
@@ -104,6 +106,6 @@
 
 
 </form>
-
+</div>
 </body>
 </html>
