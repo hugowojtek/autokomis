@@ -2,16 +2,18 @@
 <html xmlns:th="https://www.thymeleaf.org" xmlns:background-color="http://www.w3.org/1999/xhtml" lang="en">
 <head>
     <meta charset="UTF-8"/>
-    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.1/css/bootstrap.min.css"
-          integrity="sha384-WskhaSGFgHYWDcbwN70/dfYBj47jz9qbsMId/iRN3ewGhXQFZCSftd1LZCfmhktB" crossorigin="anonymous"/>
-    <title>Dodaj_samochod</title>
+    <title>dodaj auto</title>
+    <link rel="stylesheet" href="aaforms.css"/>
 </head>
-<body>
+<body style="background-color:darkgray">
 <!--<body style="background-color: burlywood">-->
 
-<h1>dodaj_samochod</h1>
+<h1>Dodawanie samochodu do bazy</h1>
 <h2><span th:text = "${message}"></span></h2>
+
 <form th:action="@{/cars}" th:object="${addedCar}" method="post">
+    <main>
+        <fieldset >
     <table>
         <tr>
             <td>marka</td>
@@ -72,15 +74,17 @@
         </tr>
 
         <tr>
-            <td colspan="10"> <input type="submit" value="kup_samochod"/> </td>
+            <td colspan="10"> <input type="submit" value="zapisz samochod"/> </td>
 
         </tr>
         <tr>
             <td><a th:href="@{/cars}">dostepne_samochody</a></td>
         </tr>
     </table>
-
+        </fieldset>
+    </main>
 
 </form>
+
 </body>
 </html>

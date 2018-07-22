@@ -1,5 +1,6 @@
 package pl.sda.controller;
 
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.ModelAttribute;
@@ -24,6 +25,7 @@ public class SaleRaportController {
     private CarsService carsService;
     private RaportsService raportsService;
 
+    @Autowired
     public SaleRaportController(CarsService carsService, RaportsService raportsService) {
         this.carsService = carsService;
         this.raportsService = raportsService;

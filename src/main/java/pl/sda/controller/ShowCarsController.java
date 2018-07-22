@@ -1,5 +1,6 @@
 package pl.sda.controller;
 
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.validation.BindingResult;
@@ -24,6 +25,7 @@ public class ShowCarsController {
     private final BuyingContractsRepository buyingContractsRepository;
     private final SellingContractsRepository sellingContractsRepository;
 
+    @Autowired
     public ShowCarsController(CarsService carsService, CarsRepository carsRepository, BuyingContractsRepository buyingContractsRepository, SellingContractsRepository sellingContractsRepository) {
         this.carsService = carsService;
         this.carsRepository = carsRepository;
