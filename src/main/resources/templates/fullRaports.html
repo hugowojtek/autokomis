@@ -38,7 +38,7 @@
 </table>
 <h3>Całkowita wartość zakupu samochodów wynosi: <span th:text = "${value1}"></span></h3>
 <table>
-    <h2>samochody_dostępne</h2>
+    <h2>samochody_dostępne dla obsługi</h2>
 
     <tr>
 
@@ -49,6 +49,7 @@
         <th>rok</th>
         <th>przebieg</th>
         <th>nr_nadwozia</th>
+        <th>widoczność</th>
         <th>cena_oferty</th>
 
     </tr>
@@ -61,6 +62,7 @@
         <td th:text="${car.carYearProduction}"></td>
         <td th:text="${car.carMilage}"></td>
         <td th:text="${car.carNrChassis}"></td>
+        <td th:text="${car.carVisibility}"></td>
         <td th:text="${car.carPrice}"></td>
     </tr>
 </table>

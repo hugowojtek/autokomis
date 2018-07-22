@@ -38,6 +38,7 @@ public class CarsService {
             dtoShowCar.setCarMilage(c.getMilage());
             dtoShowCar.setCarNrChassis(c.getNrChassis());
             dtoShowCar.setCarPrice(c.getPrice());
+            dtoShowCar.setCarVisibility(c.getVisibility());
 
             for (BuyingContracts bc : buyingContracts) {
                 if (c.getId().equals((bc.getDate()))) {
@@ -109,4 +110,13 @@ public class CarsService {
     }
 
 
+    public List<DtoShowCar> showAvailableCars2( List<DtoShowCar> listIn) {
+        List<DtoShowCar> listOut = new ArrayList<>();
+        for (DtoShowCar dtoShowCar:listIn){
+            if (dtoShowCar.isCarVisibility()){
+                listOut.add(dtoShowCar);
+            }
+        }
+        return listOut;
+    }
 }

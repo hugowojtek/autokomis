@@ -94,7 +94,7 @@ public class EditCarsController {
             }
         }
         buyingContracts.setPrice(dtoBuyCar.getBuyingContractsPrice());
-        buyingContracts.setDate(new Date());
+        //buyingContracts.setDate(new Date());//stara data edytowane samochodu zostaje
         buyingContracts.setCars(car);
 
         System.out.println();

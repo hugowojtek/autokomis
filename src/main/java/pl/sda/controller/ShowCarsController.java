@@ -35,8 +35,8 @@ public class ShowCarsController {
     public String getCars(Model model) {
 
         List<DtoShowCar> list = carsService.showAvailableCars();
-
-        model.addAttribute("cars1", list);
+        List<DtoShowCar> list1 = carsService.showAvailableCars2(list);
+        model.addAttribute("cars1", list1);
         return "availableCars";
 
     }
