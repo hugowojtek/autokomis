@@ -61,11 +61,24 @@ public class EditCarsController {
         Long profit = raportsService.CalculateProfit2(car,purchasePrice);
         float margin = raportsService.CalculateMargin(car,purchasePrice);
 
+        //zapisywanie formularza danymi
+        DtoBuyCar dtoBuyCar = new DtoBuyCar();
+        dtoBuyCar.setCarVisibility(car.getVisibility());
+        dtoBuyCar.setCarManufacturer(car.getManufacturer());
+        dtoBuyCar.setCarModel(car.getModel());
+        dtoBuyCar.setCarYearProduction(car.getYearProduction());
+        dtoBuyCar.setCarMilage(car.getMilage());
+        dtoBuyCar.setCarNrChassis(car.getNrChassis());
+        dtoBuyCar.setCarDescription(car.getDescription());
+        dtoBuyCar.setCarPrice(car.getPrice());
+        dtoBuyCar.setBuyingContractsPrice(purchasePrice);
+
+
         model.addAttribute("car1", car);
         model.addAttribute("purchasePrice", purchasePrice);
         model.addAttribute("profit", profit);
         model.addAttribute("margin", margin);
-        model.addAttribute("editedCar",new DtoBuyCar());
+        model.addAttribute("editedCar",dtoBuyCar);
         return "editForm";
     }
 
