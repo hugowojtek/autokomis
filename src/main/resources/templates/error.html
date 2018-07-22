@@ -1,0 +1,14 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" xmlns:th="http://www.thymeleaf.org"
+      xmlns:sec="http://www.thymeleaf.org/thymeleaf-extras-springsecurity3">
+<head>
+    <title>obsługa bledu</title>
+</head>
+<body>
+<h1 th:text="${exception}"></h1>
+<h1> brak uprawnien </h1>
+<p><a th:href="@{/cars}">dostepne_samochody</a></p>
+
+
+</body>
+</html>

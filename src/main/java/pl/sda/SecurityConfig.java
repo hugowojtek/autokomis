@@ -11,7 +11,7 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter {
     @Override
     protected void configure(AuthenticationManagerBuilder auth) throws Exception {
         auth.inMemoryAuthentication()
-                .withUser("admin").password("123").roles("ADMIN").and()
+                .withUser("admin").password("123").roles("ADMIN","SALES").and()
                 .withUser("hugo").password("456").roles("SALES");
     }
 
@@ -20,16 +20,14 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter {
         http.authorizeRequests()
                 .antMatchers("/cars").permitAll()
                // .antMatchers("/login").anonymous()
-                .antMatchers("/cars/*").hasRole("SALES")
-                .antMatchers("/edit").hasRole("SALES")
-                .antMatchers("/raports").hasRole("SALES")
-                .antMatchers("/cars/*").hasRole("ADMIN")
-                .antMatchers("/edit").hasRole("ADMIN")
-                .antMatchers("/raports").hasRole("ADMIN")
+                .antMatchers("/cars/**").hasRole("SALES")
+                .antMatchers("/edit/**").hasRole("SALES")
+                .antMatchers("/raports/**").hasRole("SALES")
                 .antMatchers("/sale/*").hasRole("ADMIN")
                 .antMatchers("/purchase/*").hasRole("ADMIN")
+                .anyRequest().authenticated()
                 .and()
-                .formLogin().loginPage("/login").defaultSuccessUrl("/cars")
-                .and().logout().logoutSuccessUrl("/cars");
+                .formLogin().loginPage("/login").permitAll()//defaultSuccessUrl("/cars")
+                .and().logout().permitAll();//logoutSuccessUrl("/cars");
     }
 }
