@@ -23,6 +23,9 @@ import java.util.List;
 public class EditCarsController {
 
     private Cars carLocal;
+    private Long profitLocal;
+    private float marginLocal;
+    private long purchasePriceLocal;
     private CarsService carsService;
     private RaportsService raportsService;
     private final CarsRepository carsRepository;
@@ -48,21 +51,25 @@ public class EditCarsController {
     public String editCarForm(
             @PathVariable("carId") Long carId, Model model) {
         Cars car = carsRepository.findOne(carId);
-        this.carLocal=car;
+        this.carLocal = car;
         Long purchasePrice = 0L;
         List<BuyingContracts> buyingContracts = (List<BuyingContracts>) buyingContractsRepository.findAll();
         for (BuyingContracts bc : buyingContracts) {
             if (bc.getCars().getId().equals(car.getId())) {
                 purchasePrice = bc.getPrice();
+                purchasePriceLocal = purchasePrice;
                 break;
             }
         }
 
         Long profit = raportsService.CalculateProfit2(car,purchasePrice);
+        profitLocal=profit;
         float margin = raportsService.CalculateMargin(car,purchasePrice);
-
+        marginLocal=margin;
         //zapisywanie formularza danymi
         DtoBuyCar dtoBuyCar = new DtoBuyCar();
+
+        dtoBuyCar.setCarId(car.getId());
         dtoBuyCar.setCarVisibility(car.getVisibility());
         dtoBuyCar.setCarManufacturer(car.getManufacturer());
         dtoBuyCar.setCarModel(car.getModel());
@@ -83,12 +90,39 @@ public class EditCarsController {
     }
 
     @PostMapping
-    public String saveEditedCar(@Valid @ModelAttribute("editedCar") DtoBuyCar dtoBuyCar, Model model) {
+    public String saveEditedCar(@Valid @ModelAttribute("editedCar") DtoBuyCar dtoBuyCar, BindingResult bindingResult, Model model) {
 
-        //Cars car = new Cars();
+        if (bindingResult.hasErrors()){
+            model.addAttribute("car1", carLocal);
+            model.addAttribute("purchasePrice", purchasePriceLocal);
+            model.addAttribute("profit", profitLocal);
+            model.addAttribute("margin", marginLocal);
+            return "editForm";
+        }
+
+        //kontrola cwg nr_chassis
+        List<Cars> cars = (List<Cars>) carsRepository.findAll();//wez wszytskie fury
+        for (Cars c:cars){
+            if (c.getId().equals(carLocal.getId())){
+                cars.remove(c);//uzun ta ktora byla przekazana do edycji
+                break;
+            }
+        }
+
+        for (Cars c:cars) {//szukaj czy inna ma taki sam nr_nadwozia
+            if (c.getNrChassis().equals(dtoBuyCar.getCarNrChassis())) {
+                final String message = "samochod nie moze byc sprzedany do komisu bo juz kiedys byl kupiony";
+                model.addAttribute("message",message);
+                model.addAttribute("car1", carLocal);
+                model.addAttribute("purchasePrice", purchasePriceLocal);
+                model.addAttribute("profit", profitLocal);
+                model.addAttribute("margin", marginLocal);
+                return "editForm";
+            }
+        }
         Long l = dtoBuyCar.getBuyingContractsPrice();
         Cars car = carsRepository.findOne(this.carLocal.getId());
-        //car.setId(this.carLocal.getId());
+
         car.setYearProduction(dtoBuyCar.getCarYearProduction());
         car.setManufacturer(dtoBuyCar.getCarManufacturer());
         car.setModel(dtoBuyCar.getCarModel());

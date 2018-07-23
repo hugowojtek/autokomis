@@ -1,12 +1,18 @@
 package pl.sda.model;
 
 
+import org.hibernate.validator.constraints.Range;
+
 import javax.validation.constraints.*;
 
 public class DtoBuyCar {
 
+
+
+    private Long carId;
+
     @NotNull
-    @Size(min = 1, message = "za mało znaków co najmniej 1 znak")
+    @Size(min = 1, message = "za mało znaków min 1 znak")
     private String carNrChassis;
 
     @NotNull
@@ -28,7 +34,7 @@ public class DtoBuyCar {
     private String carFuel;
 
     @NotNull
-    @Size(min = 1, message = "brak przebiegu co najmniej 1 znak")
+    @Size(min = 1, message = "brak przebiegu min 1 znak")
     private String carMilage;
 
 
@@ -42,9 +48,8 @@ public class DtoBuyCar {
 
 
 
-
     @NotNull
-    @Size(min = 1, message = "brak opisu co najmniej jeden znak")
+    @Size(min = 1, message = "brak opisu min jeden znak")
     private String carDescription;
 
 
@@ -52,18 +57,25 @@ public class DtoBuyCar {
 
     //@NotEmpty
     @NotNull(message = "nie może być zerem i nie tylko")
-    @DecimalMin(value="5000.00", message = "za mała wartość co najmniej 5000zł")
+    @DecimalMin(value="5000.00", message = "za mała wartość min 5000zł")
     private Long carPrice;
 
 //    private Date buyingContractsDate;
 //@NotEmpty
     @NotNull(message = "nie może być zerem i nie tylko")
-    @DecimalMin(value="1.00", message = "za mała wartość co najmniej 1zł")
+    @DecimalMin(value="1.00", message = "za mała wartość min 1zł")
     private Long buyingContractsPrice;
 
-//    @Min(value=0,message = "wartosc z przedzialu <0,1>")
-//    @Max(value=1,message = "wartosc z przedzialu <0,1>")
+    @NotNull(message = "wartosc 0-niewidoczny, 1-widoczny")
     private Boolean carVisibility;
+
+    public Long getCarId() {
+        return carId;
+    }
+
+    public void setCarId(Long carId) {
+        this.carId = carId;
+    }
 
     public Boolean getCarVisibility() {
         return carVisibility;
