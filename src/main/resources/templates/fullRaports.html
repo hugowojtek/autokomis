@@ -2,13 +2,35 @@
 <html xmlns:th="https://www.thymeleaf.org" lang="en">
 <head>
     <meta charset="UTF-8"/>
-    <title>Pełny_raport</title>
+    <title>Pełny raport</title>
 </head>
-<body>
-<h1>pełny_raport</h1>
+<style>
+    table {
+        border-collapse: collapse;
+        width: 100%;
+    }
+
+    th, td {
+        text-align: left;
+        padding: 8px;
+    }
+
+    tr:nth-child(even){background-color: #f2f2f2}
+
+    th {
+        background-color: #FF8050;
+        color: white;
+    }
+</style>
+<body style="background-color:gray">
+<h1 style="text-align: center; color: white">Pełny raport kupionych, dostępnych i sprzedanych samochodów</h1>
+<div align="center">
+    <form style="margin: 0 auto;width: 1200px; background: darkgray;font-size: 20px;
+    max-width: 1200px; min-width: 450px; margin: 40px auto; margin: 40px auto">
+        <fieldset>
 <table>
 
-    <h2>samochody_kupione</h2>
+    <h2>Samochody kupione</h2>
 
     <tr>
 
@@ -36,9 +58,23 @@
         <td th:text="${car.purchaseDate}"></td>
     </tr>
 </table>
-<h3>Całkowita wartość zakupu samochodów wynosi: <span th:text = "${value1}"></span></h3>
-<table>
-    <h2>samochody_dostępne dla obsługi</h2>
+        </fieldset>
+        <fieldset>
+            <table>
+                <tr>
+<td><h3>Całkowita wartość zakupu samochodów wynosi: <span th:text = "${value1}"></span></h3></td>
+                </tr>
+            </table>
+        </fieldset>
+        <br></br>
+        <br></br>
+        <br></br>
+        <br></br>
+        <br></br>
+
+        <fieldset>
+        <table>
+           <h2>Samochody dostępne dla obsługi</h2>
 
     <tr>
 
@@ -66,8 +102,16 @@
         <td th:text="${car.carPrice}"></td>
     </tr>
 </table>
-<table>
-    <h2>samochody_sprzedane</h2>
+            </fieldset>
+        <br></br>
+        <br></br>
+        <br></br>
+        <br></br>
+        <br></br>
+
+        <fieldset>
+        <table>
+    <h2>Samochody sprzedane</h2>
 
     <tr>
 
@@ -101,10 +145,17 @@
 
     </tr>
 </table>
-<h3>Całkowita wartość sprzedaży samochodów wynosi: <span th:text = "${value2}"></span></h3>
-<h3>Całkowita wartość zysku ze sprzedaży samochodów wynosi: <span th:text = "${value3}"></span></h3>
+            </fieldset>
+        <fieldset>
+            <table>
+<h3 style="text-align: left">Całkowita wartość sprzedaży samochodów wynosi: <span th:text = "${value2}"></span></h3>
+<h3 style="text-align: left">Całkowita wartość zysku ze sprzedaży samochodów wynosi: <span th:text = "${value3}"></span></h3>
+            </table>
+        </fieldset>
 <p><a th:href="@{/purchase/raport}">raport _kupna</a></p>
 <p><a th:href="@{/sale/raport}">raport _sprzedazy</a></p>
 <p><a th:href="@{/cars}">dostepne_samochody</a></p>
+    </form>
+    </div>
 </body>
 </html>

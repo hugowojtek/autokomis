@@ -2,10 +2,33 @@
 <html xmlns:th="https://www.thymeleaf.org" lang="en">
 <head>
     <meta charset="UTF-8"/>
-    <tittle>Sprzedane_samochody</tittle>
+    <title>Samochody sprzedane</title>
 </head>
-<body>
-<h1>sprzedane_samochody</h1>
+<style>
+    table {
+        border-collapse: collapse;
+        width: 100%;
+    }
+
+    th, td {
+        text-align: left;
+        padding: 8px;
+    }
+
+    tr:nth-child(even){background-color: #f2f2f2}
+
+    th {
+        background-color: #00A0F0;
+        color: white;
+    }
+</style>
+<body style="background-color:gray">
+
+<h1 style="text-align: center; color: white">Wykaz wszystkich sprzedanych samochodów</h1>
+<div align="center">
+    <form style="margin: 0 auto;width: 900px; background: darkgray;font-size: 20px;
+    max-width: 900px; min-width: 450px; margin: 40px auto; margin: 40px auto">
+        <fieldset>
 <table>
     <tr>
 
@@ -32,13 +55,19 @@
         <td th:text="${car.carPrice}"></td>
         <td th:text="${car.saleDate}"></td>
 
-
-
-
-
-
     </tr>
 </table>
-<a th:href="@{/cars}">dostepne_samochody</a>
+        </fieldset>
+        <fieldset>
+            <table>
+                <tr>
+                    <td><a th:href="@{/cars}">idz na strone dostepne samochody</a></td>
+                </tr>
+            </table>
+        </fieldset>
+
+
+    </form>
+</div>
 </body>
 </html>
