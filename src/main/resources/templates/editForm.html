@@ -106,8 +106,13 @@
             <table>
                 <tr>
                     <td>widoczność</td>
-                    <td><input type="text" th:field="*{carVisibility}"/>
-                        <!--<span th:="${#fields.hasErrors('carVisibility')}" th:errors="*{carVisibility}"/>-->
+                    <!--<td><input type="text" th:field="*{carVisibility}"/>-->
+                        <!--<span th:="${#fields.hasErrors('carVisibility')}" th:errors="*{carVisibility}"/>>-->
+                    <td><select th:field="*{carVisibility}">
+                        <option value="0">niewidoczny</option>
+                        <option value="1">widoczny</option>
+
+                    </select>
                     </td>
 
                 </tr>

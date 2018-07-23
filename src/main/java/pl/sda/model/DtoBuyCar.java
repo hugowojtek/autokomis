@@ -66,7 +66,8 @@ public class DtoBuyCar {
     @DecimalMin(value="1.00", message = "za mała wartość min 1zł")
     private Long buyingContractsPrice;
 
-    @NotNull(message = "wartosc 0-niewidoczny, 1-widoczny")
+//    @NotNull(message = "wartosc 0-niewidoczny, 1-widoczny")
+//    @Range(min=0,max = 1,message = "wartosc od 0 do 1")
     private Boolean carVisibility;
 
     public Long getCarId() {
