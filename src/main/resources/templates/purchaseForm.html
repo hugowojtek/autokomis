@@ -1,35 +1,78 @@
 <!DOCTYPE html>
-<html xmlns:th="https://www.thymeleaf.org" lang="en">
+<html xmlns:th="https://www.thymeleaf.org" xmlns:max-width="http://www.w3.org/1999/xhtml"
+      xmlns:min-width="http://www.w3.org/1999/xhtml" xmlns:margin="http://www.w3.org/1999/xhtml"
+      xmlns:font-size="http://www.w3.org/1999/xhtml" xmlns:background="http://www.w3.org/1999/xhtml" lang="en">
 <head>
     <meta charset="UTF-8"/>
-    <title>formularz do raportu kupna</title>
+    <title>raport kupna</title>
 </head>
-<body>
-<h1>wybierz daty do raportu kupna</h1>
+<body style="background-color:gray">
+<h1 style="text-align: center">Wybierz daty do raportu kupna</h1>
+<form style="margin: 0 auto; width: 500px"  th:action="@{/purchase}" th:object="${purchaseRaport}" method="post">;
+    <div style="background: darkgray; font-size: 18px; max-width: 700px; min-width: 450px; margin: 40px auto; margin: 40px auto">
+        <fieldset>
+            <table>
+                <tr>
+                    <td>data początkowa</td>
+                    <td><input type="text" th:field="*{dateFrom}"/>
+                        <span th:="${#fields.hasErrors('dateFrom')}" th:errors="*{dateFrom}"/>
+                    </td>
+                </tr>
+                <tr>
+                    <td>data końcowa</td>
+                    <td><input type="text" th:field="*{dateTo}"/>
+                        <span th:="${#fields.hasErrors('dateTo')}" th:errors="*{dateTo}"/>
+                    </td>
+                </tr>
+                <tr>
+                    <td colspan="20"> <input type="submit" value="pokaż_raport"/> </td>
+                </tr>
+                <tr>
+                    <td><a th:href="@{/raports}">pełny raport</a></td>
+                </tr>
+            </table>
+        </fieldset>
 
-<form th:action="@{/purchase}" th:object="${purchaseRaport}" method="post">
-    <table>
-        <tr>
-            <td>od</td>
-            <td><input type="text" th:field="*{dateFrom}"/>
-                <span th:="${#fields.hasErrors('dateFrom')}" th:errors="*{dateFrom}"/>
-            </td>
-        </tr>
-        <tr>
-            <td>do</td>
-            <td><input type="text" th:field="*{dateTo}"/>
-                <span th:="${#fields.hasErrors('dateTo')}" th:errors="*{dateTo}"/>
-            </td>
-        </tr>
-        <tr>
-            <td colspan="20"> <input type="submit" value="pokaż_raport"/> </td>
-        </tr>
-        <tr>
-            <td><a th:href="@{/raports}">pełny_raport</a></td>
-        </tr>
-    </table>
-
-
+    </div>
 </form>
 </body>
 </html>
+
+
+
+<!--&lt;!&ndash;&ndash;&gt;-->
+<!--<!DOCTYPE html>-->
+<!--<html xmlns:th="https://www.thymeleaf.org" lang="en">-->
+<!--<head>-->
+    <!--<meta charset="UTF-8"/>-->
+    <!--<title>formularz do raportu kupna</title>-->
+<!--</head>-->
+<!--<body>-->
+<!--<h1>wybierz daty do raportu kupna</h1>-->
+
+<!--<form th:action="@{/purchase}" th:object="${purchaseRaport}" method="post">-->
+    <!--<table>-->
+        <!--<tr>-->
+            <!--<td>od</td>-->
+            <!--<td><input type="text" th:field="*{dateFrom}"/>-->
+                <!--<span th:="${#fields.hasErrors('dateFrom')}" th:errors="*{dateFrom}"/>-->
+            <!--</td>-->
+        <!--</tr>-->
+        <!--<tr>-->
+            <!--<td>do</td>-->
+            <!--<td><input type="text" th:field="*{dateTo}"/>-->
+                <!--<span th:="${#fields.hasErrors('dateTo')}" th:errors="*{dateTo}"/>-->
+            <!--</td>-->
+        <!--</tr>-->
+        <!--<tr>-->
+            <!--<td colspan="20"> <input type="submit" value="pokaż_raport"/> </td>-->
+        <!--</tr>-->
+        <!--<tr>-->
+            <!--<td><a th:href="@{/raports}">pełny_raport</a></td>-->
+        <!--</tr>-->
+    <!--</table>-->
+
+
+<!--</form>-->
+<!--</body>-->
+<!--</html>-->
