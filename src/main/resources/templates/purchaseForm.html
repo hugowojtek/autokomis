@@ -12,11 +12,13 @@
         <tr>
             <td>od</td>
             <td><input type="text" th:field="*{dateFrom}"/>
+                <span th:="${#fields.hasErrors('dateFrom')}" th:errors="*{dateFrom}"/>
             </td>
         </tr>
         <tr>
             <td>do</td>
             <td><input type="text" th:field="*{dateTo}"/>
+                <span th:="${#fields.hasErrors('dateTo')}" th:errors="*{dateTo}"/>
             </td>
         </tr>
         <tr>
