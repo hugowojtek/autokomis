@@ -2,9 +2,13 @@
 <html xmlns:th="https://www.thymeleaf.org" xmlns:max-width="http://www.w3.org/1999/xhtml"
       xmlns:min-width="http://www.w3.org/1999/xhtml" xmlns:margin="http://www.w3.org/1999/xhtml"
       xmlns:font-size="http://www.w3.org/1999/xhtml" xmlns:background="http://www.w3.org/1999/xhtml" lang="en">
+
 <head>
     <meta charset="UTF-8"/>
+    <!--<link href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" rel="stylesheet"/>-->
+    <!--<link href="https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css" rel="stylesheet"/>-->
     <title>raport kupna</title>
+
 </head>
 <body style="background-color:gray">
 <h1 style="text-align: center">Wybierz daty do raportu kupna</h1>
@@ -25,10 +29,11 @@
                     </td>
                 </tr>
                 <tr>
-                    <td colspan="20"> <input type="submit" value="pokaż_raport"/> </td>
+                    <td><input type="submit" value="pokaż_raport"/> </td>
                 </tr>
                 <tr>
-                    <td><a th:href="@{/raports}">pełny raport</a></td>
+                   <td><a th:href="@{/raports}">pełny raport</a></td>
+
                 </tr>
             </table>
         </fieldset>
