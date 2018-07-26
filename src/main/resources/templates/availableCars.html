@@ -2,48 +2,95 @@
 <html xmlns:th="https://www.thymeleaf.org" lang="en">
 <head>
     <meta charset="UTF-8"/>
-    <title>Dostepne_samochody_dla klienta</title>
+    <meta charset="UTF-8">
+    <title>nowy_tytuł</title>
+    <link rel="stylesheet" href="reset200802.css">
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.1/css/bootstrap.min.css"
+          integrity="sha384-WskhaSGFgHYWDcbwN70/dfYBj47jz9qbsMId/iRN3ewGhXQFZCSftd1LZCfmhktB" crossorigin="anonymous">
+    <title>Autokomis oferta</title>
 </head>
-<body>
-<h1>dostepne_samochody_dla klienta</h1>
+<style>
+    .picture {
+        border-width: 2px;
+        border-style: solid;
+        border-color: white;
+    }
+
+
+
+</style>
+
+<!--<h1>dostepne_samochody_dla klienta</h1>-->
+<!--<div style="background-color:darkgray" class="jumbotron jumbotron-fluid">-->
+<body style="background-color:darkgray"/>
+
 <table>
-    <tr>
 
-        <th>lp</th>
-        <th>id</th>
-        <th>marka</th>
-        <th>model</th>
-        <th>rok</th>
-        <th>przebieg</th>
-        <th>cena_oferty</th>
+    <div style="float: left; text-align: left">
+        <!--<form style="margin: 0 auto;width: 650px; background: darkgray;font-size: 20px;-->
+        <!--max-width: 650px; min-width: 450px; margin: 40px auto; margin: 40px auto"/>-->
 
-    </tr>
-    <tr th:each="car, iterationInfo : ${cars1}">
+        <div class="picture">
+            <img class="title" src="auto.jpg" alt="brak autka"></img>
+        </div>
+    </div>
 
-        <td th:text="${iterationInfo.index}+1"></td>
-        <td th:text="${car.id}"></td>
-        <td th:text="${car.carManufacturer}"></td>
-        <td th:text="${car.carModel}"></td>
-        <td th:text="${car.carYearProduction}"></td>
-        <td th:text="${car.carMilage}"></td>
-        <td th:text="${car.carPrice}"></td>
+    <div style="float: right; text-align: center">
+        <!--<form style="margin: 0 auto;width: 150px; background: darkgray;font-size: 20px;-->
+        <!--max-width: 150px; min-width: 150px; margin: 40px auto; margin: 40px auto"/>-->
 
-
-        <td><a th:href="@{/cars/{carId}/desc(carId=${car.id})}">opis</a></td>
-
-
-    </tr>
+        <div class="header">
+             <h1 style=" font-weight:bold
+            ">Autokomis u fachowca</h1>
+            <h3 style="font-style: italic">oferta handlowa</h3>
+        </div>
+    </div>
 </table>
-    <p><a th:href="@{/cars/boughtcars}">kupione_samochody</a></p>
-    <p><a th:href="@{/cars/soldcars}">sprzedane_samochody</a></p>
-    <p><a th:href="@{/cars/new}">dodaj_samochod</a></p>
-    <p><a th:href="@{/raports}">pełny_raport</a></p>
-    <p><a th:href="@{/edit}">edytuj_samochod</a></p>
-    <p><a th:href="@{/login}">logowanie</a></p>
-    <h3 th:inline="text">jesteś zalogowany jako: [[${#httpServletRequest.remoteUser}]]</h3>
-    <form th:action="@{/logout}" method="post">
-    <input type="submit" value="Sign Out"/>
-</form>
 
+
+    <!---->
+    <!--</div>-->
+        <!--<table>-->
+            <!--<tr>-->
+
+                <!--<th>lp</th>-->
+                <!--<th>id</th>-->
+                <!--<th>marka</th>-->
+                <!--<th>model</th>-->
+                <!--<th>rok</th>-->
+                <!--<th>przebieg</th>-->
+                <!--<th>cena_oferty</th>-->
+
+            <!--</tr>-->
+            <!--<tr th:each="car, iterationInfo : ${cars1}">-->
+
+                <!--<td th:text="${iterationInfo.index}+1"></td>-->
+                <!--<td th:text="${car.id}"></td>-->
+                <!--<td th:text="${car.carManufacturer}"></td>-->
+                <!--<td th:text="${car.carModel}"></td>-->
+                <!--<td th:text="${car.carYearProduction}"></td>-->
+                <!--<td th:text="${car.carMilage}"></td>-->
+                <!--<td th:text="${car.carPrice}"></td>-->
+
+
+                <!--<td><a th:href="@{/cars/{carId}/desc(carId=${car.id})}">opis</a></td>-->
+
+
+            <!--</tr>-->
+        <!--</table>-->
+        <!--<p><a th:href="@{/cars/boughtcars}">kupione_samochody</a></p>-->
+        <!--<p><a th:href="@{/cars/soldcars}">sprzedane_samochody</a></p>-->
+        <!--<p><a th:href="@{/cars/new}">dodaj_samochod</a></p>-->
+        <!--<p><a th:href="@{/raports}">pełny_raport</a></p>-->
+        <!--<p><a th:href="@{/edit}">edytuj_samochod</a></p>-->
+        <!--<p><a th:href="@{/login}">logowanie</a></p>-->
+        <!--<h3 th:inline="text">jesteś zalogowany jako: [[${#httpServletRequest.remoteUser}]]</h3>-->
+        <!---->
+        <!--<form th:action="@{/logout}" method="post">-->
+            <!--<input type="submit" value="Sign Out"/>-->
+        <!--</form>-->
+
+</div>
+</div>
 </body>
 </html>
