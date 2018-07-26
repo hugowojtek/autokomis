@@ -28,12 +28,30 @@
         text-align: left;
     }
 
+    table {
+        border-collapse: collapse;
+        width: 100%;
+    }
+
+    th, td {
+        text-align: left;
+        padding: 8px;
+    }
+
+    /*tr:nth-child(even){background-color: #f2f2f2}*/
+    tr:nth-child(even){background-color: #CCCCCC}
+    tr:nth-child(odd){background-color: #E5E5E5}
+    th {
+        /*background-color: #FF8050;*/
+        background-color: #FF854C;
+        color: white;
+    }
 
 </style>
 
 
 <body style="background-color:darkgray">
-
+<fieldset>
     <table>
 
         <td>
@@ -109,11 +127,12 @@
 
         <td>
             <div class="header3">
-                <p><a th:href="@{/cars/boughtcars}">kupione_samochody</a></p>
-                <p><a th:href="@{/cars/soldcars}">sprzedane_samochody</a></p>
-                <p><a th:href="@{/cars/new}">dodaj_samochod</a></p>
-                <p><a th:href="@{/raports}">pełny_raport</a></p>
-                <p><a th:href="@{/edit}">edytuj_samochod</a></p>
+                <p><a th:href="@{/cars/boughtcars}">Kupione_samochody</a></p>
+                <p><a th:href="@{/cars/soldcars}">Sprzedane_samochody</a></p>
+                <p><a th:href="@{/cars/new}">Dodaj_samochod</a></p>
+                <p><a th:href="@{/edit}">Edytuj_samochod</a></p>
+                <p><a th:href="@{/raports}">Pełny_raport</a></p>
+
             </div>
 
         </td>
@@ -121,7 +140,41 @@
 
 
     </table>
+</fieldset>
+
+<fieldset>
+<div style="font-size: larger">
+    <h1 style="text-align: center">Samochody dostępne dla klientów</h1>
+    <table>
+        <tr>
+
+            <th>lp</th>
+            <th>id</th>
+            <th>marka</th>
+            <th>model</th>
+            <th>rok</th>
+            <th>przebieg</th>
+            <th>cena_oferty</th>
+            <th>opis/kup</th>
+
+        </tr>
+        <tr th:each="car, iterationInfo : ${cars1}">
+
+            <td th:text="${iterationInfo.index}+1"></td>
+            <td th:text="${car.id}"></td>
+            <td th:text="${car.carManufacturer}"></td>
+            <td th:text="${car.carModel}"></td>
+            <td th:text="${car.carYearProduction}"></td>
+            <td th:text="${car.carMilage}"></td>
+            <td th:text="${car.carPrice}"></td>
 
 
+            <td><a th:href="@{/cars/{carId}/desc(carId=${car.id})}">opis/kup</a></td>
+
+
+        </tr>
+    </table>
+</div>
+</fieldset>
 </body>
 </html>
