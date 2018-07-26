@@ -8,32 +8,31 @@
 </head>
 <body style="background-color:gray">
 <h1 style="text-align: center; color: white">Wybierz daty do raportu sprzedaży</h1>
-<form style="margin: 0 auto; width: 500px"  th:action="@{/sale}" th:object="${saleRaport}" method="post">
+<form style="margin: 0 auto; width: 500px" th:action="@{/sale}" th:object="${saleRaport}" method="post">
     <div style="background: darkgray; font-size: 18px; max-width: 700px; min-width: 450px; margin: 40px auto; margin: 40px auto">
         <fieldset>
-    <table>
-        <tr>
-            <td>data początkowa</td>
-            <td><input type="text" th:field="*{dateFrom}"/>
-                <span th:="${#fields.hasErrors('dateFrom')}" th:errors="*{dateFrom}"/>
-            </td>
-        </tr>
-        <tr>
-            <td>data końcowa</td>
-            <td><input type="text" th:field="*{dateTo}"/>
-                <span th:="${#fields.hasErrors('dateTo')}" th:errors="*{dateTo}"/>
-            </td>
-        </tr>
-        <tr>
-            <td colspan="20"> <input type="submit" value="pokaż_raport"/> </td>
-        </tr>
-        <tr>
-            <td><a th:href="@{/raports}">pełny raport</a></td>
-        </tr>
-    </table>
+            <table>
+                <tr>
+                    <td>Data początkowa</td>
+                    <td><input type="text" th:field="*{dateFrom}"/>
+                        <span th:="${#fields.hasErrors('dateFrom')}" th:errors="*{dateFrom}"/>
+                    </td>
+                </tr>
+                <tr>
+                    <td>Data końcowa</td>
+                    <td><input type="text" th:field="*{dateTo}"/>
+                        <span th:="${#fields.hasErrors('dateTo')}" th:errors="*{dateTo}"/>
+                    </td>
+                </tr>
+                <tr>
+                    <td><input type="submit" value="Pokaż raport"/></td>
+                </tr>
+                <tr>
+                    <td><a th:href="@{/raports}">Pełny raport</a></td>
+                </tr>
+            </table>
         </fieldset>
-
-</div>
+    </div>
 </form>
 </body>
 </html>

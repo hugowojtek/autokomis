@@ -2,7 +2,7 @@
 <html xmlns:th="https://www.thymeleaf.org" lang="en">
 <head>
     <meta charset="UTF-8"/>
-    <title>Samochody kupione</title>
+    <title>Wszystkie samochody kupione</title>
 
 </head>
 <style>
@@ -30,6 +30,14 @@
 <div align="center">
 <form style="margin: 0 auto;width: 900px; background: darkgray;font-size: 20px;
     max-width: 900px; min-width: 450px; margin: 40px auto; margin: 40px auto">
+    <fieldset>
+        <!--<table>-->
+            <tr>
+                <td><h4 style="text-align: left"><a th:href="@{/cars}">dostepne samochody</a></h4></td>
+            </tr>
+        <!--</table>-->
+    </fieldset>
+
     <fieldset>
     <table>
 
@@ -62,13 +70,7 @@
     </tr>
     </table>
         </fieldset>
-    <fieldset>
-        <table>
-            <tr>
-                <td><a th:href="@{/cars}">idz na strone dostepne samochody</a></td>
-            </tr>
-        </table>
-    </fieldset>
+
 
 
 </form>

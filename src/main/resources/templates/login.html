@@ -2,27 +2,33 @@
 <html xmlns="http://www.w3.org/1999/xhtml" xmlns:th="http://www.thymeleaf.org"
       xmlns:sec="http://www.thymeleaf.org/thymeleaf-extras-springsecurity3">
 <head>
-    <title>logowanie</title>
+    <title>Strona logowania</title>
+    <meta charset="UTF-8"/>
 </head>
-<body>
-<h1>Login</h1>
+<body style="background-color:gray">
+<h1 style="text-align: center; color: white">Logowanie użytkownika</h1>
 
-
-<form th:action="@{/login}" method="post">
-    <table>
-        <tr>
-            <td>Username:</td>
-            <td><input type="text" name="username"/></td>
-        </tr>
-        <tr>
-            <td>Password:</td>
-            <td><input type="password" name="password"/></td>
-        </tr>
-        <tr>
-            <td colspan="2"><input type="submit" value="Login"/></td>
-        </tr>
-    </table>
-    <p><a th:href="@{/cars}">dostepne_samochody</a></p>
+<form style="margin: 0 auto; width: 500px" th:action="@{/login}" method="post">
+    <div style="background: darkgray; font-size: 18px; max-width: 700px; min-width: 450px; margin: 40px auto; margin: 40px auto">
+        <fieldset>
+            <table>
+                <tr>
+                    <td>Użytkownik:</td>
+                    <td><input type="text" name="username"/></td>
+                </tr>
+                <tr>
+                    <td>Hasło:</td>
+                    <td><input type="password" name="password"/></td>
+                </tr>
+                <tr>
+                    <td><input type="submit" value="Zaloguj"/></td>
+                </tr>
+                <tr>
+                    <td><a th:href="@{/cars}">Dostępne_samochody</a></td>
+                </tr>
+            </table>
+        </fieldset>
+    </div>
 </form>
 </body>
 </html>

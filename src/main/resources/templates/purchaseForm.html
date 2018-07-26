@@ -17,22 +17,22 @@
         <fieldset>
             <table>
                 <tr>
-                    <td>data początkowa</td>
+                    <td>Data początkowa</td>
                     <td><input type="text" th:field="*{dateFrom}"/>
                         <span th:="${#fields.hasErrors('dateFrom')}" th:errors="*{dateFrom}"/>
                     </td>
                 </tr>
                 <tr>
-                    <td>data końcowa</td>
+                    <td>Data końcowa</td>
                     <td><input type="text" th:field="*{dateTo}"/>
                         <span th:="${#fields.hasErrors('dateTo')}" th:errors="*{dateTo}"/>
                     </td>
                 </tr>
                 <tr>
-                    <td><input type="submit" value="pokaż_raport"/> </td>
+                    <td><input type="submit" value="Pokaż raport"/> </td>
                 </tr>
                 <tr>
-                   <td><a th:href="@{/raports}">pełny raport</a></td>
+                   <td><a th:href="@{/raports}">Pełny raport</a></td>
 
                 </tr>
             </table>
@@ -44,40 +44,3 @@
 </html>
 
 
-
-<!--&lt;!&ndash;&ndash;&gt;-->
-<!--<!DOCTYPE html>-->
-<!--<html xmlns:th="https://www.thymeleaf.org" lang="en">-->
-<!--<head>-->
-    <!--<meta charset="UTF-8"/>-->
-    <!--<title>formularz do raportu kupna</title>-->
-<!--</head>-->
-<!--<body>-->
-<!--<h1>wybierz daty do raportu kupna</h1>-->
-
-<!--<form th:action="@{/purchase}" th:object="${purchaseRaport}" method="post">-->
-    <!--<table>-->
-        <!--<tr>-->
-            <!--<td>od</td>-->
-            <!--<td><input type="text" th:field="*{dateFrom}"/>-->
-                <!--<span th:="${#fields.hasErrors('dateFrom')}" th:errors="*{dateFrom}"/>-->
-            <!--</td>-->
-        <!--</tr>-->
-        <!--<tr>-->
-            <!--<td>do</td>-->
-            <!--<td><input type="text" th:field="*{dateTo}"/>-->
-                <!--<span th:="${#fields.hasErrors('dateTo')}" th:errors="*{dateTo}"/>-->
-            <!--</td>-->
-        <!--</tr>-->
-        <!--<tr>-->
-            <!--<td colspan="20"> <input type="submit" value="pokaż_raport"/> </td>-->
-        <!--</tr>-->
-        <!--<tr>-->
-            <!--<td><a th:href="@{/raports}">pełny_raport</a></td>-->
-        <!--</tr>-->
-    <!--</table>-->
-
-
-<!--</form>-->
-<!--</body>-->
-<!--</html>-->
