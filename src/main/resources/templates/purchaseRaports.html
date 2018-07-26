@@ -2,15 +2,63 @@
 <html xmlns:th="https://www.thymeleaf.org" lang="en">
 <head>
     <meta charset="UTF-8"/>
-    <tittle>Raport_kupna</tittle>
+    <title>Raport kupna</title>
 </head>
-<body>
+<style>
+    table {
+        border-collapse: collapse;
+        width: 100%;
+    }
 
-<h1>raport_kupna</h1>
-<h3>od dnia: <span th:text = "${date1}"></span></h3>
-<h3>do dnia: <span th:text = "${date2}"></span></h3>
-<h2>Całkowita wartość kupna samochodów wynosi:  <span th:text = "${value}"></span></h2>
-<h1>lista kupionych samochodów w tym czasie</h1>
+    th, td {
+        text-align: left;
+        padding: 8px;
+    }
+
+    /*tr:nth-child(even){background-color: #f2f2f2}*/
+    tr:nth-child(even) {
+        background-color: #CCCCCC
+    }
+
+    tr:nth-child(odd) {
+        background-color: #E5E5E5
+    }
+
+    th {
+        background-color: #4CAF50;
+        color: white;
+    }
+</style>
+<body style="background-color:gray">
+
+<fieldset>
+    <table>
+        <tr>
+            <th>
+                <h1>Raport kupna za okres</h1>
+            </th>
+            <th>
+                <h1>od dnia: <span th:text="${date1}"></span></h1>
+            </th>
+            <th>
+                <h1>do dnia: <span th:text="${date2}"></span></h1>
+            </th>
+            <th>
+                <p><a th:href="@{/raports}">pełny_raport</a></p>
+            </th>
+            <th>
+                <p><a th:href="@{/cars}">dostepne_samochody</a></p>
+            </th>
+        </tr>
+    </table>
+</fieldset>
+
+<fieldset>
+    <h1>Całkowita wartość kupna samochodów wynosi: <span th:text="${value}"></span></h1>
+</fieldset>
+<fieldset>
+    <h2>lista kupionych samochodów w tym czasie</h2>
+</fieldset>
 
 <table>
     <tr>
@@ -42,8 +90,8 @@
     </tr>
 </table>
 
-<p><a th:href="@{/raports}">pełny_raport</a></p>
-<p><a th:href="@{/cars}">dostepne_samochody</a></p>
+<!--<p><a th:href="@{/raports}">pełny_raport</a></p>-->
+<!--<p><a th:href="@{/cars}">dostepne_samochody</a></p>-->
 
 </body>
 </html>
