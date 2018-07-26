@@ -4,13 +4,13 @@
       xmlns:font-size="http://www.w3.org/1999/xhtml" xmlns:background="http://www.w3.org/1999/xhtml" lang="en">
 <head>
     <meta charset="UTF-8"/>
-    <title>dodaj auto</title>
+    <title>Dodaj auto</title>
     <link rel="stylesheet" href="aaforms.css"/>
 </head>
 <body style="background-color:gray">
 <!--<body style="background-color: burlywood">-->
 
-<h1 style="text-align: center">Dodawanie samochodu do bazy</h1>
+<h1 style="text-align: center; color: white">Dodawanie samochodu do bazy</h1>
 <h2 style="text-align: center;color:RED" ><span th:text = "${message}"></span></h2>
 <div align="center">
 <form style="margin: 0 auto;width: 700px"  th:action="@{/cars}" th:object="${addedCar}" method="post">
@@ -20,49 +20,49 @@
         <fieldset>
     <table>
         <tr>
-            <td>marka</td>
+            <td>Marka</td>
             <td><input type="text" th:field="*{carManufacturer}"/>
                 <span th:="${#fields.hasErrors('carManufacturer')}" th:errors="*{carManufacturer}"/>
             </td>
 
         </tr>
         <tr>
-            <td>model</td>
+            <td>Model</td>
             <td><input type="text" th:field="*{carModel}"/>
                 <span th:="${#fields.hasErrors('carModel')}" th:errors="*{carModel}"/>
             </td>
 
         </tr>
         <tr>
-            <td>rok</td>
+            <td>Rok</td>
             <td><input type="text" th:field="*{carYearProduction}"/>
                 <span th:="${#fields.hasErrors('carYearProduction')}" th:errors="*{carYearProduction}"/>
             </td>
         </tr>
 
         <tr>
-            <td>przebieg</td>
+            <td>Przebieg</td>
             <td><input type="text" th:field="*{carMilage}"/>
                 <span th:="${#fields.hasErrors('carMilage')}" th:errors="*{carMilage}"/>
             </td>
         </tr>
 
         <tr>
-            <td>nr_nadwozia</td>
+            <td>Nr nadwozia</td>
             <td><input type="text" th:field="*{carNrChassis}"/>
                 <span th:="${#fields.hasErrors('carNrChassis')}" th:errors="*{carNrChassis}"/>
             </td>
         </tr>
 
         <tr>
-            <td>opis</td>
+            <td>Opis</td>
             <td><input type="text" th:field="*{carDescription}"/>
                 <span th:="${#fields.hasErrors('carDescription')}" th:errors="*{carDescription}"/>
             </td>
         </tr>
 
         <tr>
-            <td>cena zakupu</td>
+            <td>Cena zakupu</td>
             <td><input type="text" th:field="*{buyingContractsPrice}"/>
                 <span th:="${#fields.hasErrors('buyingContractsPrice')}" th:errors="*{buyingContractsPrice}"/>
             </td>
@@ -70,7 +70,7 @@
         </tr>
 
         <tr>
-            <td>cena sprzedaży</td>
+            <td>Cena sprzedaży</td>
             <td><input type="text" th:field="*{carPrice}"/>
                 <span th:="${#fields.hasErrors('carPrice')}" th:errors="*{carPrice}"/>
             </td>
@@ -78,11 +78,11 @@
         </tr>
 
         <tr>
-            <td colspan="10"> <input type="submit" value="zapisz samochod"/> </td>
+            <td colspan="10"> <input type="submit" value="Zapisz samochod"/> </td>
 
         </tr>
         <tr>
-            <td><a th:href="@{/cars}">idz na strone dostepne samochody</a></td>
+            <td><a th:href="@{/cars}">Dostępne_samochody</a></td>
 
         </tr>
 
