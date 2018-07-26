@@ -2,79 +2,79 @@
 <html xmlns:th="https://www.thymeleaf.org" lang="en">
 <head>
     <meta charset="UTF-8"/>
-    <title>edytuj auto</title>
+    <title>Edytuj auto</title>
     <!--<link rel="stylesheet" href="aaforms.css"/>-->
 </head>
 <body style="background-color:gray">
 
 <div style="float: left; text-align: left">
-    <h1 style="text-align: center">Dane samochodu w bazie</h1>
+    <h1 style="text-align: center; color: white">Dane samochodu z bazy</h1>
 
-    <form style="margin: 0 auto;width: 700px; background: darkgray;font-size: 20px;
-    max-width: 700px; min-width: 450px; margin: 40px auto; margin: 40px auto">
+    <form style="margin: 0 auto;width: 650px; background: darkgray;font-size: 20px;
+    max-width: 650px; min-width: 450px; margin: 40px auto; margin: 40px auto">
 
         <fieldset>
             <table>
                 <tr>
-                    <td>widoczność</td>
-                    <td>                    </td>
+                    <td>Widoczność</td>
+                    <td>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</td>
                     <td><span th:text="*{car1.visibility}"></span></td>
 
                 </tr>
                 <tr>
-                    <td>marka</td>
-                    <td>                    </td>
+                    <td>Marka</td>
+                    <td>&#9;&#9;</td>
                     <td><span th:text="${car1.manufacturer}"></span></td>
 
                 </tr>
                 <tr>
-                    <td>model</td>
-                    <td>                    </td>
+                    <td>Model</td>
+                    <td>&#9;&#9;</td>
                     <td><span th:text="${car1.model}"></span></td>
 
                 </tr>
                 <tr>
-                    <td>rok</td>
-                    <td>                    </td>
+                    <td>Rok</td>
+                    <td>&#9;&#9;</td>
                     <td><span th:text="${car1.yearProduction}"></span></td>
 
                 </tr>
                 <tr>
-                    <td>przebieg</td>
-                    <td>                    </td>
+                    <td>Przebieg</td>
+                    <td>&#9;&#9;</td>
                     <td><span th:text="${car1.milage}"></span></td>
                 </tr>
 
                 <tr>
-                    <td>nr_nadwozia</td>
-                    <td>                    </td>
+                    <td>Nr nadwozia</td>
+                    <td>&#9;&#9;</td>
                     <td><span th:text="${car1.nrChassis}"></span></td>
 
                 </tr>
 
                 <tr>
-                    <td>opis</td>
-                    <td>                    </td>
+                    <td>Opis</td>
+                    <td>&#9;&#9;</td>
                     <td><span th:text="${car1.description}"></span></td>
                 </tr>
                 <tr>
-                    <td>cena kupna</td>
-                    <td>                    </td>
+                    <td>Cena zakupu</td>
+                    <td>&#9;&#9;</td>
                     <td><span th:text="${purchasePrice}"></span></td>
                 </tr>
                 <tr>
-                    <td>cena oferty</td>
-                    <td>                    </td>
+                    <td>Cena oferty</td>
+                    <td>&#9;&#9;</td>
                     <td><span th:text="${car1.price}"></span></td>
                 </tr>
                 <tr>
-                    <td>zysk</td>
-                    <td>                    </td>
+                    <td>Zysk</td>
+                    <td>&#9;&#9;</td>
                     <td><span th:text="${profit}"></span></td>
                 </tr>
                 <tr>
-                    <td>marża</td>
-                    <td>                    </td>
+                    <td>Marża</td>
+                    <td>&#9;&#9;</td>
                     <td><span th:text="${margin}"></span></td>
                 </tr>
 
@@ -83,31 +83,19 @@
         </fieldset>
     </form>
 
-    <!--<p>marka: <span th:text=></span></p>-->
-    <!--<p>model: <span th:text=></span>-->
-    <!--<p>rok_produkcji: <span th:text=></span></p>-->
-    <!--<br>marka: <span th:text=></span></br>  -->
-    <!--<br>przebieg: <span th:text = ></span></br>-->
-    <!--<br>nr_nadwozia: <span th:text = ></span></br>-->
-    <!--<br>opis_auta: <span th:text = ></span></br>-->
-    <!--<br>cena_kupna: <span th:text = ></span></br>-->
-    <!--<br>cena_oferty: <span th:text = ></span></br>-->
-    <!--<br>zysk: <span th:text = "${profit}"></span></br>-->
-    <!--<br>marża: <span th:text = "${margin}"></span></br>-->
-
 </div>
 <div style="float: right; text-align: left">
-    <h1>Zmiana danych samochodów w bazie</h1>
-    <h3 style="text-align: left;color:RED"><span th:text="${message}"></span></h3>
-    <form style="margin: 0 auto;width: 700px; background: darkgray;font-size: 18px;
-    max-width: 700px; min-width: 450px; margin: 40px auto; margin: 40px auto"
+    <h1 style="text-align: center; color: white">Zmiana w bazie danych samochodu</h1>
+    <h3 style="text-align: center;color:#FFAD33"><span th:text="${message}"></span></h3>
+    <form style="margin: 0 auto;width: 650px; background: darkgray;font-size: 18px;
+    max-width: 650px; min-width: 450px; margin: 40px auto; margin: 40px auto"
           th:action="@{/edit}" th:object="${editedCar}" method="post">
         <fieldset>
             <table>
                 <tr>
-                    <td>widoczność</td>
+                    <td>Widoczność</td>
                     <!--<td><input type="text" th:field="*{carVisibility}"/>-->
-                        <!--<span th:="${#fields.hasErrors('carVisibility')}" th:errors="*{carVisibility}"/>>-->
+                    <!--<span th:="${#fields.hasErrors('carVisibility')}" th:errors="*{carVisibility}"/>>-->
                     <td><select th:field="*{carVisibility}">
                         <option value="0">niewidoczny</option>
                         <option value="1">widoczny</option>
@@ -117,49 +105,49 @@
 
                 </tr>
                 <tr>
-                    <td>marka</td>
+                    <td>Marka</td>
                     <td><input type="text" th:field="*{carManufacturer}"/>
                         <span th:="${#fields.hasErrors('carManufacturer')}" th:errors="*{carManufacturer}"/>
                     </td>
 
                 </tr>
                 <tr>
-                    <td>model</td>
+                    <td>Model</td>
                     <td><input type="text" th:field="*{carModel}"/>
                         <span th:="${#fields.hasErrors('carModel')}" th:errors="*{carModel}"/>
                     </td>
 
                 </tr>
                 <tr>
-                    <td>rok</td>
+                    <td>Rok</td>
                     <td><input type="text" th:field="*{carYearProduction}"/>
                         <span th:="${#fields.hasErrors('carYearProduction')}" th:errors="*{carYearProduction}"/>
                     </td>
                 </tr>
 
                 <tr>
-                    <td>przebieg</td>
+                    <td>Przebieg</td>
                     <td><input type="text" th:field="*{carMilage}"/>
                         <span th:="${#fields.hasErrors('carMilage')}" th:errors="*{carMilage}"/>
                     </td>
                 </tr>
 
                 <tr>
-                    <td>nr_nadwozia</td>
+                    <td>Nr nadwozia</td>
                     <td><input type="text" th:field="*{carNrChassis}"/>
                         <span th:="${#fields.hasErrors('carNrChassis')}" th:errors="*{carNrChassis}"/>
                     </td>
                 </tr>
 
                 <tr>
-                    <td>opis</td>
+                    <td>Opis</td>
                     <td><input type="text" th:field="*{carDescription}"/>
                         <span th:="${#fields.hasErrors('carDescription')}" th:errors="*{carDescription}"/>
                     </td>
                 </tr>
 
                 <tr>
-                    <td>cena kupna</td>
+                    <td>Cena kupna</td>
                     <td><input type="text" th:field="*{buyingContractsPrice}"/>
                         <span th:="${#fields.hasErrors('buyingContractsPrice')}" th:errors="*{buyingContractsPrice}"/>
                     </td>
@@ -167,7 +155,7 @@
                 </tr>
 
                 <tr>
-                    <td>cena oferty</td>
+                    <td>Cena oferty</td>
                     <td><input type="text" th:field="*{carPrice}"/>
                         <span th:="${#fields.hasErrors('carPrice')}" th:errors="*{carPrice}"/>
                     </td>
@@ -176,11 +164,11 @@
 
 
                 <tr>
-                    <td colspan="10"><input type="submit" value="zapisz_dane"/></td>
+                    <td colspan="10"><input type="submit" value="Zapisz dane"/></td>
 
                 </tr>
                 <tr>
-                    <td><a th:href="@{/cars}">idz na strone dostepne samochody</a></td>
+                    <td><a th:href="@{/cars}">Dostępne samochody</a></td>
                 </tr>
             </table>
         </fieldset>

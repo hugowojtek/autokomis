@@ -111,7 +111,7 @@ public class EditCarsController {
 
         for (Cars c:cars) {//szukaj czy inna ma taki sam nr_nadwozia
             if (c.getNrChassis().equals(dtoBuyCar.getCarNrChassis())) {
-                final String message = "samochod nie moze byc sprzedany do komisu bo juz kiedys byl kupiony";
+                final String message = "samochód nie może być wprowadzony do bazy bo już kiedyś był kupiony";
                 model.addAttribute("message",message);
                 model.addAttribute("car1", carLocal);
                 model.addAttribute("purchasePrice", purchasePriceLocal);

@@ -1,49 +1,80 @@
 <!DOCTYPE html>
-<html xmlns:th="https://www.thymeleaf.org" xmlns:background-color="http://www.w3.org/1999/xhtml" lang="en">
+<html xmlns:th="https://www.thymeleaf.org" lang="en">
 <head>
     <meta charset="UTF-8"/>
-    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.1/css/bootstrap.min.css"
-          integrity="sha384-WskhaSGFgHYWDcbwN70/dfYBj47jz9qbsMId/iRN3ewGhXQFZCSftd1LZCfmhktB" crossorigin="anonymous"/>
-    <title>Zmiana_danych_samochod</title>
+    <title>Zmiana danych samochod</title>
 </head>
-<body>
-<!--<body style="background-color: burlywood">-->
 
-<h1>zmiana_danych_samochod</h1>
-<table>
-    <tr>
+<style>
+    table {
+        border-collapse: collapse;
+        width: 100%;
+    }
 
-        <th>lp</th>
-        <th>id</th>
-        <th>marka</th>
-        <th>model</th>
-        <th>rok</th>
-        <th>przebieg</th>
-        <th>widocznosc</th>
-        <th>cena_oferty</th>
+    th, td {
+        text-align: left;
+        padding: 8px;
+    }
 
-    </tr>
-    <tr th:each="car, iterationInfo : ${cars1}">
+    /*tr:nth-child(even){background-color: #f2f2f2}*/
+    tr:nth-child(even) {
+        background-color: #CCCCCC
+    }
 
-        <td th:text="${iterationInfo.index}+1"></td>
-        <td th:text="${car.id}"></td>
-        <td th:text="${car.carManufacturer}"></td>
-        <td th:text="${car.carModel}"></td>
-        <td th:text="${car.carYearProduction}"></td>
-        <td th:text="${car.carMilage}"></td>
-        <td th:text="${car.carVisibility}"></td>
-        <td th:text="${car.carPrice}"></td>
+    tr:nth-child(odd) {
+        background-color: #E5E5E5
+    }
 
+    th {
+        background-color: #B2AF00;
+        color: white;
+    }
+</style>
+<body style="background-color:gray">
+<h1 style="text-align: center; color: white">Wykaz dostępnych samochodów do edycji</h1>
+<div align="center">
+    <form style="margin: 0 auto;width: 900px; background: darkgray;font-size: 20px;
+    max-width: 900px; min-width: 450px; margin: 40px auto; margin: 40px auto">
+        <fieldset>
+            <!--<table>-->
+            <tr>
+                <td><h4 style="text-align: left"><a th:href="@{/cars}">Dostępne samochody</a></h4></td>
+            </tr>
+            <!--</table>-->
+        </fieldset>
+        <fieldset>
+        <table>
+            <tr>
 
-        <td><a th:href="@{/edit/{carId}/editable(carId=${car.id})}">edytuj</a></td>
+                <th>lp</th>
+                <th>id</th>
+                <th>marka</th>
+                <th>model</th>
+                <th>rok</th>
+                <th>przebieg</th>
+                <th>widocznosc</th>
+                <th>cena_oferty</th>
+                <th>edycja</th>
 
+            </tr>
 
-    </tr>
+            <tr th:each="car, iterationInfo : ${cars1}">
 
+                <td th:text="${iterationInfo.index}+1"></td>
+                <td th:text="${car.id}"></td>
+                <td th:text="${car.carManufacturer}"></td>
+                <td th:text="${car.carModel}"></td>
+                <td th:text="${car.carYearProduction}"></td>
+                <td th:text="${car.carMilage}"></td>
+                <td th:text="${car.carVisibility}"></td>
+                <td th:text="${car.carPrice}"></td>
 
+                <td><a th:href="@{/edit/{carId}/editable(carId=${car.id})}">edytuj</a></td>
 
-</table>
-<p><a th:href="@{/cars}">dostepne_samochody</a></p>
-
+            </tr>
+        </table>
+        </fieldset>
+    </form>
+</div>
 </body>
 </html>

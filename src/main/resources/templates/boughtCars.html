@@ -17,8 +17,13 @@
     }
 
     /*tr:nth-child(even){background-color: #f2f2f2}*/
-    tr:nth-child(even){background-color: #CCCCCC}
-    tr:nth-child(odd){background-color: #E5E5E5}
+    tr:nth-child(even) {
+        background-color: #CCCCCC
+    }
+
+    tr:nth-child(odd) {
+        background-color: #E5E5E5
+    }
 
     th {
         background-color: #4CAF50;
@@ -28,52 +33,48 @@
 <body style="background-color:gray">
 <h1 style="text-align: center; color: white">Wykaz wszystkich kupionych samochodów</h1>
 <div align="center">
-<form style="margin: 0 auto;width: 900px; background: darkgray;font-size: 20px;
+    <form style="margin: 0 auto;width: 900px; background: darkgray;font-size: 20px;
     max-width: 900px; min-width: 450px; margin: 40px auto; margin: 40px auto">
-    <fieldset>
-        <!--<table>-->
+        <fieldset>
+            <!--<table>-->
             <tr>
-                <td><h4 style="text-align: left"><a th:href="@{/cars}">dostepne samochody</a></h4></td>
+                <td><h4 style="text-align: left"><a th:href="@{/cars}">Dostępne samochody</a></h4></td>
             </tr>
-        <!--</table>-->
-    </fieldset>
-
-    <fieldset>
-    <table>
-
-    <tr>
-
-
-        <th>lp</th>
-        <th>id</th>
-        <th>marka</th>
-        <th>model</th>
-        <th>rok</th>
-        <th>przebieg</th>
-        <th>nr_nadwozia</th>
-        <th>cena_zakupu</th>
-        <th>data_godzina_zakupu</th>
-
-    </tr>
-    <tr th:each="car, iterationInfo : ${cars3}">
-
-        <td th:text="${iterationInfo.index}+1"></td>
-        <td th:text="${car.id}"></td>
-        <td th:text="${car.carManufacturer}"></td>
-        <td th:text="${car.carModel}"></td>
-        <td th:text="${car.carYearProduction}"></td>
-        <td th:text="${car.carMilage}"></td>
-        <td th:text="${car.carNrChassis}"></td>
-        <td th:text="${car.carPrice}"></td>
-        <td th:text="${car.purchaseDate}"></td>
-
-    </tr>
-    </table>
+            <!--</table>-->
         </fieldset>
+        <fieldset>
+            <table>
+
+                <tr>
 
 
+                    <th>lp</th>
+                    <th>id</th>
+                    <th>marka</th>
+                    <th>model</th>
+                    <th>rok</th>
+                    <th>przebieg</th>
+                    <th>nr_nadwozia</th>
+                    <th>cena_zakupu</th>
+                    <th>data_godzina_zakupu</th>
 
-</form>
+                </tr>
+                <tr th:each="car, iterationInfo : ${cars3}">
+
+                    <td th:text="${iterationInfo.index}+1"></td>
+                    <td th:text="${car.id}"></td>
+                    <td th:text="${car.carManufacturer}"></td>
+                    <td th:text="${car.carModel}"></td>
+                    <td th:text="${car.carYearProduction}"></td>
+                    <td th:text="${car.carMilage}"></td>
+                    <td th:text="${car.carNrChassis}"></td>
+                    <td th:text="${car.carPrice}"></td>
+                    <td th:text="${car.purchaseDate}"></td>
+
+                </tr>
+            </table>
+        </fieldset>
+    </form>
 </div>
 </body>
 </html>
