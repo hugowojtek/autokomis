@@ -15,6 +15,7 @@ import javax.validation.Valid;
 import java.util.ArrayList;
 import java.util.Date;
 import java.util.List;
+import java.util.Random;
 
 @Controller
 @RequestMapping("/cars")
@@ -49,6 +50,12 @@ public class ShowCarsController {
         Cars car = carsRepository.findOne(carId);
 //        String description = car.getDescription();
         model.addAttribute("car1", car);
+        Random random = new Random();
+        int i = random.nextInt(6);
+        Object object = new Object();
+
+        model.addAttribute("obrazek",i) ;
+
         return "description";
     }
 
