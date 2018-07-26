@@ -15,10 +15,12 @@
         padding: 8px;
     }
 
-    tr:nth-child(even){background-color: #f2f2f2}
-
+    /*tr:nth-child(even){background-color: #f2f2f2}*/
+    tr:nth-child(even){background-color: #CCCCCC}
+    tr:nth-child(odd){background-color: #E5E5E5}
     th {
-        background-color: #FF8050;
+        /*background-color: #FF8050;*/
+        background-color: #FFA700;
         color: white;
     }
 </style>
@@ -27,6 +29,27 @@
 <div align="center">
     <form style="margin: 0 auto;width: 1200px; background: darkgray;font-size: 20px;
     max-width: 1200px; min-width: 450px; margin: 40px auto; margin: 40px auto">
+        <fieldset>
+
+            <table>
+                <tr>
+                    <th>
+                    <a th:href="@{/purchase/raport}">raport _kupna</a>
+                    </th>
+                    <th>
+                    <a th:href="@{/sale/raport}">raport _sprzedazy</a>
+                    </th>
+                    <th>
+                    <a th:href="@{/cars}">dostepne_samochody</a>
+                    </th>
+                </tr>
+            </table>
+        </fieldset>
+
+
+            <!--<p><a th:href="@{/purchase/raport}">raport _kupna</a></p>-->
+            <!--<p><a th:href="@{/sale/raport}">raport _sprzedazy</a></p>-->
+            <!--<p><a th:href="@{/cars}">dostepne_samochody</a></p>-->
         <fieldset>
 <table>
 
@@ -62,7 +85,7 @@
         <fieldset>
             <table>
                 <tr>
-<td><h3>Całkowita wartość zakupu samochodów wynosi: <span th:text = "${value1}"></span></h3></td>
+                    <h3 style="text-align: left">Całkowita wartość zakupu samochodów wynosi: <span th:text = "${value1}"></span></h3>
                 </tr>
             </table>
         </fieldset>
@@ -152,9 +175,22 @@
 <h3 style="text-align: left">Całkowita wartość zysku ze sprzedaży samochodów wynosi: <span th:text = "${value3}"></span></h3>
             </table>
         </fieldset>
-<p><a th:href="@{/purchase/raport}">raport _kupna</a></p>
-<p><a th:href="@{/sale/raport}">raport _sprzedazy</a></p>
-<p><a th:href="@{/cars}">dostepne_samochody</a></p>
+        <fieldset>
+
+        <table>
+            <tr>
+                <th>
+                    <a th:href="@{/purchase/raport}">raport _kupna</a>
+                </th>
+                <th>
+                    <a th:href="@{/sale/raport}">raport _sprzedazy</a>
+                </th>
+                <th>
+                    <a th:href="@{/cars}">dostepne_samochody</a>
+                </th>
+            </tr>
+        </table>
+    </fieldset>
     </form>
     </div>
 </body>
