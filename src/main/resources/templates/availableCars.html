@@ -4,7 +4,7 @@
     <meta charset="UTF-8"/>
     <link rel="stylesheet" href="aaareset200802.css"/>
     <!--<link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.1/css/bootstrap.min.css"-->
-          <!--integrity="sha384-WskhaSGFgHYWDcbwN70/dfYBj47jz9qbsMId/iRN3ewGhXQFZCSftd1LZCfmhktB" crossorigin="anonymous"/>-->
+    <!--integrity="sha384-WskhaSGFgHYWDcbwN70/dfYBj47jz9qbsMId/iRN3ewGhXQFZCSftd1LZCfmhktB" crossorigin="anonymous"/>-->
     <title>Autokomis oferta</title>
 </head>
 <style>
@@ -14,15 +14,19 @@
         border-color: dimgray;
     }
 
-    .header1{
+    .header1 {
         text-align: center;
     }
 
-    .header2{
+    .header2 {
         text-align: center;
     }
 
-
+    .header3 {
+        font-size: larger;
+        font-weight: bold;
+        text-align: left;
+    }
 
 
 </style>
@@ -30,32 +34,58 @@
 <!--<h1>dostepne_samochody_dla klienta</h1>-->
 <!--<div style="background-color:darkgray" class="jumbotron jumbotron-fluid">-->
 <body style="background-color:darkgray">
-<fieldset>
-<table>
+<!--<fieldset>-->
+    <table>
 
-    <tr>
-    <!--<div style="float: left; text-align: left">-->
-        <!--<form style="margin: 50px;width: 650px; background: darkgray;font-size: 20px;-->
-        <!--max-width: 650px; min-width: 450px; margin: 40px auto; margin: 40px auto"/>-->
-    <td>
-        <div class="picture1">
-            <!--<img class="title" src="http://localhost:8080/images/auto4.jpg" alt="brak autka"></img>-->
-            <img src="/images/auto3.jpg" alt="brak autka"></img>
+        <td>
+            <div class="header3">
+
+        <!--<tr>-->
+            <p><h2 th:inline="text">Jesteś zalogowany jako:</h2></p>
+        <!--</tr>-->
+        <!--<tr>-->
+            <p><h1 th:inline="text">[[${#httpServletRequest.remoteUser}]]</h1></p>
+        <!--</tr>-->
+        <!--<tr>-->
+
+            <p>
+                <h2><a th:href="@{/login}">Logowanie</a></h2>
+            </p>
+        <!--</tr>-->
+        <!--<tr>-->
+            <p>
+                <form th:action="@{/logout}" method="post">
+                    <input style="text-align: center" type="submit" value="Wyloguj"/>
+                </form>
+            </p>
+
+        <!--</tr>-->
+
         </div>
-    <!--</div>-->
-    </td>
+        </td>
 
 
-    <!--<div style="float: right; text-align: center">-->
+        <td>
+            <div class="picture1">
+                <!--<img class="title" src="http://localhost:8080/images/auto4.jpg" alt="brak autka"></img>-->
+                <img src="/images/auto3.jpg" alt="brak autka"></img>
+            </div>
+            <!--</div>-->
+        </td>
+
+
+        <!--<div style="float: right; text-align: center">-->
         <!--<form style="margin: 0 auto;width: 150px; background: darkgray;font-size: 20px;-->
         <!--max-width: 150px; min-width: 150px; margin: 40px auto; margin: 40px auto"/>-->
+
+
         <td>
-        <div class="header1">
-            <h1 style="font-weight: bold; font-style: normal">Autokomis</h1>
-            <h1 style="font-weight: bold; font-style: italic">internetowy</h1>
-            <h3 style="font-style:italic;">oferta handlowa</h3>
-        </div>
-    <!--</div>-->
+            <div class="header1">
+                <h1 style="font-weight: bold; font-style: normal">Autokomis</h1>
+                <h1 style="font-weight: bold; font-style: italic">internetowy</h1>
+                <h2 style="font-style:italic;">oferta handlowa</h2>
+            </div>
+            <!--</div>-->
         </td>
 
         <td>
@@ -68,10 +98,10 @@
 
         <td>
             <div class="header2">
-                <h3>Dane kontaktowe</h3>
-                <h3>ul.Niejaka 13</h3>
-                <h3>40-881 Katowice</h3>
-                <h3><a href="mailto:hugowojtek@o2.pl">email</a></h3>
+                <h2>Dane kontaktowe</h2>
+                <h2>ul.Niejaka 13</h2>
+                <h2>40-881 Katowice</h2>
+                <h2><a href="mailto:hugowojtek@o2.pl">email</a></h2>
             </div>
             <!--</div>-->
         </td>
@@ -96,53 +126,9 @@
         </td>
 
 
-    </tr>
-</table>
-    </fieldset>
 
-
-    <!---->
-    <!--</div>-->
-        <!--<table>-->
-            <!--<tr>-->
-
-                <!--<th>lp</th>-->
-                <!--<th>id</th>-->
-                <!--<th>marka</th>-->
-                <!--<th>model</th>-->
-                <!--<th>rok</th>-->
-                <!--<th>przebieg</th>-->
-                <!--<th>cena_oferty</th>-->
-
-            <!--</tr>-->
-            <!--<tr th:each="car, iterationInfo : ${cars1}">-->
-
-                <!--<td th:text="${iterationInfo.index}+1"></td>-->
-                <!--<td th:text="${car.id}"></td>-->
-                <!--<td th:text="${car.carManufacturer}"></td>-->
-                <!--<td th:text="${car.carModel}"></td>-->
-                <!--<td th:text="${car.carYearProduction}"></td>-->
-                <!--<td th:text="${car.carMilage}"></td>-->
-                <!--<td th:text="${car.carPrice}"></td>-->
-
-
-                <!--<td><a th:href="@{/cars/{carId}/desc(carId=${car.id})}">opis</a></td>-->
-
-
-            <!--</tr>-->
-        <!--</table>-->
-        <!--<p><a th:href="@{/cars/boughtcars}">kupione_samochody</a></p>-->
-        <!--<p><a th:href="@{/cars/soldcars}">sprzedane_samochody</a></p>-->
-        <!--<p><a th:href="@{/cars/new}">dodaj_samochod</a></p>-->
-        <!--<p><a th:href="@{/raports}">pełny_raport</a></p>-->
-        <!--<p><a th:href="@{/edit}">edytuj_samochod</a></p>-->
-        <!--<p><a th:href="@{/login}">logowanie</a></p>-->
-        <!--<h3 th:inline="text">jesteś zalogowany jako: [[${#httpServletRequest.remoteUser}]]</h3>-->
-        <!---->
-        <!--<form th:action="@{/logout}" method="post">-->
-            <!--<input type="submit" value="Sign Out"/>-->
-        <!--</form>-->
-
+    </table>
+<!--</fieldset>-->
 
 </body>
 </html>
