@@ -2,7 +2,7 @@
 <html xmlns:th="https://www.thymeleaf.org" lang="en">
 <head>
     <meta charset="UTF-8"/>
-    <title>Raport kupna</title>
+    <title>Raport kupna tabela</title>
 </head>
 <style>
     table {
@@ -44,20 +44,20 @@
                 <h1>do dnia: <span th:text="${date2}"></span></h1>
             </th>
             <th>
-                <p><a th:href="@{/raports}">pełny_raport</a></p>
+                <h3><a th:href="@{/raports}">pełny_raport</a></h3>
             </th>
             <th>
-                <p><a th:href="@{/cars}">dostepne_samochody</a></p>
+                <h3><a th:href="@{/cars}">dostepne_samochody</a></h3>
             </th>
         </tr>
     </table>
 </fieldset>
 
 <fieldset>
-    <h1>Całkowita wartość kupna samochodów wynosi: <span th:text="${value}"></span></h1>
+    <h1>Całkowita wartość kupna samochodów w tym okresie wynosi: <span th:text="${value}"></span></h1>
 </fieldset>
 <fieldset>
-    <h2>lista kupionych samochodów w tym czasie</h2>
+    <h2>Lista kupionych samochodów w tym okresie</h2>
 </fieldset>
 
 <table>

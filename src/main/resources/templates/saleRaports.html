@@ -2,16 +2,70 @@
 <html xmlns:th="https://www.thymeleaf.org" lang="en">
 <head>
     <meta charset="UTF-8"/>
-    <tittle>Raport_sprzedaży</tittle>
+    <title>Raport sprzedaży tabela</title>
 </head>
-<body>
+<style>
+    table {
+        border-collapse: collapse;
+        width: 100%;
+    }
 
-<h1>raport_sprzedaży</h1>
-<h3>od dnia: <span th:text = "${date1}"></span></h3>
-<h3>do dnia: <span th:text = "${date2}"></span></h3>
-<h2>Całkowita wartość sprzedaży samochodów wynosi:  <span th:text = "${value}"></span></h2>
-<h3>Całkowita wartość zysku ze sprzedaży samochodów wynosi: <span th:text = "${value2}"></span></h3>
-<h1>lista sprzedanych samochodów w tym czasie</h1>
+    th, td {
+        text-align: left;
+        padding: 8px;
+    }
+
+    /*tr:nth-child(even){background-color: #f2f2f2}*/
+    tr:nth-child(even) {
+        background-color: #CCCCCC
+    }
+
+    tr:nth-child(odd) {
+        background-color: #E5E5E5
+    }
+
+    th {
+        background-color: #00A0F0;
+        color: white;
+    }
+</style>
+<body style="background-color:gray">
+
+<fieldset>
+    <table>
+        <tr>
+            <th>
+                <h1>Raport sprzedaży za okres</h1>
+            </th>
+            <th>
+                <h1>od dnia: <span th:text="${date1}"></span></h1>
+            </th>
+            <th>
+                <h1>do dnia: <span th:text="${date2}"></span></h1>
+            </th>
+            <th>
+                <h3><a th:href="@{/raports}">pełny_raport</a></h3>
+            </th>
+            <th>
+                <h3><a th:href="@{/cars}">dostepne_samochody</a></h3>
+            </th>
+        </tr>
+    </table>
+</fieldset>
+
+<fieldset>
+    <h1>Całkowita wartość sprzedaży samochodów w tym okresie wynosi: <span th:text="${value}"></span></h1>
+</fieldset>
+<fieldset>
+    <h1>Całkowita wartość zysku ze sprzedaży samochodów wynosi: <span th:text="${value2}"></span></h1>
+</fieldset>
+<fieldset>
+    <h2>Lista sprzedanych samochodów w tym okresie</h2>
+</fieldset>
+
+<!--<h2>Całkowita wartość sprzedaży samochodów wynosi:  <span th:text = "${value}"></span></h2>-->
+<!--<h3>Całkowita wartość zysku ze sprzedaży samochodów wynosi: <span th:text = "${value2}"></span></h3>-->
+<!--<h1>lista sprzedanych samochodów w tym czasie</h1>-->
 
 <table>
     <tr>
@@ -47,9 +101,8 @@
     </tr>
 </table>
 
-<p><a th:href="@{/raports}">pełny_raport</a></p>
-<p><a th:href="@{/cars}">dostepne_samochody</a></p>
-
+<!--<p><a th:href="@{/raports}">pełny_raport</a></p>-->
+<!--<p><a th:href="@{/cars}">dostepne_samochody</a></p>-->
 
 
 </body>
