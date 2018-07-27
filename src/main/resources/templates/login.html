@@ -1,9 +1,10 @@
 <!DOCTYPE html>
-<html xmlns="http://www.w3.org/1999/xhtml" xmlns:th="http://www.thymeleaf.org"
-      xmlns:sec="http://www.thymeleaf.org/thymeleaf-extras-springsecurity3">
+<html xmlns:th="https://www.thymeleaf.org" lang="en">
+
 <head>
-    <title>Strona logowania</title>
     <meta charset="UTF-8"/>
+    <title>Strona logowania</title>
+
 </head>
 <body style="background-color:gray">
 <h1 style="text-align: center; color: white">Logowanie użytkownika</h1>
@@ -21,10 +22,15 @@
                     <td><input type="password" name="password"/></td>
                 </tr>
                 <tr>
-                    <td><input type="submit" value="Zaloguj"/></td>
+                    <td>
+                    <form th:action="@{/login}" method="post">
+                    <input type="submit" value="Zaloguj"/>
+                    </form>
+                    </td>
                 </tr>
                 <tr>
                     <td><a th:href="@{/cars}">Dostępne_samochody</a></td>
+
                 </tr>
             </table>
         </fieldset>
