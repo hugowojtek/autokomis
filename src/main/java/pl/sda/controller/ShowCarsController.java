@@ -53,8 +53,9 @@ public class ShowCarsController {
         Random random = new Random();
         int i = random.nextInt(6);
         Object object = new Object();
+        String image = "/images/auto4.jpg";
 
-        model.addAttribute("obrazek",i) ;
+        model.addAttribute("picture",image) ;
 
         return "description";
     }
