@@ -17,6 +17,7 @@ public class LoginController {
 
     @PostMapping
     public String gocars() {
+//        return "redirect:/cars";
         return "availableCars";
     }
 }
