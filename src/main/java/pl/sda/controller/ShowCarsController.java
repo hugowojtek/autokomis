@@ -21,6 +21,12 @@ import java.util.Random;
 @RequestMapping("/cars")
 public class ShowCarsController {
 
+    private final static String pictures[]={
+            "/images/auto2.jpg","/images/auto3.jpg",
+            "/images/auto10.jpg","/images/auto11.jpg","/images/auto12.jpg","/images/auto13.jpg","/images/auto14.jpg",
+            "/images/auto15.jpg","/images/auto16.jpg","/images/auto17.jpg","/images/auto18.jpg","/images/auto19.jpg",
+            "/images/auto20.jpg","/images/auto21.jpg","/images/auto22.jpg","/images/auto23.jpg","/images/auto24.jpg",
+    };
     private CarsService carsService;
     private final CarsRepository carsRepository;
     private final BuyingContractsRepository buyingContractsRepository;
@@ -51,9 +57,10 @@ public class ShowCarsController {
 //        String description = car.getDescription();
         model.addAttribute("car1", car);
         Random random = new Random();
-        int i = random.nextInt(6);
-        Object object = new Object();
-        String image = "/images/auto4.jpg";
+        int i = random.nextInt(16);
+
+
+        String image = this.pictures[i];//"/images/auto4.jpg";
 
         model.addAttribute("picture",image) ;
 
