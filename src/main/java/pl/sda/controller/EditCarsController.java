@@ -81,6 +81,7 @@ public class EditCarsController {
         dtoBuyCar.setBuyingContractsPrice(purchasePrice);
 
 
+
         model.addAttribute("car1", car);
         model.addAttribute("purchasePrice", purchasePrice);
         model.addAttribute("profit", profit);
