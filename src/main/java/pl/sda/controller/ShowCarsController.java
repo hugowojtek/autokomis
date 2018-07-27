@@ -59,54 +59,6 @@ public class ShowCarsController {
         return "description";
     }
 
-    @RequestMapping("/new")
-//    generuje strone z pustym cars
-    public String addCarForm(Model model) {
-        model.addAttribute("addedCar", new DtoBuyCar());
-        return "addCarForm";
-
-    }
-
-    @PostMapping
-    //zapisze do bazy i idzie na nowa strone
-    public String saveNewCar(@Valid @ModelAttribute("addedCar") DtoBuyCar dtoBuyCar, BindingResult bindingResult, Model model) {
-
-        if (bindingResult.hasErrors()){
-            return "addCarForm";
-        }
-
-        List<Cars> cars = (List<Cars>) carsRepository.findAll();
-        for (Cars c:cars) {
-            if (c.getNrChassis().equals(dtoBuyCar.getCarNrChassis())) {
-               final String message = "samochód nie może być wprowadzony do bazy bo już kiedyś był kupiony";
-               model.addAttribute("message",message);
-               return "addCarForm";
-            }
-        }
-
-        Cars car = new Cars();
-        BuyingContracts buyingContracts = new BuyingContracts();
-
-
-        car.setYearProduction(dtoBuyCar.getCarYearProduction());
-        car.setManufacturer(dtoBuyCar.getCarManufacturer());
-        car.setModel(dtoBuyCar.getCarModel());
-        car.setMilage(dtoBuyCar.getCarMilage());
-        car.setDescription(dtoBuyCar.getCarDescription());
-        car.setPrice(dtoBuyCar.getCarPrice());
-        car.setNrChassis(dtoBuyCar.getCarNrChassis());
-        car.setVisibility(true);//każdy kupiony samochód widoczny
-
-        buyingContracts.setPrice(dtoBuyCar.getBuyingContractsPrice());
-        buyingContracts.setDate(new Date());
-        buyingContracts.setCars(car);
-
-        carsRepository.save(car);
-        buyingContractsRepository.save(buyingContracts);
-
-        return "redirect:/cars";
-    }
-
     @RequestMapping("/{carId}/buy")
     public String buyCar(
             @PathVariable("carId") Long id, Model model) {
@@ -121,23 +73,6 @@ public class ShowCarsController {
         sellingContractsRepository.save(sellingContracts);
 
         return "redirect:/cars";
-
-    }
-
-    @RequestMapping("/soldcars")
-    public String soldCars(Model model){
-
-        List<DtoShowCar> list = carsService.showSoldCars();
-        model.addAttribute("cars2",list);
-        return "soldCars";
-    }
-
-    @RequestMapping("/boughtcars")
-    public String boughtCars(Model model){
-        List<DtoShowCar> list = carsService.showBoughtCars();
-        model.addAttribute("cars3",list);
-        return "boughtCars";
-
 
     }
 }
