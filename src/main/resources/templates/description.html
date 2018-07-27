@@ -4,82 +4,93 @@
     <meta charset="UTF-8"/>
     <title>Title</title>
 </head>
+
 <body style="background-color:gray">
 <h1 style="text-align: center; color: white">Dane samochodu z bazy</h1>
 <!--<fieldset>-->
 <form style="margin: 0 auto;width: 1200px; background: darkgray;font-size: xx-large;
     max-width: 1200px; min-width: 600px; margin: 40px auto; margin: 40px auto">
-<table>
+    <table>
 
-    <tr>
+        <tr>
 
             <td>
                 <a style="text-align: left" th:href="@{/cars}">Dostępne samochody</a>
             </td>
 
 
-    </tr>
+        </tr>
+        <tr>
+            <td>
 
-    <tr>
-        <td>
-            <!--<fieldset>-->
-            <table>
-                <tr>
-                    <td>Marka</td>
-                    <td>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</td>
-                    <td><span th:text="${car1.manufacturer}"></span></td>
-                </tr>
-                <tr>
-                    <td>Model</td>
-                    <td>&#9;&#9;</td>
-                    <td><span th:text="${car1.model}"></span></td>
+            </td>
+        </tr>
 
-                </tr>
-                <tr>
-                    <td>Rok</td>
-                    <td>&#9;&#9;</td>
-                    <td><span th:text="${car1.yearProduction}"></span></td>
-                </tr>
-                <tr>
-                    <td>Przebieg</td>
-                    <td>&#9;&#9;</td>
-                    <td><span th:text="${car1.milage}"></span></td>
-                </tr>
-                <tr>
-                    <td>Nr nadwozia</td>
-                    <td>&#9;&#9;</td>
-                    <td><span th:text="${car1.nrChassis}"></span></td>
-                </tr>
-                <tr>
-                    <td>Opis</td>
-                    <td>&#9;&#9;</td>
-                    <td><span th:text="${car1.description}"></span></td>
-                </tr>
-                <tr>
-                    <td>Cena oferty</td>
-                    <td>&#9;&#9;</td>
-                    <td><span th:text="${car1.price}"></span></td>
-                </tr>
-            </table>
-            <!--</fieldset>-->
-        </td>
-        <td>
-            <table>
-                <tr>
-                    <img style="align: center" th:attr="src=@{${picture}}" alt="brak autka"/>
-                    <!--<img src="/images/auto3.jpg" alt="brak autka"/>-->
-                </tr>
-            </table>
+        <tr>
+            <td>
+                <!--<fieldset>-->
+                <table width="100%">
+                    <tr>
+                        <td>Marka</td>
+                        <td>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</td>
+                        <td><span th:text="${car1.manufacturer}"></span></td>
+                    </tr>
+                    <tr>
+                        <td>Model</td>
+                        <td>&#9;&#9;</td>
+                        <td><span th:text="${car1.model}"></span></td>
 
-        </td>
-    </tr>
-    <tr>
-        <td>
-        <a style="text-align: right" th:href="@{/cars/{carId}/buy(carId=${car1.id})}">Kup to auto</a>
-        </td>
-    </tr>
-</table>
-<!--</fieldset>-->
+                    </tr>
+                    <tr>
+                        <td>Rok</td>
+                        <td>&#9;&#9;</td>
+                        <td><span th:text="${car1.yearProduction}"></span></td>
+                    </tr>
+                    <tr>
+                        <td>Przebieg</td>
+                        <td>&#9;&#9;</td>
+                        <td><span th:text="${car1.milage}"></span></td>
+                    </tr>
+                    <tr>
+                        <td>Nr nadwozia</td>
+                        <td>&#9;&#9;</td>
+                        <td><span th:text="${car1.nrChassis}"></span></td>
+                    </tr>
+                    <tr>
+                        <td>Opis</td>
+                        <td>&#9;&#9;</td>
+                        <td><span th:text="${car1.description}"></span></td>
+                    </tr>
+                    <tr>
+                        <td>Cena oferty</td>
+                        <td>&#9;&#9;</td>
+                        <td><span th:text="${car1.price}"></span></td>
+                    </tr>
+                </table>
+                <!--</fieldset>-->
+            </td>
+
+            <td>
+                <table>
+                    <tr>
+                        <td style="position: relative;left: 300px;bottom: 30px">
+                            <img th:attr="src=@{${picture}}" alt="brak autka"/>
+                            <!--<img src="/images/auto3.jpg" alt="brak autka"/>-->
+
+                        </td>
+                    </tr>
+                </table>
+
+            </td>
+        </tr>
+
+        <tr>
+            <td style="position: relative; left: 1040px">
+                <a th:href="@{/cars/{carId}/buy(carId=${car1.id})}">Kup to auto</a>
+            </td>
+        </tr>
+    </table>
+    <!--</fieldset>-->
 </form>
 </body>
 </html>
