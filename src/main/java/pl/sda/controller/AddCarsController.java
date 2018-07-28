@@ -78,7 +78,7 @@ public class AddCarsController {
         car.setDescription(dtoBuyCar.getCarDescription());
         car.setPrice(dtoBuyCar.getCarPrice());
         car.setNrChassis(dtoBuyCar.getCarNrChassis());
-        car.setVisibility(true);//każdy kupiony samochód widoczny
+        car.setVisibility(false);//każdy kupiony samochód niewidoczny
 
         buyingContracts.setPrice(dtoBuyCar.getBuyingContractsPrice());
         buyingContracts.setDate(new Date());
