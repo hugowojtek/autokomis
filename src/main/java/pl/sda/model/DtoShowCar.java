@@ -37,15 +37,7 @@ public class DtoShowCar {
 
     private Long carPrice;
 
-    public boolean isCarVisibility() {
-        return carVisibility;
-    }
-
-    public void setCarVisibility(boolean carVisibility) {
-        this.carVisibility = carVisibility;
-    }
-
-    private boolean carVisibility;
+    private String carVisibility;
 
     private Float margin;
 
@@ -58,6 +50,14 @@ public class DtoShowCar {
 
     //    private Long buyingContractsPrice;
 
+
+    public String getCarVisibility() {
+        return carVisibility;
+    }
+
+    public void setCarVisibility(String carVisibility) {
+        this.carVisibility = carVisibility;
+    }
 
     public Date getSaleDate() {
         return saleDate;

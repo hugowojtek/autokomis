@@ -81,7 +81,11 @@ public class EditCarsController {
         dtoBuyCar.setBuyingContractsPrice(purchasePrice);
 
 
+        String visibility;
+        if (dtoBuyCar.getCarVisibility()) visibility="widoczny";
+        else visibility="niewidoczy";
 
+        model.addAttribute("visibility",visibility);
         model.addAttribute("car1", car);
         model.addAttribute("purchasePrice", purchasePrice);
         model.addAttribute("profit", profit);
