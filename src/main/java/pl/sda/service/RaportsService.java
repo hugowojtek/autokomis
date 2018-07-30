@@ -9,6 +9,9 @@ import pl.sda.model.Cars;
 import pl.sda.model.DtoShowCar;
 import pl.sda.model.SellingContracts;
 
+import java.math.BigDecimal;
+import java.math.MathContext;
+import java.math.RoundingMode;
 import java.util.ArrayList;
 import java.util.Date;
 import java.util.List;
@@ -178,8 +181,13 @@ public class RaportsService {
     }
 
 
+    public BigDecimal CalculateTax(Long profit) {
+        BigDecimal valueIn = BigDecimal.valueOf(profit);
+        BigDecimal tax = new BigDecimal(0.19);
+        BigDecimal valueOut = valueIn.multiply(tax).round(new MathContext(6, RoundingMode.HALF_UP));
+        return valueOut;
 
-
+    }
 }
 
 

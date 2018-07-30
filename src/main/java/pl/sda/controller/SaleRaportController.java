@@ -13,6 +13,7 @@ import pl.sda.service.CarsService;
 import pl.sda.service.RaportsService;
 
 import javax.validation.Valid;
+import java.math.BigDecimal;
 import java.text.ParseException;
 import java.text.SimpleDateFormat;
 import java.util.Date;
@@ -70,6 +71,9 @@ public class SaleRaportController {
         List<DtoShowCar> list2 = raportsService.ShowSoldCarsWithMarginAndProfit2(list);
         Long value = raportsService.CalculateSaleFilterValue(list);
         Long value2 = raportsService.CalculateProfit(list2);
+        BigDecimal value4 = raportsService.CalculateTax(value2);
+        Float value5 = value2-value4.floatValue();
+
 
         String formattedStrDate1 = new SimpleDateFormat("yyyy-MM-dd").format(date1);
         String formattedStrDate2 = new SimpleDateFormat("yyyy-MM-dd").format(date2);
@@ -77,6 +81,9 @@ public class SaleRaportController {
         model.addAttribute("list",list2);
         model.addAttribute("value",value);
         model.addAttribute("value2",value2);
+        model.addAttribute("value4",value4);
+        model.addAttribute("value5",value5);
+
         model.addAttribute("date1",formattedStrDate1);
         model.addAttribute("date2",formattedStrDate2);
 

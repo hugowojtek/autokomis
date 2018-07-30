@@ -16,6 +16,7 @@ import pl.sda.service.CarsService;
 import pl.sda.service.RaportsService;
 
 
+import java.math.BigDecimal;
 import java.util.List;
 
 @Controller
@@ -41,12 +42,17 @@ public class FullRaportController {
         Long value1 = raportsService.CalculateAllSumOfBoughtCars();
         Long value2 = raportsService.CalculateAllSumOfSoldCars();
         Long value3 = raportsService.CalculateProfit(list3);
+        BigDecimal value4 = raportsService.CalculateTax(value3);
+        Float value5 = value3-value4.floatValue();
+
         model.addAttribute("cars1",list1);
         model.addAttribute("cars2",list2);
         model.addAttribute("cars3",list3);
         model.addAttribute("value1",value1);
         model.addAttribute("value2",value2);
         model.addAttribute("value3",value3);
+        model.addAttribute("value4",value4);
+        model.addAttribute("value5",value5);
         return "fullRaports";
     }
 
