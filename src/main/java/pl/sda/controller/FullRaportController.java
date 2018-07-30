@@ -43,7 +43,10 @@ public class FullRaportController {
         Long value2 = raportsService.CalculateAllSumOfSoldCars();
         Long value3 = raportsService.CalculateProfit(list3);
         BigDecimal value4 = raportsService.CalculateTax(value3);
-        Float value5 = value3-value4.floatValue();
+        BigDecimal value31 = new BigDecimal(value3);
+        BigDecimal value5 = value31.subtract(value4);
+
+
 
         model.addAttribute("cars1",list1);
         model.addAttribute("cars2",list2);

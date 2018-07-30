@@ -72,7 +72,9 @@ public class SaleRaportController {
         Long value = raportsService.CalculateSaleFilterValue(list);
         Long value2 = raportsService.CalculateProfit(list2);
         BigDecimal value4 = raportsService.CalculateTax(value2);
-        Float value5 = value2-value4.floatValue();
+        BigDecimal value21 = new BigDecimal(value2);
+        BigDecimal value5 = value21.subtract(value4);
+
 
 
         String formattedStrDate1 = new SimpleDateFormat("yyyy-MM-dd").format(date1);
