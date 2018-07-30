@@ -67,7 +67,7 @@
                 <td th:text="${car.carYearProduction}"></td>
                 <td th:text="${car.carMilage}"></td>
                 <td th:text="${car.carVisibility}"></td>
-                <td th:text="${car.carPrice}"></td>
+                <td><span th:text="${car.carPrice}"></span> PLN</td>
 
                 <td><a th:href="@{/edit/{carId}/editable(carId=${car.id})}">edytuj</a></td>
 

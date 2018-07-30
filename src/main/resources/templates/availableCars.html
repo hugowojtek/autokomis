@@ -169,7 +169,7 @@
             <td th:text="${car.carModel}"></td>
             <td th:text="${car.carYearProduction}"></td>
             <td th:text="${car.carMilage}"></td>
-            <td th:text="${car.carPrice}"></td>
+            <td><span th:text="${car.carPrice}"> PLN</span> PLN</td>
 
 
             <td><a th:href="@{/cars/{carId}/desc(carId=${car.id})}">opis/kup</a></td>

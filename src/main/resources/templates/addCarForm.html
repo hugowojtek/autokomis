@@ -13,66 +13,66 @@
 <h1 style="text-align: center; color: white">Dodawanie samochodu do bazy</h1>
 <h2 style="text-align: center;color:#FFAD33" ><span th:text = "${message}"></span></h2>
 <div align="center">
-<form style="margin: 0 auto;width: 700px"  th:action="@{/add}" th:object="${addedCar}" method="post">
-    <div style = "background: darkgray;font-size: 18px; max-width: 700px; min-width: 450px; margin: 40px auto; margin: 40px auto">
+<form style="margin: 0 auto;width: 900px"  th:action="@{/add}" th:object="${addedCar}" method="post">
+    <div style = "background: darkgray;font-size: 18px; max-width: 900px; min-width: 450px; margin: 40px auto; margin: 40px auto">
 
     <!--; font-size: 18px; max-width: 650px; min-width: 650px; margin: 40px auto; margin: 40px auto;>-->
         <fieldset>
     <table>
         <tr>
             <td>Marka</td>
-            <td><input type="text" th:field="*{carManufacturer}"/>
-                <span th:="${#fields.hasErrors('carManufacturer')}" th:errors="*{carManufacturer}"/>
+            <td><p><input type="text" th:field="*{carManufacturer}"/>
+                <span th:="${#fields.hasErrors('carManufacturer')}" th:errors="*{carManufacturer}"/></p>
             </td>
 
         </tr>
         <tr>
             <td>Model</td>
-            <td><input type="text" th:field="*{carModel}"/>
-                <span th:="${#fields.hasErrors('carModel')}" th:errors="*{carModel}"/>
+            <td><p><input type="text" th:field="*{carModel}"/>
+                <span th:="${#fields.hasErrors('carModel')}" th:errors="*{carModel}"/></p>
             </td>
 
         </tr>
         <tr>
             <td>Rok</td>
-            <td><input type="text" th:field="*{carYearProduction}"/>
-                <span th:="${#fields.hasErrors('carYearProduction')}" th:errors="*{carYearProduction}"/>
+            <td><p><input type="text" th:field="*{carYearProduction}"/>
+                <span th:="${#fields.hasErrors('carYearProduction')}" th:errors="*{carYearProduction}"/></p>
             </td>
         </tr>
 
         <tr>
             <td>Przebieg</td>
-            <td><input type="text" th:field="*{carMilage}"/>
-                <span th:="${#fields.hasErrors('carMilage')}" th:errors="*{carMilage}"/>
+            <td><p><input type="text" th:field="*{carMilage}"/>
+                <span th:="${#fields.hasErrors('carMilage')}" th:errors="*{carMilage}"/></p>
             </td>
         </tr>
 
         <tr>
             <td>Nr nadwozia</td>
-            <td><input type="text" th:field="*{carNrChassis}"/>
-                <span th:="${#fields.hasErrors('carNrChassis')}" th:errors="*{carNrChassis}"/>
+            <td><p><input type="text" th:field="*{carNrChassis}"/>
+                <span th:="${#fields.hasErrors('carNrChassis')}" th:errors="*{carNrChassis}"/></p>
             </td>
         </tr>
 
         <tr>
             <td>Opis</td>
-            <td><input type="text" th:field="*{carDescription}"/>
-                <span th:="${#fields.hasErrors('carDescription')}" th:errors="*{carDescription}"/>
+            <td><p><input type="text" th:field="*{carDescription}"/>
+                <span th:="${#fields.hasErrors('carDescription')}" th:errors="*{carDescription}"/></p>
             </td>
         </tr>
 
         <tr>
             <td>Cena zakupu</td>
-            <td><input type="text" th:field="*{buyingContractsPrice}"/>
-                <span th:="${#fields.hasErrors('buyingContractsPrice')}" th:errors="*{buyingContractsPrice}"/>
+            <td><p><input type="text" th:field="*{buyingContractsPrice}"/> PLN
+               <span th:="${#fields.hasErrors('buyingContractsPrice')}" th:errors="*{buyingContractsPrice}"/> </p>
             </td>
 
         </tr>
 
         <tr>
             <td>Cena sprzedaży</td>
-            <td><input type="text" th:field="*{carPrice}"/>
-                <span th:="${#fields.hasErrors('carPrice')}" th:errors="*{carPrice}"/>
+            <td><p><input type="text" th:field="*{carPrice}"/> PLN
+                <span th:="${#fields.hasErrors('carPrice')}" th:errors="*{carPrice}"/></p>
             </td>
 
         </tr>

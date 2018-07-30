@@ -56,13 +56,13 @@ public class DtoBuyCar {
     private Long carTestDrives;
 
     //@NotEmpty
-    @NotNull(message = "nie może być zerem i nie tylko")
+    @NotNull(message = " nie może być zerem i nie tylko")
     @DecimalMin(value="5000.00", message = "za mała wartość min 5000zł")
     private Long carPrice;
 
 //    private Date buyingContractsDate;
 //@NotEmpty
-    @NotNull(message = "nie może być zerem i nie tylko")
+    @NotNull(message = " nie może być zerem i nie tylko")
     @DecimalMin(value="1.00", message = "za mała wartość min 1zł")
     private Long buyingContractsPrice;
 
